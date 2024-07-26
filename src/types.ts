@@ -1,0 +1,39 @@
+export type DayTrip = [number, Array<number>, Array<string>];
+export type HandleConsecutiveRepeatValueAs = "first" | "last" | "always";
+export type TableRowDataType = string | number;
+
+export const AIRPORT = "Airport";
+export const ARIA = "Aria";
+export const ARIA_AND_BELLAGIO = "Aria & Bellagio";
+export const BELLAGIO = "Bellagio";
+export const CAESARS_PALACE = "Caesars Palace";
+export const CASINO_ROYALE = "Casino Royale";
+export const CET = "CET";
+export const CIRCA_AND_D = "Cira and D";
+export const COSMO = "Cosmopolitan";
+export const DURANGO = "Durango";
+export const EL_CORTEZ = "El Cortez";
+export const ENCORE = "Encore";
+export const EXCALIBUR = "Excalibur";
+export const FLAMINGO = "Flamingo";
+export const FONTAINEBLEAU = "Fontainebleau";
+export const LUXOR = "Luxor";
+export const MANDALAY_BAY = "Mandalay Bay";
+export const MGM = "MGM";
+export const MGM_GRAND = "MGM Grand";
+export const MIRAGE = "Mirage";
+export const PALAZZO = "Palazzo";
+export const PARIS = "Paris";
+export const PARK_MGM = "Park MGM";
+export const RESORTS_WORLD = "Resorts World";
+export const VENETIAN = "Venetian";
+export const VP = "Venetian/Palazzo";
+export const WYNN = "Wynn";
+
+export const NEGATIVE_LINE_COLOR = "#ff10f0";
+export const POSITIVE_LINE_COLOR = "#39ff14";
+
+export const NEGATIVE_CURRENCY_TEXT_COLOR = "text-[#ff10f0]";
+export const POSITIVE_CURRENCY_TEXT_COLOR = "text-[#39ff14]";
+export const THEME_TEXT_COLOR = "text-[#c48125]";
+export const THEME_BACKGROUND_COLOR = "bg-[#c48125]";
