@@ -4,7 +4,7 @@ import {
   DayTrip,
   NEGATIVE_CURRENCY_TEXT_COLOR,
   POSITIVE_CURRENCY_TEXT_COLOR,
-  THEME_BACKGROUND_COLOR,
+  THEME_TOOLTIP_COLOR,
 } from "../types";
 import { EChartsOption, ReactECharts } from "../react-echarts";
 import { TableContainer, TableColumn } from "./Table";
@@ -53,7 +53,7 @@ export const StatsTracker: FC<StatsTrackerProps> = ({
       },
       formatter: (params: any) => {
         const dataIndex = params[0].dataIndex;
-        let content = `<div class="text-black m-[-1rem] max-w-[30rem] p-3 text-left selet-none whitespace-pre-wrap break-all ${THEME_BACKGROUND_COLOR}">`;
+        let content = `<div class="text-black m-[-1rem] max-w-[30rem] p-3 text-left selet-none whitespace-pre-wrap break-all ${THEME_TOOLTIP_COLOR}">`;
         if (Array.isArray(params) && params.length) {
           content += `<b>Date: ${dayjs(params[0].data[0]).format(
             "MMM DD, YYYY",
@@ -221,7 +221,7 @@ export const StatsTracker: FC<StatsTrackerProps> = ({
       <TableContainer>
         <TableColumn
           handleConsecutiveRepeatValueAs="last"
-          title="Trip"
+          title="Session"
           headerRows={[""]}
           headerRowColors={[""]}
           rowData={tripNumbers}

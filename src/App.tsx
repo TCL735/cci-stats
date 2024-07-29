@@ -1,26 +1,12 @@
 import React, { useState } from "react";
 import { Tabs } from "@mantine/core";
-import { dayTrips2023, dayTrips2024, tenTon2024 } from "./data";
+import { tenTon2024 } from "./data";
 import { StatsTracker } from "./components/StatsTracker";
-import { DayTrip, NEGATIVE_LINE_COLOR } from "./types";
+import { NEGATIVE_LINE_COLOR } from "./types";
 
-const getDayTrips = (value: string | null): DayTrip[] => {
-  switch (value) {
-    case "2023": {
-      return dayTrips2023;
-    }
-    case "2024": {
-      return dayTrips2024;
-    }
-    case "TenTon": {
-      return tenTon2024;
-    }
-    default:
-      return tenTon2024;
-  }
-};
 export const App = () => {
-  const [activeTab, setActiveTab] = useState<string | null>(null);
+  const [activeTab, setActiveTab] = useState<string | null>("About");
+
   return (
     <div className="App">
       <Tabs value={activeTab} onChange={setActiveTab}>
@@ -37,34 +23,38 @@ export const App = () => {
           </Tabs.Tab>
           <Tabs.Tab
             className={`px-4 py-3 ${
-              activeTab === "2024"
+              activeTab === "About"
                 ? "border-b-[0.125rem] border-blue-500/100"
                 : ""
             }`}
-            value="2024"
+            value="About"
           >
-            VDT 2024
-          </Tabs.Tab>
-          <Tabs.Tab
-            className={`px-4 py-3 ${
-              activeTab === "2023"
-                ? "border-b-[0.125rem] border-blue-500/100"
-                : ""
-            }`}
-            value="2023"
-          >
-            VDT 2023
+            About
           </Tabs.Tab>
         </Tabs.List>
 
         {activeTab ? (
-          <Tabs.Panel value={activeTab}>
-            <StatsTracker
-              dayTrips={getDayTrips(activeTab)}
-              label={activeTab}
-              lineColor={NEGATIVE_LINE_COLOR}
-            />
-          </Tabs.Panel>
+          activeTab === "About" ? (
+            <Tabs.Panel value={activeTab} className="ml-3 pt-4">
+              <div>Click on a tab to see stats</div>
+            </Tabs.Panel>
+          ) : (
+            <Tabs.Panel value={activeTab} className="pt-4">
+              <a
+                href="https://www.casinotears.com/"
+                target="_blank"
+                rel="noreferrer"
+                className="ml-3 text-[#c48125]"
+              >
+                <span>Casino Tears Podcast</span>
+              </a>
+              <StatsTracker
+                dayTrips={tenTon2024}
+                label={`Ten Ton is Number 1's Win/Loss`}
+                lineColor={NEGATIVE_LINE_COLOR}
+              />
+            </Tabs.Panel>
+          )
         ) : null}
       </Tabs>
     </div>

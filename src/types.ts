@@ -36,4 +36,4 @@ export const POSITIVE_LINE_COLOR = "#39ff14";
 export const NEGATIVE_CURRENCY_TEXT_COLOR = "text-[#ff10f0]";
 export const POSITIVE_CURRENCY_TEXT_COLOR = "text-[#39ff14]";
 export const THEME_TEXT_COLOR = "text-[#c48125]";
-export const THEME_BACKGROUND_COLOR = "bg-[#c48125]";
+export const THEME_TOOLTIP_COLOR = "bg-[#c48125]";
