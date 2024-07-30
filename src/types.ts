@@ -30,10 +30,12 @@ export const VENETIAN = "Venetian";
 export const VP = "Venetian/Palazzo";
 export const WYNN = "Wynn";
 
-export const NEGATIVE_LINE_COLOR = "#ff10f0";
-export const POSITIVE_LINE_COLOR = "#39ff14";
+export const NEGATIVE_LINE_COLOR_VALUE = "#FF10F0";
+export const POSITIVE_LINE_COLOR = "#39FF14";
+export const THEME_COLOR_VALUE = "#C48125";
 
-export const NEGATIVE_CURRENCY_TEXT_COLOR = "text-[#ff10f0]";
-export const POSITIVE_CURRENCY_TEXT_COLOR = "text-[#39ff14]";
-export const THEME_TEXT_COLOR = "text-[#c48125]";
-export const THEME_TOOLTIP_COLOR = "bg-[#c48125]";
+export const NEGATIVE_CURRENCY_TEXT_COLOR = "text-[#FF10F0]";
+export const POSITIVE_CURRENCY_TEXT_COLOR = "text-[#39FF14]";
+export const THEME_TEXT_COLOR = "text-[#C48125]";
+export const THEME_TOOLTIP_COLOR = "bg-[#C48125]";
+export const SELECTED_BORDER_STYLE = "border-b-[0.2rem] border-[#C48125]/100";

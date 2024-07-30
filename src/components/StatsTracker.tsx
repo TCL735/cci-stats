@@ -3,7 +3,7 @@ import dayjs from "dayjs";
 import {
   DayTrip,
   NEGATIVE_CURRENCY_TEXT_COLOR,
-  NEGATIVE_LINE_COLOR,
+  NEGATIVE_LINE_COLOR_VALUE,
   POSITIVE_CURRENCY_TEXT_COLOR,
   POSITIVE_LINE_COLOR,
   THEME_TOOLTIP_COLOR,
@@ -148,7 +148,7 @@ export const StatsTracker: FC<StatsTrackerProps> = ({
           color: POSITIVE_LINE_COLOR,
         },
         outOfRange: {
-          color: NEGATIVE_LINE_COLOR,
+          color: NEGATIVE_LINE_COLOR_VALUE,
         },
       },
     },
