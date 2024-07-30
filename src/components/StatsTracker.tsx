@@ -225,7 +225,7 @@ export const StatsTracker: FC<StatsTrackerProps> = ({
       <div className="h-[620px] mt-5">
         <ReactECharts
           onChartReady={(chart) => {
-            setTimeout(() => chart.setOption(option), 1);
+            setTimeout(() => chart.setOption(option), 100);
           }}
           option={{ ...option, series: [] }}
           settings={{
