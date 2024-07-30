@@ -3,7 +3,9 @@ import dayjs from "dayjs";
 import {
   DayTrip,
   NEGATIVE_CURRENCY_TEXT_COLOR,
+  NEGATIVE_LINE_COLOR,
   POSITIVE_CURRENCY_TEXT_COLOR,
+  POSITIVE_LINE_COLOR,
   THEME_TOOLTIP_COLOR,
 } from "../types";
 import { EChartsOption, ReactECharts } from "../react-echarts";
@@ -133,6 +135,20 @@ export const StatsTracker: FC<StatsTrackerProps> = ({
         lineStyle: {
           width: 1,
           type: "solid",
+        },
+      },
+    },
+    visualMap: {
+      type: "continuous",
+      show: false,
+      dimension: 1,
+      range: [1, Infinity],
+      target: {
+        inRange: {
+          color: POSITIVE_LINE_COLOR,
+        },
+        outOfRange: {
+          color: NEGATIVE_LINE_COLOR,
         },
       },
     },
