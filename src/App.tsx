@@ -21,7 +21,7 @@ export const App = () => {
       >
         <Tabs.List className="flex flex-row flex-wrap justify-start border-b-0">
           <Tabs.Tab
-            className={`px-4 py-3 ${
+            className={`px-4 py-3 hover:text-white ${
               activeTab === "TenTon"
                 ? SELECTED_BORDER_STYLE
                 : "border-black/100"
@@ -31,7 +31,7 @@ export const App = () => {
             Ten Ton 2024
           </Tabs.Tab>
           <Tabs.Tab
-            className={`px-4 py-3 ${
+            className={`px-4 py-3 hover:text-white ${
               activeTab === "About" ? SELECTED_BORDER_STYLE : "border-black/100"
             } ${THEME_TEXT_COLOR}`}
             value="About"
@@ -54,7 +54,7 @@ export const App = () => {
                 href="https://www.casinotears.com/"
                 target="_blank"
                 rel="noreferrer"
-                className={`ml-3 ${THEME_TEXT_COLOR}`}
+                className={`ml-3 ${THEME_TEXT_COLOR} hover:text-white`}
               >
                 <span>Casino Tears Podcast</span>
               </a>
