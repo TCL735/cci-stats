@@ -19,8 +19,10 @@ import {
   MGM_GRAND,
   MIRAGE,
   PALAZZO,
+  PALMS,
   PARIS,
   PARK_MGM,
+  PLANET_HOLLYWOOD,
   RESORTS_WORLD,
   TableRowDataType,
   VENETIAN,
@@ -41,8 +43,8 @@ export const getRewardsProgram = (location: string): string => {
     case PARK_MGM:
       return MGM;
 
-    case VENETIAN:
     case PALAZZO:
+    case VENETIAN:
     case VP:
       return "Venetian Rewards";
 
@@ -62,9 +64,10 @@ export const getRewardsProgram = (location: string): string => {
     case WYNN:
       return "Wynn";
 
-    case PARIS:
     case CAESARS_PALACE:
     case FLAMINGO:
+    case PARIS:
+    case PLANET_HOLLYWOOD:
       return CET;
 
     case FONTAINEBLEAU:
@@ -72,6 +75,9 @@ export const getRewardsProgram = (location: string): string => {
 
     case DURANGO:
       return "Stations";
+
+    case PALMS:
+      return "Palms";
 
     default:
       return location;
