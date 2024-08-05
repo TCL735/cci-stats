@@ -174,7 +174,7 @@ export const StatsTracker: FC<StatsTrackerProps> = ({
             return "";
           },
           valueAnimation: true,
-          offset: [-80, -20],
+          offset: [-80, 20],
           color: "#C48125",
         },
         data: dayTrips.reduce((acc, dayTrip, index) => {
