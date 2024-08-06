@@ -1,4 +1,13 @@
-export type DayTrip = [number, Array<number>, Array<string>];
+export type DayTrip = [
+  number, // Date
+  Array<string>, // Location
+  Array<string>, // Game Type
+  Array<number>, // Buy In
+  Array<number>, // Color Up
+  Array<number>, // Session Time (Hours)
+  Array<string>, // Key Takeaways
+  Array<string>, // Played With
+];
 export type HandleConsecutiveRepeatValueAs = "first" | "last" | "always";
 export type TableRowDataType = string | number;
 

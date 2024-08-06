@@ -79,9 +79,9 @@ export const TableColumn: FC<TableColumnProps> = ({
       {valuesToPrint.map((value, index) => (
         <div
           key={`${title}-row-${index}`}
-          className={`border-b border-solid border-gray100 h-4 pt-4 pb-8 leading-4 text-ellipsis whitespace-nowrap overflow-hidden ${rowDataColors[index]}`}
+          className={`border-b border-solid border-gray100 last-of-type:border-none h-4 pt-4 pb-8 leading-4 text-ellipsis overflow-hidden ${rowDataColors[index]}`}
         >
-          {formatter(value)}
+          <span className="">{formatter(value)}</span>
         </div>
       ))}
       {footerRows.map((value, index) => (
@@ -98,7 +98,7 @@ export const TableColumn: FC<TableColumnProps> = ({
 
 export const TableContainer: FC<ComponentProps<"div">> = ({ children }) => {
   return (
-    <div className="grid grid-cols-[minmax(0,_1fr)_minmax(0,_2fr)_minmax(0,_3fr)_minmax(0,_4fr)_minmax(0,_2fr)]">
+    <div className="grid grid-cols-[minmax(0,_1fr)_minmax(0,_2fr)_minmax(0,_4fr)_minmax(0,_1fr)_minmax(0,_1fr)_minmax(0,_1fr)_minmax(0,_1fr)_minmax(0,_4fr)_minmax(0,_2fr)_minmax(0,_1fr)]">
       {children}
     </div>
   );

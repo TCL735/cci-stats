@@ -6,6 +6,7 @@ import {
   NEGATIVE_LINE_COLOR_VALUE,
   POSITIVE_CURRENCY_TEXT_COLOR,
   POSITIVE_LINE_COLOR,
+  THEME_TEXT_COLOR,
   THEME_TOOLTIP_COLOR,
 } from "../types";
 import { EChartsOption, ReactECharts } from "../react-echarts";
@@ -61,15 +62,19 @@ export const StatsTracker: FC<StatsTrackerProps> = ({
             "MMM DD, YYYY",
           )}</b><br/><span class="${
             Number(
-              dayTrips[dataIndex][1].reduce((sum, amount) => sum + amount),
+              dayTrips[dataIndex][4].reduce(
+                (sum, amount, index) =>
+                  sum + amount - dayTrips[dataIndex][3][index],
+                0,
+              ),
             ) < 0
               ? NEGATIVE_CURRENCY_TEXT_COLOR
               : POSITIVE_CURRENCY_TEXT_COLOR
-          }">Win/Loss: ${dayTrips[dataIndex][1]
+          }">Win/Loss: ${dayTrips[dataIndex][4]
             .map(
-              (amount) =>
+              (amount, index) =>
                 `<span class="${
-                  amount < 0
+                  amount - dayTrips[dataIndex][3][index] < 0
                     ? NEGATIVE_CURRENCY_TEXT_COLOR
                     : POSITIVE_CURRENCY_TEXT_COLOR
                 }">${currency.format(amount)}  </span>`,
@@ -80,11 +85,13 @@ export const StatsTracker: FC<StatsTrackerProps> = ({
               : POSITIVE_CURRENCY_TEXT_COLOR
           }">YTD: ${currency.format(
             params[0].data[1],
-          )}</b><br/><span>Location: ${dayTrips[dataIndex][2]
+          )}</b><br/><span>Location: ${dayTrips[dataIndex][1]
             .map(
               (location, index) =>
                 `<span class="${
-                  dayTrips[dataIndex][1][index] < 0
+                  dayTrips[dataIndex][4][index] -
+                    dayTrips[dataIndex][3][index] <
+                  0
                     ? NEGATIVE_CURRENCY_TEXT_COLOR
                     : POSITIVE_CURRENCY_TEXT_COLOR
                 }">${location}${
@@ -182,16 +189,21 @@ export const StatsTracker: FC<StatsTrackerProps> = ({
             return [
               [
                 dayTrip[0],
-                dayTrip[1].reduce((sum, value) => sum + value),
-                dayTrip[2].join(", "),
+                dayTrip[4].reduce(
+                  (sum, value, i) => sum + value - dayTrip[3][i],
+                  0,
+                ),
+                dayTrip[1].join(", "),
               ],
             ];
           }
           acc.push([
             dayTrip[0],
-            dayTrip[1].reduce((sum, value) => sum + value) +
-              acc[acc.length - 1][1],
-            dayTrip[2].join(", "),
+            dayTrip[4].reduce(
+              (sum, value, i) => sum + value - dayTrip[3][i],
+              0,
+            ) + acc[acc.length - 1][1],
+            dayTrip[1].join(", "),
           ]);
 
           return acc;
@@ -206,7 +218,12 @@ export const StatsTracker: FC<StatsTrackerProps> = ({
     locationColors,
     tripDates,
     tripLocations,
-    tripNumbers,
+    tripGameTypes,
+    tripBuyIns,
+    tripColorUps,
+    tripSessionHours,
+    tripTakeaways,
+    tripPlayedWith,
     tripPrograms,
     tripResults,
   } = createRowData(
@@ -215,7 +232,20 @@ export const StatsTracker: FC<StatsTrackerProps> = ({
     NEGATIVE_CURRENCY_TEXT_COLOR,
   );
 
-  const grandTotal = tripResults.reduce(
+  const allGreens = Array.from(
+    locationColors,
+    (color) => POSITIVE_CURRENCY_TEXT_COLOR,
+  );
+
+  const buyInsTotal = tripBuyIns.reduce(
+    (total, amount) => (total += amount),
+    0,
+  );
+  const colorUpsTotal = tripColorUps.reduce(
+    (total, amount) => (total += amount),
+    0,
+  );
+  const winLossTotal = tripResults.reduce(
     (total, amount) => (total += amount),
     0,
   );
@@ -236,14 +266,6 @@ export const StatsTracker: FC<StatsTrackerProps> = ({
       </div>
       <TableContainer>
         <TableColumn
-          handleConsecutiveRepeatValueAs="last"
-          title="Session"
-          headerRows={[""]}
-          headerRowColors={[""]}
-          rowData={tripNumbers}
-          rowDataColors={wholeTripColors}
-        />
-        <TableColumn
           formatter={dateFormatter}
           handleConsecutiveRepeatValueAs="last"
           title="Date"
@@ -262,24 +284,74 @@ export const StatsTracker: FC<StatsTrackerProps> = ({
         />
         <TableColumn
           handleConsecutiveRepeatValueAs="always"
-          title="Program"
+          title="Game Type W/Prop"
           headerRows={["Total"]}
-          headerRowColors={[""]}
-          rowData={tripPrograms}
+          headerRowColors={[THEME_TEXT_COLOR]}
+          rowData={tripGameTypes}
+          rowDataColors={locationColors}
+        />
+        <TableColumn
+          formatter={currencyFormatter}
+          handleConsecutiveRepeatValueAs="always"
+          title="Buy In"
+          headerRows={[buyInsTotal]}
+          headerRowColors={[THEME_TEXT_COLOR]}
+          rowData={tripBuyIns}
+          rowDataColors={allGreens}
+        />
+        <TableColumn
+          formatter={currencyFormatter}
+          handleConsecutiveRepeatValueAs="always"
+          title="Color"
+          headerRows={[colorUpsTotal]}
+          headerRowColors={[THEME_TEXT_COLOR]}
+          rowData={tripColorUps}
           rowDataColors={locationColors}
         />
         <TableColumn
           formatter={currencyFormatter}
           handleConsecutiveRepeatValueAs="always"
           rowDataColors={locationColors}
-          title="Win/Loss"
-          headerRows={[grandTotal]}
+          title="W/L"
+          headerRows={[winLossTotal]}
           headerRowColors={[
-            grandTotal >= 0
+            winLossTotal >= 0
               ? POSITIVE_CURRENCY_TEXT_COLOR
               : NEGATIVE_CURRENCY_TEXT_COLOR,
           ]}
           rowData={tripResults}
+        />
+        <TableColumn
+          handleConsecutiveRepeatValueAs="always"
+          title="Hours"
+          headerRows={[""]}
+          headerRowColors={[""]}
+          rowData={tripSessionHours}
+          rowDataColors={locationColors}
+        />
+        <TableColumn
+          handleConsecutiveRepeatValueAs="always"
+          title="Key Takeaways"
+          headerRows={[""]}
+          headerRowColors={[""]}
+          rowData={tripTakeaways}
+          rowDataColors={locationColors}
+        />
+        <TableColumn
+          handleConsecutiveRepeatValueAs="always"
+          title="Played With"
+          headerRows={[""]}
+          headerRowColors={[""]}
+          rowData={tripPlayedWith}
+          rowDataColors={locationColors}
+        />
+        <TableColumn
+          handleConsecutiveRepeatValueAs="always"
+          title="Program"
+          headerRows={["Total"]}
+          headerRowColors={[""]}
+          rowData={tripPrograms}
+          rowDataColors={locationColors}
         />
       </TableContainer>
     </div>
