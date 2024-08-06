@@ -77,7 +77,7 @@ export const getRewardsProgram = (location: string): string => {
       return "Stations";
 
     case PALMS:
-      return "Palms";
+      return "Club Serrano";
 
     default:
       return location;
@@ -90,6 +90,12 @@ export interface TableRowsData {
   tripNumbers: number[];
   tripDates: number[];
   tripLocations: string[];
+  tripGameTypes: string[];
+  tripBuyIns: number[];
+  tripColorUps: number[];
+  tripSessionHours: number[];
+  tripTakeaways: string[];
+  tripPlayedWith: string[];
   tripPrograms: string[];
   tripResults: number[];
 }
@@ -104,11 +110,30 @@ export const createRowData = (
   const tripNumbers: number[] = [];
   const tripDates: number[] = [];
   const tripLocations: string[] = [];
+  const tripGameTypes: string[] = [];
+  const tripBuyIns: number[] = [];
+  const tripColorUps: number[] = [];
+  const tripSessionHours: number[] = [];
+  const tripTakeaways: string[] = [];
+  const tripPlayedWith: string[] = [];
   const tripPrograms: string[] = [];
   const tripResults: number[] = [];
 
   daytrips.forEach((daytrip, index) => {
-    const [dateValue, results, locations] = daytrip;
+    const [
+      dateValue,
+      locations,
+      gameTypes,
+      buyIns,
+      colorUps,
+      sessionHours,
+      takeaways,
+      playedWith,
+    ] = daytrip;
+
+    const results = colorUps.map(
+      (result: number, index: number) => result - buyIns[index],
+    );
 
     const resultsTotal = results.reduce((total: number, result: number) => {
       return (total += result);
@@ -120,6 +145,12 @@ export const createRowData = (
       tripNumbers.push(index + 1);
       tripDates.push(dateValue);
       tripLocations.push(locations[i]);
+      tripGameTypes.push(gameTypes[i]);
+      tripBuyIns.push(buyIns[i]);
+      tripColorUps.push(colorUps[i]);
+      tripSessionHours.push(sessionHours[i]);
+      tripTakeaways.push(takeaways[i]);
+      tripPlayedWith.push(playedWith[i]);
       tripPrograms.push(getRewardsProgram(locations[i]));
       tripResults.push(results[i]);
     }
@@ -131,6 +162,12 @@ export const createRowData = (
     tripNumbers,
     tripDates,
     tripLocations,
+    tripGameTypes,
+    tripBuyIns,
+    tripColorUps,
+    tripSessionHours,
+    tripTakeaways,
+    tripPlayedWith,
     tripPrograms,
     tripResults,
   };
