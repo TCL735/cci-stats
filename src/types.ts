@@ -10,6 +10,10 @@ export type DayTrip = [
 ];
 export type HandleConsecutiveRepeatValueAs = "first" | "last" | "always";
 export type TableRowDataType = string | number;
+export type WindowDimensions = {
+  height: number;
+  width: number;
+};
 
 export const AIRPORT = "Airport";
 export const ARIA = "Aria";

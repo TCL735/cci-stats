@@ -10,12 +10,14 @@ import {
   THEME_TOOLTIP_COLOR,
 } from "../types";
 import { EChartsOption, ReactECharts } from "../react-echarts";
-import { TableContainer, TableColumn } from "./Table";
+import { StatsTableLarge, TableColumn, CompactTable } from "./Table";
 import {
   createRowData,
   currency,
   currencyFormatter,
   dateFormatter,
+  getHeightClass,
+  useWindowDimensions,
 } from "../utils";
 
 interface StatsTrackerProps {
@@ -35,6 +37,8 @@ export const StatsTracker: FC<StatsTrackerProps> = ({
     .toISOString()
     .slice(0, 10)}`,
 }) => {
+  const { height } = useWindowDimensions();
+
   const option: EChartsOption = {
     title: {
       left: 0,
@@ -252,7 +256,7 @@ export const StatsTracker: FC<StatsTrackerProps> = ({
 
   return (
     <div className="my-0 mx-3 bg-black">
-      <div className="h-[620px] mt-5">
+      <div className={`${getHeightClass(height)} mt-5`}>
         <ReactECharts
           onChartReady={(chart) => {
             setTimeout(() => chart.setOption(option), 100);
@@ -264,7 +268,7 @@ export const StatsTracker: FC<StatsTrackerProps> = ({
           renderer="canvas"
         />
       </div>
-      <TableContainer>
+      <StatsTableLarge>
         <TableColumn
           formatter={dateFormatter}
           handleConsecutiveRepeatValueAs="last"
@@ -353,7 +357,7 @@ export const StatsTracker: FC<StatsTrackerProps> = ({
           rowData={tripPrograms}
           rowDataColors={locationColors}
         />
-      </TableContainer>
+      </StatsTableLarge>
     </div>
   );
 };

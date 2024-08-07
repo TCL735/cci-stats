@@ -1,3 +1,4 @@
+import { useCallback, useEffect, useState } from "react";
 import dayjs from "dayjs";
 import {
   ARIA,
@@ -28,6 +29,7 @@ import {
   VENETIAN,
   VP,
   WYNN,
+  WindowDimensions,
 } from "./types";
 
 export const getRewardsProgram = (location: string): string => {
@@ -193,4 +195,51 @@ export const currencyFormatter = (v: TableRowDataType): string => {
     maximumFractionDigits: 0,
   });
   return f.format(v as number);
+};
+
+export const getWindowDimensions = () => {
+  const { innerWidth: width, innerHeight: height } = window;
+  return {
+    height,
+    width,
+  };
+};
+
+export const useWindowDimensions = (): WindowDimensions => {
+  const [windowDimensions, setWindowDimensions] = useState<WindowDimensions>(
+    getWindowDimensions(),
+  );
+  const handleResize = useCallback(() => {
+    setWindowDimensions(getWindowDimensions());
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return windowDimensions;
+};
+
+export const getHeightClass = (height: number): string => {
+  if (height >= 800) {
+    return "h-[710px]";
+  }
+  if (height >= 760) {
+    return "h-[670px]";
+  }
+  if (height >= 720) {
+    return "h-[630px]";
+  }
+  if (height >= 680) {
+    return "h-[590px]";
+  }
+  if (height >= 640) {
+    return "h-[550px]";
+  }
+  if (height >= 600) {
+    return "h-[510px]";
+  }
+  return "h-[470px]";
 };

@@ -96,7 +96,7 @@ export const TableColumn: FC<TableColumnProps> = ({
   );
 };
 
-export const TableContainer: FC<ComponentProps<"div">> = ({ children }) => {
+export const StatsTableLarge: FC<ComponentProps<"div">> = ({ children }) => {
   return (
     <div className="grid grid-cols-[minmax(0,_1fr)_minmax(0,_2fr)_minmax(0,_4fr)_minmax(0,_1fr)_minmax(0,_1fr)_minmax(0,_1fr)_minmax(0,_1fr)_minmax(0,_4fr)_minmax(0,_2fr)_minmax(0,_1fr)]">
       {children}
