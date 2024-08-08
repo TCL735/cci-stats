@@ -1,4 +1,5 @@
-import React, { FC } from "react";
+import React, { FC, useCallback } from "react";
+import { ECharts } from "echarts/core";
 import dayjs from "dayjs";
 import { TenTon2024, TableContext } from "../utils";
 import {
@@ -213,13 +214,19 @@ export const StatsTracker: FC<StatsTrackerProps> = ({
     ],
   };
 
+  const onChartReady = useCallback(
+    (chart: ECharts) => {
+      setTimeout(() => chart.setOption(option), 100);
+    },
+    /* eslint-disable-next-line react-hooks/exhaustive-deps */
+    [width, height],
+  );
+
   return (
     <div className="my-0 mx-3 bg-black">
       <div className={`${getHeightClass(height)} mt-5`}>
         <ReactECharts
-          onChartReady={(chart) => {
-            setTimeout(() => chart.setOption(option), 100);
-          }}
+          onChartReady={onChartReady}
           option={{ ...option, series: [] }}
           settings={{
             replaceMerge: ["series"],

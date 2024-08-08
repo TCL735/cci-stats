@@ -230,7 +230,7 @@ const getSessionClassName = (sessions: number): string => {
     case 2:
       return "w-[50%]";
     case 3:
-      return "w-[30%]";
+      return "w-[33%]";
     case 4:
       return "w-[25%]";
     default:
