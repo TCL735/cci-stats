@@ -1,4 +1,4 @@
-import { createContext, useCallback, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import dayjs from "dayjs";
 import {
   ARIA,
@@ -239,11 +239,11 @@ export const useWindowDimensions = (): WindowDimensions => {
   const [windowDimensions, setWindowDimensions] = useState<WindowDimensions>(
     getWindowDimensions(),
   );
-  const handleResize = useCallback(() => {
-    setWindowDimensions(getWindowDimensions());
-  }, []);
 
   useEffect(() => {
+    function handleResize() {
+      setWindowDimensions(getWindowDimensions());
+    }
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
     // eslint-disable-next-line react-hooks/exhaustive-deps
