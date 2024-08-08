@@ -59,3 +59,7 @@ export const THEME_TEXT_COLOR = "text-[#C48125]";
 export const NEUTRAL_TEXT_COLOR = "text-[#C5C5C5]";
 export const THEME_TOOLTIP_COLOR = "bg-[#C48125]";
 export const SELECTED_BORDER_STYLE = "border-b-[0.2rem] border-[#C48125]/100";
+
+export const ECHARTS_SETTINGS = {
+  replaceMerge: ["series"],
+};

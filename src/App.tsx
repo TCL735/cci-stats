@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Tabs } from "@mantine/core";
 import { tenTon2024 } from "./data";
 import { StatsTracker } from "./components/StatsTracker";
@@ -8,9 +8,23 @@ import {
   SELECTED_BORDER_STYLE,
   THEME_TEXT_COLOR,
 } from "./types";
+import { useWindowDimensions } from "./utils";
 
 export const App = () => {
+  const aboutUsRef = useRef<HTMLDivElement>(null);
   const [activeTab, setActiveTab] = useState<string | null>("About");
+  const [backgroundHeight, setBackgroundHeight] = useState<string>("h-screen");
+  const { height } = useWindowDimensions();
+
+  useEffect(() => {
+    if (aboutUsRef?.current) {
+      if (aboutUsRef.current.clientHeight >= height) {
+        setBackgroundHeight("h-max");
+      } else {
+        setBackgroundHeight("h-screen");
+      }
+    }
+  }, [aboutUsRef, height]);
 
   return (
     <div className="bg-black">
@@ -45,9 +59,9 @@ export const App = () => {
           activeTab === "About" ? (
             <Tabs.Panel
               value={activeTab}
-              className={`ml-3 pt-4 ${NEUTRAL_TEXT_COLOR} h-screen`}
+              className={`ml-3 pt-4 ${NEUTRAL_TEXT_COLOR} ${backgroundHeight}`}
             >
-              <div>
+              <div ref={aboutUsRef}>
                 <h3 className={`font-extrabold ${THEME_TEXT_COLOR}`}>
                   About us
                 </h3>
