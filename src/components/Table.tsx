@@ -222,6 +222,20 @@ export const StatsTableLarge: FC = () => {
   );
 };
 
+const getSessionClassName = (sessions: number): string => {
+  switch (sessions) {
+    case 1:
+      return "w-[100%]";
+    case 2:
+      return "w-[50%]";
+    case 3:
+      return "w-[30%]";
+    case 4:
+      return "w-[25%]";
+    default:
+      return "w-[20%]";
+  }
+};
 export const StatsTableCompact: FC = () => {
   const state = useContext(TableContext);
   const { totalBuyIns, totalColorUps, totalWinLoss, dayTrips } = state;
@@ -250,7 +264,6 @@ export const StatsTableCompact: FC = () => {
   const compactTableDetailFieldClassName = "w-[35%] font-bold";
   const compactTableDetailDataPointsClassName =
     "flex flex-row justify-start gap-x-3 w-[65%]";
-  const compactTableDetailSessionClassName = "w-[50%] ";
 
   return (
     <div className={`flex flex-col-reverse ${THEME_TEXT_COLOR}`}>
@@ -273,7 +286,9 @@ export const StatsTableCompact: FC = () => {
               {dayTrip[1].map((location, index) => (
                 <span
                   key={`location-${index}`}
-                  className={`${compactTableDetailSessionClassName} ${sessionColors[tripNumber][index]}`}
+                  className={`${getSessionClassName(dayTrip[1].length)} ${
+                    sessionColors[tripNumber][index]
+                  }`}
                 >
                   {location}
                 </span>
@@ -286,7 +301,7 @@ export const StatsTableCompact: FC = () => {
               {dayTrip[2].map((gameType, index) => (
                 <span
                   key={`gameType-${index}`}
-                  className={compactTableDetailSessionClassName}
+                  className={getSessionClassName(dayTrip[1].length)}
                 >
                   {gameType}
                 </span>
@@ -299,7 +314,9 @@ export const StatsTableCompact: FC = () => {
               {dayTrip[3].map((buyIn, index) => (
                 <span
                   key={`buyIn-${index}`}
-                  className={`${compactTableDetailSessionClassName} ${POSITIVE_CURRENCY_TEXT_COLOR}`}
+                  className={`${getSessionClassName(
+                    dayTrip[1].length,
+                  )} ${POSITIVE_CURRENCY_TEXT_COLOR}`}
                 >
                   {currencyFormatter(buyIn)}
                 </span>
@@ -312,7 +329,9 @@ export const StatsTableCompact: FC = () => {
               {dayTrip[4].map((colorUp, index) => (
                 <span
                   key={`colorUp-${index}`}
-                  className={`${compactTableDetailSessionClassName} ${sessionColors[tripNumber][index]}`}
+                  className={`${getSessionClassName(dayTrip[1].length)} ${
+                    sessionColors[tripNumber][index]
+                  }`}
                 >
                   {currencyFormatter(colorUp)}
                 </span>
@@ -325,7 +344,9 @@ export const StatsTableCompact: FC = () => {
               {dayTrip[4].map((colorUp, index) => (
                 <span
                   key={`winLoss-${index}`}
-                  className={`${compactTableDetailSessionClassName} ${sessionColors[tripNumber][index]}`}
+                  className={`${getSessionClassName(dayTrip[1].length)} ${
+                    sessionColors[tripNumber][index]
+                  }`}
                 >
                   {currencyFormatter(colorUp - dayTrip[3][index])}
                 </span>
@@ -338,7 +359,7 @@ export const StatsTableCompact: FC = () => {
               {dayTrip[5].map((hours, index) => (
                 <span
                   key={`hours-${index}`}
-                  className={compactTableDetailSessionClassName}
+                  className={getSessionClassName(dayTrip[1].length)}
                 >
                   {hours}
                 </span>
@@ -353,7 +374,7 @@ export const StatsTableCompact: FC = () => {
               {dayTrip[6].map((takeaways, index) => (
                 <span
                   key={`takeaways-${index}`}
-                  className={compactTableDetailSessionClassName}
+                  className={getSessionClassName(dayTrip[1].length)}
                 >
                   {takeaways}
                 </span>
@@ -368,7 +389,7 @@ export const StatsTableCompact: FC = () => {
               {dayTrip[7].map((playedWith, index) => (
                 <span
                   key={`playedWith-${index}`}
-                  className={compactTableDetailSessionClassName}
+                  className={getSessionClassName(dayTrip[1].length)}
                 >
                   {playedWith}
                 </span>
@@ -381,7 +402,7 @@ export const StatsTableCompact: FC = () => {
               {dayTrip[1].map((location, index) => (
                 <span
                   key={`program-${index}`}
-                  className={compactTableDetailSessionClassName}
+                  className={getSessionClassName(dayTrip[1].length)}
                 >
                   {getRewardsProgram(location)}
                 </span>
@@ -396,7 +417,9 @@ export const StatsTableCompact: FC = () => {
           <span className={compactTableDetailDataPointsClassName}>
             <span
               key={`buyIns-total`}
-              className={`${compactTableDetailSessionClassName} ${POSITIVE_CURRENCY_TEXT_COLOR}`}
+              className={`${getSessionClassName(
+                1,
+              )} ${POSITIVE_CURRENCY_TEXT_COLOR}`}
             >
               {currencyFormatter(totalBuyIns)}
             </span>
@@ -409,7 +432,7 @@ export const StatsTableCompact: FC = () => {
           <span className={compactTableDetailDataPointsClassName}>
             <span
               key={`colorUps-total`}
-              className={`${compactTableDetailSessionClassName} ${
+              className={`${getSessionClassName(1)} ${
                 totalWinLoss >= 0
                   ? POSITIVE_CURRENCY_TEXT_COLOR
                   : NEGATIVE_CURRENCY_TEXT_COLOR
@@ -426,7 +449,7 @@ export const StatsTableCompact: FC = () => {
           <span className={compactTableDetailDataPointsClassName}>
             <span
               key={`winLoss-total`}
-              className={`${compactTableDetailSessionClassName} ${
+              className={`${getSessionClassName(1)} ${
                 totalWinLoss >= 0
                   ? POSITIVE_CURRENCY_TEXT_COLOR
                   : NEGATIVE_CURRENCY_TEXT_COLOR
