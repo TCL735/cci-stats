@@ -4,6 +4,7 @@ import { tenTon2024 } from "./data";
 import { StatsTracker } from "./components/StatsTracker";
 import {
   NEGATIVE_LINE_COLOR_VALUE,
+  NEUTRAL_TEXT_COLOR,
   SELECTED_BORDER_STYLE,
   THEME_TEXT_COLOR,
 } from "./types";
@@ -44,10 +45,12 @@ export const App = () => {
           activeTab === "About" ? (
             <Tabs.Panel
               value={activeTab}
-              className={`ml-3 pt-4 ${THEME_TEXT_COLOR} h-max`}
+              className={`ml-3 pt-4 ${NEUTRAL_TEXT_COLOR} h-screen`}
             >
               <div>
-                <h3 className="underline font-extrabold">About us</h3>
+                <h3 className={`font-extrabold ${THEME_TEXT_COLOR}`}>
+                  About us
+                </h3>
                 <br />
                 <p>
                   Ten Ton Is Number 1 (or Ten Ton as his friends call him) is
