@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { createContext, useCallback, useEffect, useState } from "react";
 import dayjs from "dayjs";
 import {
   ARIA,
@@ -19,11 +19,13 @@ import {
   MGM,
   MGM_GRAND,
   MIRAGE,
+  NEGATIVE_CURRENCY_TEXT_COLOR,
   PALAZZO,
   PALMS,
   PARIS,
   PARK_MGM,
   PLANET_HOLLYWOOD,
+  POSITIVE_CURRENCY_TEXT_COLOR,
   RESORTS_WORLD,
   TableRowDataType,
   VENETIAN,
@@ -31,6 +33,7 @@ import {
   WYNN,
   WindowDimensions,
 } from "./types";
+import { tenTon2024 } from "./data";
 
 export const getRewardsProgram = (location: string): string => {
   switch (location) {
@@ -87,6 +90,7 @@ export const getRewardsProgram = (location: string): string => {
 };
 
 export interface TableRowsData {
+  dayTrips: DayTrip[];
   wholeTripColors: string[];
   locationColors: string[];
   tripNumbers: number[];
@@ -100,10 +104,13 @@ export interface TableRowsData {
   tripPlayedWith: string[];
   tripPrograms: string[];
   tripResults: number[];
+  totalBuyIns: number;
+  totalColorUps: number;
+  totalWinLoss: number;
 }
 
 export const createRowData = (
-  daytrips: DayTrip[],
+  dayTrips: DayTrip[],
   positiveColor = "black",
   negativeColor = "red",
 ): TableRowsData => {
@@ -121,7 +128,7 @@ export const createRowData = (
   const tripPrograms: string[] = [];
   const tripResults: number[] = [];
 
-  daytrips.forEach((daytrip, index) => {
+  dayTrips.forEach((daytrip, index) => {
     const [
       dateValue,
       locations,
@@ -158,7 +165,23 @@ export const createRowData = (
     }
   });
 
+  const totalBuyIns = tripBuyIns.reduce(
+    (total, amount) => (total += amount),
+    0,
+  );
+
+  const totalColorUps = tripColorUps.reduce(
+    (total, amount) => (total += amount),
+    0,
+  );
+
+  const totalWinLoss = tripResults.reduce(
+    (total, amount) => (total += amount),
+    0,
+  );
+
   return {
+    dayTrips,
     wholeTripColors,
     locationColors,
     tripNumbers,
@@ -172,6 +195,9 @@ export const createRowData = (
     tripPlayedWith,
     tripPrograms,
     tripResults,
+    totalBuyIns,
+    totalColorUps,
+    totalWinLoss,
   };
 };
 
@@ -243,3 +269,11 @@ export const getHeightClass = (height: number): string => {
   }
   return "h-[470px]";
 };
+
+export const TenTon2024 = createRowData(
+  tenTon2024,
+  POSITIVE_CURRENCY_TEXT_COLOR,
+  NEGATIVE_CURRENCY_TEXT_COLOR,
+);
+
+export const TableContext = createContext(TenTon2024);
