@@ -2,6 +2,7 @@ import React, { FC, useContext } from "react";
 import {
   HandleConsecutiveRepeatValueAs,
   NEGATIVE_CURRENCY_TEXT_COLOR,
+  NEUTRAL_TEXT_COLOR,
   POSITIVE_CURRENCY_TEXT_COLOR,
   THEME_TEXT_COLOR,
   TableRowDataType,
@@ -87,7 +88,7 @@ export const TableColumn: FC<TableColumnProps> = ({
       {valuesToPrint.map((value, index) => (
         <div
           key={`${title}-row-${index}`}
-          className={`border-b border-solid border-gray100 last-of-type:border-none h-4 pt-4 pb-10 leading-4 text-ellipsis overflow-hidden ${rowDataColors[index]}`}
+          className={`border-b border-solid border-gray100 last-of-type:border-none h-4 pt-4 pb-14 leading-4 text-ellipsis overflow-hidden ${rowDataColors[index]}`}
         >
           <span className="">{formatter(value)}</span>
         </div>
@@ -129,7 +130,7 @@ export const StatsTableLarge: FC = () => {
   );
 
   return (
-    <div className="grid grid-cols-[minmax(0,_1fr)_minmax(0,_2fr)_minmax(0,_4fr)_minmax(0,_1fr)_minmax(0,_1fr)_minmax(0,_1fr)_minmax(0,_1fr)_minmax(0,_4fr)_minmax(0,_2fr)_minmax(0,_1fr)]">
+    <div className="grid grid-cols-[minmax(0,_2fr)_minmax(0,_1fr)_minmax(0,_2fr)_minmax(0,_2fr)_minmax(0,_2fr)_minmax(0,_2fr)_minmax(0,_2fr)_minmax(0,_1fr)_minmax(0,_2fr)_minmax(0,_4fr)]">
       <TableColumn
         formatter={dateFormatter}
         handleConsecutiveRepeatValueAs="last"
@@ -141,6 +142,14 @@ export const StatsTableLarge: FC = () => {
       />
       <TableColumn
         handleConsecutiveRepeatValueAs="always"
+        title="Program"
+        headerRows={["Total"]}
+        headerRowColors={[""]}
+        rowData={tripPrograms}
+        rowDataColors={locationColors}
+      />
+      <TableColumn
+        handleConsecutiveRepeatValueAs="always"
         title="Location"
         headerRows={[""]}
         headerRowColors={[""]}
@@ -149,7 +158,7 @@ export const StatsTableLarge: FC = () => {
       />
       <TableColumn
         handleConsecutiveRepeatValueAs="always"
-        title="Game Type W/Prop"
+        title="Game Type"
         headerRows={["Total"]}
         headerRowColors={[THEME_TEXT_COLOR]}
         rowData={tripGameTypes}
@@ -196,14 +205,6 @@ export const StatsTableLarge: FC = () => {
       />
       <TableColumn
         handleConsecutiveRepeatValueAs="always"
-        title="Key Takeaways"
-        headerRows={[""]}
-        headerRowColors={[""]}
-        rowData={tripTakeaways}
-        rowDataColors={locationColors}
-      />
-      <TableColumn
-        handleConsecutiveRepeatValueAs="always"
         title="Played With"
         headerRows={[""]}
         headerRowColors={[""]}
@@ -212,10 +213,10 @@ export const StatsTableLarge: FC = () => {
       />
       <TableColumn
         handleConsecutiveRepeatValueAs="always"
-        title="Program"
-        headerRows={["Total"]}
+        title="Key Takeaways"
+        headerRows={[""]}
         headerRowColors={[""]}
-        rowData={tripPrograms}
+        rowData={tripTakeaways}
         rowDataColors={locationColors}
       />
     </div>
@@ -261,12 +262,12 @@ export const StatsTableCompact: FC = () => {
 
   const compactTableDetailRowClassName =
     "flex flex-row justify-start h-auto text-left";
-  const compactTableDetailFieldClassName = "w-[35%] font-bold";
+  const compactTableDetailFieldClassName = `w-[35%] font-bold ${THEME_TEXT_COLOR}`;
   const compactTableDetailDataPointsClassName =
     "flex flex-row justify-start gap-x-3 w-[65%]";
 
   return (
-    <div className={`flex flex-col-reverse ${THEME_TEXT_COLOR}`}>
+    <div className={`flex flex-col-reverse`}>
       {dayTrips.map((dayTrip, tripNumber) => (
         <div
           key={dayTrip[0]}
@@ -278,6 +279,21 @@ export const StatsTableCompact: FC = () => {
               className={`${compactTableDetailDataPointsClassName} ${tripColors[tripNumber]}`}
             >
               {dateFormatter(dayTrip[0])}
+            </span>
+          </div>
+          <div className={compactTableDetailRowClassName}>
+            <span className={compactTableDetailFieldClassName}>Program</span>
+            <span className={compactTableDetailDataPointsClassName}>
+              {dayTrip[1].map((location, index) => (
+                <span
+                  key={`program-${index}`}
+                  className={`${getSessionClassName(
+                    dayTrip[1].length,
+                  )} ${NEUTRAL_TEXT_COLOR}`}
+                >
+                  {getRewardsProgram(location)}
+                </span>
+              ))}
             </span>
           </div>
           <div className={compactTableDetailRowClassName}>
@@ -301,7 +317,9 @@ export const StatsTableCompact: FC = () => {
               {dayTrip[2].map((gameType, index) => (
                 <span
                   key={`gameType-${index}`}
-                  className={getSessionClassName(dayTrip[1].length)}
+                  className={`${getSessionClassName(
+                    dayTrip[1].length,
+                  )} ${NEUTRAL_TEXT_COLOR}`}
                 >
                   {gameType}
                 </span>
@@ -359,9 +377,29 @@ export const StatsTableCompact: FC = () => {
               {dayTrip[5].map((hours, index) => (
                 <span
                   key={`hours-${index}`}
-                  className={getSessionClassName(dayTrip[1].length)}
+                  className={`${getSessionClassName(
+                    dayTrip[1].length,
+                  )} ${NEUTRAL_TEXT_COLOR}`}
                 >
                   {hours}
+                </span>
+              ))}
+            </span>
+          </div>
+
+          <div className={compactTableDetailRowClassName}>
+            <span className={compactTableDetailFieldClassName}>
+              Played With
+            </span>
+            <span className={compactTableDetailDataPointsClassName}>
+              {dayTrip[6].map((playedWith, index) => (
+                <span
+                  key={`playedWith-${index}`}
+                  className={`${getSessionClassName(
+                    dayTrip[1].length,
+                  )} ${NEUTRAL_TEXT_COLOR}`}
+                >
+                  {playedWith}
                 </span>
               ))}
             </span>
@@ -371,40 +409,14 @@ export const StatsTableCompact: FC = () => {
               Key Takeaways
             </span>
             <span className={compactTableDetailDataPointsClassName}>
-              {dayTrip[6].map((takeaways, index) => (
+              {dayTrip[7].map((takeaways, index) => (
                 <span
                   key={`takeaways-${index}`}
-                  className={getSessionClassName(dayTrip[1].length)}
+                  className={`${getSessionClassName(
+                    dayTrip[1].length,
+                  )} ${NEUTRAL_TEXT_COLOR}`}
                 >
                   {takeaways}
-                </span>
-              ))}
-            </span>
-          </div>
-          <div className={compactTableDetailRowClassName}>
-            <span className={compactTableDetailFieldClassName}>
-              Played With
-            </span>
-            <span className={compactTableDetailDataPointsClassName}>
-              {dayTrip[7].map((playedWith, index) => (
-                <span
-                  key={`playedWith-${index}`}
-                  className={getSessionClassName(dayTrip[1].length)}
-                >
-                  {playedWith}
-                </span>
-              ))}
-            </span>
-          </div>
-          <div className={compactTableDetailRowClassName}>
-            <span className={compactTableDetailFieldClassName}>Program</span>
-            <span className={compactTableDetailDataPointsClassName}>
-              {dayTrip[1].map((location, index) => (
-                <span
-                  key={`program-${index}`}
-                  className={getSessionClassName(dayTrip[1].length)}
-                >
-                  {getRewardsProgram(location)}
                 </span>
               ))}
             </span>

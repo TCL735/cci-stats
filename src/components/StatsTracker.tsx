@@ -7,7 +7,8 @@ import {
   NEGATIVE_LINE_COLOR_VALUE,
   POSITIVE_CURRENCY_TEXT_COLOR,
   POSITIVE_LINE_COLOR,
-  THEME_TOOLTIP_COLOR,
+  THEME_TEXT_COLOR,
+  TOOLTIP_COLOR_VALUE,
 } from "../types";
 import { EChartsOption, ReactECharts } from "../react-echarts";
 import { StatsTableCompact, StatsTableLarge } from "./Table";
@@ -50,10 +51,12 @@ export const StatsTracker: FC<StatsTrackerProps> = ({
       show: true,
       axisPointer: {
         type: "cross",
+        label: { show: false },
       },
+      backgroundColor: TOOLTIP_COLOR_VALUE,
       formatter: (params: any) => {
         const dataIndex = params[0].dataIndex;
-        let content = `<div class="text-black m-[-1rem] max-w-[30rem] p-3 text-left selet-none whitespace-pre-wrap break-all ${THEME_TOOLTIP_COLOR}">`;
+        let content = `<div class="${THEME_TEXT_COLOR} m-[-1rem] max-w-[30rem] p-3 text-left selet-none whitespace-pre-wrap break-all">`;
         if (Array.isArray(params) && params.length) {
           content += `<b>Date: ${dayjs(params[0].data[0]).format(
             "MMM DD, YYYY",
