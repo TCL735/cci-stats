@@ -1,22 +1,17 @@
 import React, { FC } from "react";
 import dayjs from "dayjs";
+import { TenTon2024, TableContext } from "../utils";
 import {
   DayTrip,
   NEGATIVE_CURRENCY_TEXT_COLOR,
   NEGATIVE_LINE_COLOR_VALUE,
   POSITIVE_CURRENCY_TEXT_COLOR,
   POSITIVE_LINE_COLOR,
-  THEME_TEXT_COLOR,
   THEME_TOOLTIP_COLOR,
 } from "../types";
 import { EChartsOption, ReactECharts } from "../react-echarts";
-import { TableContainer, TableColumn } from "./Table";
-import {
-  createRowData,
-  currency,
-  currencyFormatter,
-  dateFormatter,
-} from "../utils";
+import { StatsTableCompact, StatsTableLarge } from "./Table";
+import { currency, getHeightClass, useWindowDimensions } from "../utils";
 
 interface StatsTrackerProps {
   label: string;
@@ -35,6 +30,8 @@ export const StatsTracker: FC<StatsTrackerProps> = ({
     .toISOString()
     .slice(0, 10)}`,
 }) => {
+  const { height, width } = useWindowDimensions();
+
   const option: EChartsOption = {
     title: {
       left: 0,
@@ -181,7 +178,7 @@ export const StatsTracker: FC<StatsTrackerProps> = ({
             return "";
           },
           valueAnimation: true,
-          offset: [-80, 20],
+          offset: [-80, 0],
           color: "#C48125",
         },
         data: dayTrips.reduce((acc, dayTrip, index) => {
@@ -213,46 +210,9 @@ export const StatsTracker: FC<StatsTrackerProps> = ({
     ],
   };
 
-  const {
-    wholeTripColors,
-    locationColors,
-    tripDates,
-    tripLocations,
-    tripGameTypes,
-    tripBuyIns,
-    tripColorUps,
-    tripSessionHours,
-    tripTakeaways,
-    tripPlayedWith,
-    tripPrograms,
-    tripResults,
-  } = createRowData(
-    dayTrips,
-    POSITIVE_CURRENCY_TEXT_COLOR,
-    NEGATIVE_CURRENCY_TEXT_COLOR,
-  );
-
-  const allGreens = Array.from(
-    locationColors,
-    (color) => POSITIVE_CURRENCY_TEXT_COLOR,
-  );
-
-  const buyInsTotal = tripBuyIns.reduce(
-    (total, amount) => (total += amount),
-    0,
-  );
-  const colorUpsTotal = tripColorUps.reduce(
-    (total, amount) => (total += amount),
-    0,
-  );
-  const winLossTotal = tripResults.reduce(
-    (total, amount) => (total += amount),
-    0,
-  );
-
   return (
     <div className="my-0 mx-3 bg-black">
-      <div className="h-[620px] mt-5">
+      <div className={`${getHeightClass(height)} mt-5`}>
         <ReactECharts
           onChartReady={(chart) => {
             setTimeout(() => chart.setOption(option), 100);
@@ -264,96 +224,9 @@ export const StatsTracker: FC<StatsTrackerProps> = ({
           renderer="canvas"
         />
       </div>
-      <TableContainer>
-        <TableColumn
-          formatter={dateFormatter}
-          handleConsecutiveRepeatValueAs="last"
-          title="Date"
-          headerRows={[""]}
-          headerRowColors={[""]}
-          rowData={tripDates}
-          rowDataColors={wholeTripColors}
-        />
-        <TableColumn
-          handleConsecutiveRepeatValueAs="always"
-          title="Location"
-          headerRows={[""]}
-          headerRowColors={[""]}
-          rowData={tripLocations}
-          rowDataColors={locationColors}
-        />
-        <TableColumn
-          handleConsecutiveRepeatValueAs="always"
-          title="Game Type W/Prop"
-          headerRows={["Total"]}
-          headerRowColors={[THEME_TEXT_COLOR]}
-          rowData={tripGameTypes}
-          rowDataColors={locationColors}
-        />
-        <TableColumn
-          formatter={currencyFormatter}
-          handleConsecutiveRepeatValueAs="always"
-          title="Buy In"
-          headerRows={[buyInsTotal]}
-          headerRowColors={[THEME_TEXT_COLOR]}
-          rowData={tripBuyIns}
-          rowDataColors={allGreens}
-        />
-        <TableColumn
-          formatter={currencyFormatter}
-          handleConsecutiveRepeatValueAs="always"
-          title="Color"
-          headerRows={[colorUpsTotal]}
-          headerRowColors={[THEME_TEXT_COLOR]}
-          rowData={tripColorUps}
-          rowDataColors={locationColors}
-        />
-        <TableColumn
-          formatter={currencyFormatter}
-          handleConsecutiveRepeatValueAs="always"
-          rowDataColors={locationColors}
-          title="W/L"
-          headerRows={[winLossTotal]}
-          headerRowColors={[
-            winLossTotal >= 0
-              ? POSITIVE_CURRENCY_TEXT_COLOR
-              : NEGATIVE_CURRENCY_TEXT_COLOR,
-          ]}
-          rowData={tripResults}
-        />
-        <TableColumn
-          handleConsecutiveRepeatValueAs="always"
-          title="Hours"
-          headerRows={[""]}
-          headerRowColors={[""]}
-          rowData={tripSessionHours}
-          rowDataColors={locationColors}
-        />
-        <TableColumn
-          handleConsecutiveRepeatValueAs="always"
-          title="Key Takeaways"
-          headerRows={[""]}
-          headerRowColors={[""]}
-          rowData={tripTakeaways}
-          rowDataColors={locationColors}
-        />
-        <TableColumn
-          handleConsecutiveRepeatValueAs="always"
-          title="Played With"
-          headerRows={[""]}
-          headerRowColors={[""]}
-          rowData={tripPlayedWith}
-          rowDataColors={locationColors}
-        />
-        <TableColumn
-          handleConsecutiveRepeatValueAs="always"
-          title="Program"
-          headerRows={["Total"]}
-          headerRowColors={[""]}
-          rowData={tripPrograms}
-          rowDataColors={locationColors}
-        />
-      </TableContainer>
+      <TableContext.Provider value={TenTon2024}>
+        {width >= 1024 ? <StatsTableLarge /> : <StatsTableCompact />}
+      </TableContext.Provider>
     </div>
   );
 };

@@ -10,6 +10,10 @@ export type DayTrip = [
 ];
 export type HandleConsecutiveRepeatValueAs = "first" | "last" | "always";
 export type TableRowDataType = string | number;
+export type WindowDimensions = {
+  height: number;
+  width: number;
+};
 
 export const AIRPORT = "Airport";
 export const ARIA = "Aria";
@@ -20,6 +24,7 @@ export const CASINO_ROYALE = "Casino Royale";
 export const CET = "CET";
 export const CIRCA_AND_D = "Cira and D";
 export const COSMO = "Cosmopolitan";
+export const CROMWELL = "Cromwell";
 export const DURANGO = "Durango";
 export const EL_CORTEZ = "El Cortez";
 export const ENCORE = "Encore";
@@ -31,6 +36,7 @@ export const MANDALAY_BAY = "Mandalay Bay";
 export const MGM = "MGM";
 export const MGM_GRAND = "MGM Grand";
 export const MIRAGE = "Mirage";
+export const OSHEAS = "O'Sheas";
 export const PALAZZO = "Palazzo";
 export const PALMS = "Palms";
 export const PARIS = "Paris";
