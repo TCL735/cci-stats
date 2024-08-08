@@ -67,7 +67,7 @@ export const tenTon2024: Array<DayTrip> = [
   [
     dayjs("2024-07-25").valueOf(),
     [PARIS],
-    ["$15 w/ ATS $25 Crapless w/ Repeater"],
+    ["$15 w/ ATS + $25 Crapless w/ Repeater"],
     [5000],
     [0],
     [2],
@@ -98,7 +98,7 @@ export const tenTon2024: Array<DayTrip> = [
     dayjs("2024-07-31").valueOf(),
     [CROMWELL, OSHEAS, PARIS],
     [
-      "$25 Crapless w/ Repeater",
+      "$25 w/ ATS and Fire Bet",
       "$15 w/ ATS and Fire Bet",
       "$25 Crapless w/ Repeater",
     ],
@@ -115,7 +115,7 @@ export const tenTon2024: Array<DayTrip> = [
   [
     dayjs("2024-08-01").valueOf(),
     [CAESARS_PALACE, PLANET_HOLLYWOOD],
-    ["$25 Crapless w/ ATS", "$15 Crapless w/ Repeater "],
+    ["$25 Crapless w/ ATS", "$15 Crapless w/ Repeater"],
     [10000, 10000],
     [9500, 9228],
     [2, 2],
