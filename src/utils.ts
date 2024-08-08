@@ -8,6 +8,7 @@ import {
   CET,
   CIRCA_AND_D,
   COSMO,
+  CROMWELL,
   DURANGO,
   DayTrip,
   ENCORE,
@@ -20,6 +21,7 @@ import {
   MGM_GRAND,
   MIRAGE,
   NEGATIVE_CURRENCY_TEXT_COLOR,
+  OSHEAS,
   PALAZZO,
   PALMS,
   PARIS,
@@ -70,7 +72,9 @@ export const getRewardsProgram = (location: string): string => {
       return "Wynn";
 
     case CAESARS_PALACE:
+    case CROMWELL:
     case FLAMINGO:
+    case OSHEAS:
     case PARIS:
     case PLANET_HOLLYWOOD:
       return CET;
@@ -95,14 +99,14 @@ export interface TableRowsData {
   locationColors: string[];
   tripNumbers: number[];
   tripDates: number[];
+  tripPrograms: string[];
   tripLocations: string[];
   tripGameTypes: string[];
   tripBuyIns: number[];
   tripColorUps: number[];
   tripSessionHours: number[];
-  tripTakeaways: string[];
   tripPlayedWith: string[];
-  tripPrograms: string[];
+  tripTakeaways: string[];
   tripResults: number[];
   totalBuyIns: number;
   totalColorUps: number;
@@ -118,14 +122,14 @@ export const createRowData = (
   const locationColors: string[] = [];
   const tripNumbers: number[] = [];
   const tripDates: number[] = [];
+  const tripPrograms: string[] = [];
   const tripLocations: string[] = [];
   const tripGameTypes: string[] = [];
   const tripBuyIns: number[] = [];
   const tripColorUps: number[] = [];
   const tripSessionHours: number[] = [];
-  const tripTakeaways: string[] = [];
   const tripPlayedWith: string[] = [];
-  const tripPrograms: string[] = [];
+  const tripTakeaways: string[] = [];
   const tripResults: number[] = [];
 
   dayTrips.forEach((daytrip, index) => {
@@ -136,8 +140,8 @@ export const createRowData = (
       buyIns,
       colorUps,
       sessionHours,
-      takeaways,
       playedWith,
+      takeaways,
     ] = daytrip;
 
     const results = colorUps.map(
@@ -153,14 +157,14 @@ export const createRowData = (
       locationColors.push(results[i] >= 0 ? positiveColor : negativeColor);
       tripNumbers.push(index + 1);
       tripDates.push(dateValue);
+      tripPrograms.push(getRewardsProgram(locations[i]));
       tripLocations.push(locations[i]);
       tripGameTypes.push(gameTypes[i]);
       tripBuyIns.push(buyIns[i]);
       tripColorUps.push(colorUps[i]);
       tripSessionHours.push(sessionHours[i]);
-      tripTakeaways.push(takeaways[i]);
       tripPlayedWith.push(playedWith[i]);
-      tripPrograms.push(getRewardsProgram(locations[i]));
+      tripTakeaways.push(takeaways[i]);
       tripResults.push(results[i]);
     }
   });
@@ -186,14 +190,14 @@ export const createRowData = (
     locationColors,
     tripNumbers,
     tripDates,
+    tripPrograms,
     tripLocations,
     tripGameTypes,
     tripBuyIns,
     tripColorUps,
     tripSessionHours,
-    tripTakeaways,
     tripPlayedWith,
-    tripPrograms,
+    tripTakeaways,
     tripResults,
     totalBuyIns,
     totalColorUps,
