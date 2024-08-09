@@ -144,7 +144,7 @@ export const tenTon2024: Array<DayTrip> = [
     [9228, 10000],
     [9910, 10615],
     [2.5, 1],
-    ["Hyperman", "Brydman/Hyperman"],
+    ["Hyperman", "Brydman / Hyperman"],
     [
       "bittersweet /  shot 2x/ down big early / ~ 35+ roll 64-63 Set",
       "Brydman hot hand ~ 20+ rolls /",
@@ -157,7 +157,7 @@ export const tenTon2024: Array<DayTrip> = [
     [9900],
     [16037],
     [2.5],
-    ["Brydman/Hypeman/EnerJing"],
-    ["EnerJing hit ATS from straigt out / 1x shot decent ~10"],
+    ["Brydman / Hypeman / EnerJing"],
+    ["EnerJing hit ATS from straight out / 1x shot decent ~10"],
   ],
 ];

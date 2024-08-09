@@ -66,14 +66,14 @@ export const App = () => {
                   About us
                 </h3>
                 <br />
-                <p>
+                <p className="text-pretty">
                   Ten Ton Is Number 1 (or Ten Ton as his friends call him) is
                   co-host of the popular gambling podcast Casino Tears which
                   focuses primarily on craps players and serious connoisseurs of
                   the game.
                 </p>
                 <br />
-                <p>
+                <p className="text-pretty">
                   Discipline and accountability are issues that every craps
                   player let alone every gambler struggles with. Accountability,
                   to a much lesser extent, is often times conveniently
@@ -84,7 +84,7 @@ export const App = () => {
                   hawker).
                 </p>
                 <br />
-                <p>
+                <p className="text-pretty">
                   That said, if we’re gonna live in Vegas and talk about craps
                   and do the damn thing then we better be able to walk the walk.
                   Thus… Color-Comin-In (or as we like to call it, CCI.Vegas) was
@@ -94,7 +94,7 @@ export const App = () => {
                   the neon pink. The later is preferred of course 😊
                 </p>
                 <br />
-                <p>
+                <p className="text-pretty">
                   CCI also tracks other interesting details of the sessions that
                   one may find relevant. For example: if I shoot or don’t shoot,
                   who I played with, how long I played, what prop bets were
@@ -105,7 +105,7 @@ export const App = () => {
                   continued...
                 </p>
                 <br />
-                <p>
+                <p className="text-pretty">
                   I would like to thank my friend Vegas Day Tripper for
                   inspiring me with this idea and TCL for building and designing
                   the page. I hope the transparency of our play will not only
@@ -114,7 +114,7 @@ export const App = () => {
                   along with a positive paydays.
                 </p>
                 <br />
-                <p>
+                <p className="text-pretty">
                   If you’re interested in participating with cci.vegas email us
                   or call our vent line @ 229-NoSeven
                 </p>
