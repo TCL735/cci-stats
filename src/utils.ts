@@ -15,6 +15,7 @@ import {
   EXCALIBUR,
   FLAMINGO,
   FONTAINEBLEAU,
+  HORSESHOE,
   LUXOR,
   MANDALAY_BAY,
   MGM,
@@ -74,6 +75,7 @@ export const getRewardsProgram = (location: string): string => {
     case CAESARS_PALACE:
     case CROMWELL:
     case FLAMINGO:
+    case HORSESHOE:
     case OSHEAS:
     case PARIS:
     case PLANET_HOLLYWOOD:
