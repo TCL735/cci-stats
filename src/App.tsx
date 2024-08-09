@@ -68,40 +68,41 @@ export const App = () => {
                 <br />
                 <p>
                   Ten Ton Is Number 1 (or Ten Ton as his friends call him) is
-                  co-host of the popular podcast Casino Tears. Casino Tears is a
-                  gambling podcast focusing primarily on craps players and
-                  serious connoisseurs of the game.
+                  co-host of the popular gambling podcast Casino Tears which
+                  focuses primarily on craps players and serious connoisseurs of
+                  the game.
                 </p>
                 <br />
                 <p>
                   Discipline and accountability are issues that every craps
                   player let alone every gambler struggles with. Accountability,
-                  to a much lesser extent is often times conveniently overlooked
-                  because, well…. it can be tough pill to swallow. In some cases
-                  it also might not fit so nicely into a player’s self described
-                  narrative as a “winner” or “the best”. A magnificent mirror
-                  that’s very tough to look at yourself straight in the eye in
-                  so to speak.
+                  to a much lesser extent, is often times conveniently
+                  overlooked because it can be a real tough pill to swallow. In
+                  addition, and in many cases, it might not be too convenient or
+                  fit too nicely into a player’s self described narrative as a
+                  “winner” or “the best” (read social media/content /strategy
+                  hawker).
                 </p>
                 <br />
                 <p>
-                  That said, if we’re gonna talk about craps then we better be
-                  able to walk the walk. Thus… Color-Comin-In (or as we like to
-                  call it l, CCI.Vegas) was born. CCI is a simple interactive
-                  way to track our win/loss progress for the year. In a very
-                  Tron inspired way we can see our bank roll travel up into the
-                  neon green zone or down into the neon pink. The later is
-                  preferred of course 😊
+                  That said, if we’re gonna live in Vegas and talk about craps
+                  and do the damn thing then we better be able to walk the walk.
+                  Thus… Color-Comin-In (or as we like to call it, CCI.Vegas) was
+                  born. CCI is a simple interactive way to track win/loss
+                  progress for the year. In a very Tron inspired way we can see
+                  our bank roll travel up into the neon green zone or down into
+                  the neon pink. The later is preferred of course 😊
                 </p>
                 <br />
                 <p>
                   CCI also tracks other interesting details of the sessions that
                   one may find relevant. For example: if I shoot or don’t shoot,
                   who I played with, how long I played, what prop bets were
-                  played etc etc are all details that I personally think are
-                  worth looking back on during any self-evaluation. CCI is very
-                  much a work in progress - will we be up over the course of the
-                  year or will we be down…. to be continued…..
+                  played etc etc. These are all details that I personally find
+                  value in looking back on during any post session
+                  self-evaluation. CCI is very much a work in progress. Will we
+                  be up over the course of the year? Will we be down? To be
+                  continued...
                 </p>
                 <br />
                 <p>
@@ -110,7 +111,7 @@ export const App = () => {
                   the page. I hope the transparency of our play will not only
                   provide historical insight but more importantly raise topics
                   for deeper investigation that ideally lead to valuable lessons
-                  with a positive paydays.
+                  along with a positive paydays.
                 </p>
                 <br />
                 <p>
