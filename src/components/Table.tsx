@@ -88,7 +88,7 @@ export const TableColumn: FC<TableColumnProps> = ({
       {valuesToPrint.map((value, index) => (
         <div
           key={`${title}-row-${index}`}
-          className={`border-b border-solid border-gray100 last-of-type:border-none h-4 pt-4 pb-14 leading-4 text-ellipsis overflow-hidden ${rowDataColors[index]}`}
+          className={`border-b border-solid border-gray100 h-4 pt-4 pb-14 leading-4 text-ellipsis overflow-hidden ${rowDataColors[index]}`}
         >
           <span className="">{formatter(value)}</span>
         </div>
@@ -267,7 +267,9 @@ export const StatsTableCompact: FC = () => {
     "flex flex-row justify-start gap-x-3 w-[65%]";
 
   return (
-    <div className={`flex flex-col-reverse`}>
+    <div
+      className={`flex flex-col-reverse border-b border-solid border-gray100`}
+    >
       {dayTrips.map((dayTrip, tripNumber) => (
         <div
           key={dayTrip[0]}
