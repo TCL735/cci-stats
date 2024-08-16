@@ -144,10 +144,10 @@ export const tenTon2024: Array<DayTrip> = [
     [9228, 10000],
     [9910, 10615],
     [2.5, 1],
-    ["Hyperman", "Brydman / Hyperman"],
+    ["Hyperman", "Byrdman / Hyperman"],
     [
       "bittersweet /  shot 2x/ down big early / ~ 35+ roll 64-63 Set",
-      "Brydman hot hand ~ 20+ rolls /",
+      "Byrdman hot hand ~ 20+ rolls /",
     ],
   ],
   [
@@ -157,7 +157,7 @@ export const tenTon2024: Array<DayTrip> = [
     [9900],
     [16037],
     [2.5],
-    ["Brydman / Hypeman / EnerJing"],
+    ["Byrdman / Hypeman / EnerJing"],
     ["EnerJing hit ATS from straight out / 1x shot decent ~10"],
   ],
   [
@@ -167,7 +167,7 @@ export const tenTon2024: Array<DayTrip> = [
     [9500],
     [9545],
     [1],
-    ["Brydman"],
+    ["Byrdman"],
     ["shot 4x / HW set / 19 roller w/9 8's/ shouldve left up 12%"],
   ],
   [
@@ -177,7 +177,7 @@ export const tenTon2024: Array<DayTrip> = [
     [10000],
     [7000],
     [1.5],
-    ["Brydman / EnerJing"],
+    ["Byrdman / EnerJing"],
     ["shot 2x / too crowded / needed more time to dial in"],
   ],
 ];
