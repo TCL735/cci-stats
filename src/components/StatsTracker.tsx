@@ -242,7 +242,7 @@ export const StatsTracker: FC<StatsTrackerProps> = ({
   );
 
   return (
-    <div className="my-0 mx-3 bg-black">
+    <div className="mb-3 mx-3 bg-black">
       <div className={`${getHeightClass(height)} mt-5`}>
         <ReactECharts
           onChartReady={onChartReady}

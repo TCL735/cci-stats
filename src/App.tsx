@@ -12,7 +12,7 @@ import { useWindowDimensions } from "./utils";
 
 export const App = () => {
   const aboutUsRef = useRef<HTMLDivElement>(null);
-  const [activeTab, setActiveTab] = useState<string | null>("About");
+  const [activeTab, setActiveTab] = useState<string | null>("Color Comin' In");
   const [backgroundHeight, setBackgroundHeight] = useState<string>("h-screen");
   const { height } = useWindowDimensions();
 
@@ -37,26 +37,28 @@ export const App = () => {
         <Tabs.List className="flex flex-row flex-wrap justify-start border-b-0">
           <Tabs.Tab
             className={`px-4 py-3 hover:text-white ${
-              activeTab === "TenTon"
+              activeTab === "2024 Stats"
                 ? SELECTED_BORDER_STYLE
                 : "border-black/100"
             } ${THEME_TEXT_COLOR}`}
-            value="TenTon"
+            value="2024 Stats"
           >
-            Ten Ton 2024
+            2024 Stats
           </Tabs.Tab>
           <Tabs.Tab
             className={`px-4 py-3 hover:text-white ${
-              activeTab === "About" ? SELECTED_BORDER_STYLE : "border-black/100"
+              activeTab === "Color Comin' In"
+                ? SELECTED_BORDER_STYLE
+                : "border-black/100"
             } ${THEME_TEXT_COLOR}`}
-            value="About"
+            value="Color Comin' In"
           >
-            About
+            Color Comin' In
           </Tabs.Tab>
         </Tabs.List>
 
         {activeTab ? (
-          activeTab === "About" ? (
+          activeTab === "Color Comin' In" ? (
             <Tabs.Panel
               value={activeTab}
               className={`ml-3 pt-4 ${NEUTRAL_TEXT_COLOR} ${backgroundHeight}`}
@@ -68,9 +70,17 @@ export const App = () => {
                 <br />
                 <p className="text-pretty">
                   Ten Ton Is Number 1 (or Ten Ton as his friends call him) is
-                  co-host of the popular gambling podcast Casino Tears which
-                  focuses primarily on craps players and serious connoisseurs of
-                  the game.
+                  co-host of the popular gambling podcast{" "}
+                  <a
+                    href="https://www.casinotears.com/"
+                    target="_blank"
+                    rel="noreferrer"
+                    className={`${THEME_TEXT_COLOR} hover:text-white`}
+                  >
+                    <span>Casino Tears</span>
+                  </a>{" "}
+                  which focuses primarily on craps players and serious
+                  connoisseurs of the game.
                 </p>
                 <br />
                 <p className="text-pretty">
@@ -125,6 +135,11 @@ export const App = () => {
             </Tabs.Panel>
           ) : (
             <Tabs.Panel value={activeTab} className="pt-4">
+              <StatsTracker
+                dayTrips={tenTon2024}
+                label={`Ten Ton is Number 1's Win/Loss`}
+                lineColor={NEGATIVE_LINE_COLOR_VALUE}
+              />
               <a
                 href="https://www.casinotears.com/"
                 target="_blank"
@@ -133,11 +148,6 @@ export const App = () => {
               >
                 <span>Casino Tears Podcast</span>
               </a>
-              <StatsTracker
-                dayTrips={tenTon2024}
-                label={`Ten Ton is Number 1's Win/Loss`}
-                lineColor={NEGATIVE_LINE_COLOR_VALUE}
-              />
             </Tabs.Panel>
           )
         ) : null}
