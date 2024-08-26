@@ -173,11 +173,23 @@ export const tenTon2024: Array<DayTrip> = [
   [
     dayjs("2024-08-11").valueOf(),
     [PLANET_HOLLYWOOD],
-    [" $15 w/ ATS"],
+    ["$15 w/ ATS"],
     [10000],
     [7000],
     [1.5],
     ["Byrdman / EnerJing"],
     ["shot 2x / too crowded / needed more time to dial in"],
+  ],
+  [
+    dayjs("2024-08-16").valueOf(),
+    [CAESARS_PALACE],
+    ["$25 w/ATS $25 w /Repeater"],
+    [9500],
+    [11919],
+    [1],
+    ["G-Ray"],
+    [
+      "shot 2x / HW set / 30+ roller hit the repeater 2,5,9,10,12/ should have only bet big on self / table 401 is the shit / Kobayashi activated",
+    ],
   ],
 ];
