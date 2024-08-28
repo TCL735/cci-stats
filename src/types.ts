@@ -49,7 +49,7 @@ export const VP = "Venetian/Palazzo";
 export const WYNN = "Wynn";
 
 export const NEGATIVE_LINE_COLOR_VALUE = "#FF10F0";
-export const POSITIVE_LINE_COLOR = "#39FF14";
+export const POSITIVE_LINE_COLOR_VALUE = "#39FF14";
 export const THEME_COLOR_VALUE = "#C48125";
 export const NEUTRAL_COLOR_VALUE = "#C5C5C5";
 export const TOOLTIP_COLOR_VALUE = "#3B3B3B";
