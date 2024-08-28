@@ -7,7 +7,7 @@ import {
   NEGATIVE_CURRENCY_TEXT_COLOR,
   NEGATIVE_LINE_COLOR_VALUE,
   POSITIVE_CURRENCY_TEXT_COLOR,
-  POSITIVE_LINE_COLOR,
+  POSITIVE_LINE_COLOR_VALUE,
   THEME_TEXT_COLOR,
   TOOLTIP_COLOR_VALUE,
 } from "../types";
@@ -154,20 +154,6 @@ export const StatsTracker: FC<StatsTrackerProps> = ({
             },
           },
         },
-        visualMap: {
-          type: "continuous",
-          show: false,
-          dimension: 1,
-          range: [1, Infinity],
-          target: {
-            inRange: {
-              color: POSITIVE_LINE_COLOR,
-            },
-            outOfRange: {
-              color: NEGATIVE_LINE_COLOR_VALUE,
-            },
-          },
-        },
         animationDuration: dayTrips.length * 1000,
         animationEasing: "cubicInOut",
         series: [],
@@ -175,63 +161,88 @@ export const StatsTracker: FC<StatsTrackerProps> = ({
     [dayTrips, label, yearStart, yearEnd],
   );
 
-  const option = useMemo(
-    () =>
-      ({
-        ...optionWithoutSeries,
-        series: [
-          {
-            color: lineColor,
-            type: "line",
-            emphasis: {
-              focus: "series",
-            },
-            labelLayout: {
-              moveOverlap: "shiftY",
-            },
-            endLabel: {
-              show: true,
-              // @ts-ignore
-              formatter: (params: any) => {
-                if (params) {
-                  return `${currency.format(params.value[1])}`;
-                }
-                return "";
-              },
-              valueAnimation: true,
-              offset: [-80, 0],
-              color: "#C48125",
-            },
-            data: dayTrips.reduce((acc, dayTrip, index) => {
-              if (index === 0) {
-                return [
-                  [
-                    dayTrip[0],
-                    dayTrip[4].reduce(
-                      (sum, value, i) => sum + value - dayTrip[3][i],
-                      0,
-                    ),
-                    dayTrip[1].join(", "),
-                  ],
-                ];
-              }
-              acc.push([
-                dayTrip[0],
-                dayTrip[4].reduce(
-                  (sum, value, i) => sum + value - dayTrip[3][i],
-                  0,
-                ) + acc[acc.length - 1][1],
-                dayTrip[1].join(", "),
-              ]);
+  const option = useMemo(() => {
+    const data: Array<[number, number, string, string]> = dayTrips.reduce(
+      (acc, dayTrip, index) => {
+        const session = dayTrip[4].reduce(
+          (sum, value, i) => sum + value - dayTrip[3][i],
+          0,
+        );
+        if (index === 0) {
+          return [
+            [
+              dayTrip[0],
+              session,
+              dayTrip[1].join(", "),
+              session > 0
+                ? POSITIVE_LINE_COLOR_VALUE
+                : NEGATIVE_LINE_COLOR_VALUE,
+            ],
+          ];
+        }
+        acc.push([
+          dayTrip[0],
+          session + acc[acc.length - 1][1],
+          dayTrip[1].join(", "),
+          session > 0 ? POSITIVE_LINE_COLOR_VALUE : NEGATIVE_LINE_COLOR_VALUE,
+        ]);
 
-              return acc;
-            }, [] as any),
-            datasetId: "trips",
+        return acc;
+      },
+      [] as any,
+    );
+
+    return {
+      ...optionWithoutSeries,
+      visualMap: {
+        type: "piecewise",
+        pieces: data.reduce((acc, dayData, index) => {
+          if (index === 0) {
+            acc.push({
+              min: 0,
+              max: dayData[0],
+              color: dayData[3],
+            });
+          } else {
+            acc.push({
+              min: acc[acc.length - 1].max,
+              max: dayData[0],
+              color: dayData[3],
+            });
+          }
+          return acc;
+        }, [] as any),
+        show: false,
+        dimension: 0,
+      },
+      series: [
+        {
+          type: "line",
+          emphasis: {
+            focus: "series",
           },
-        ],
-      } as EChartsOption),
-    [optionWithoutSeries, dayTrips, lineColor],
-  );
+          labelLayout: {
+            moveOverlap: "shiftY",
+          },
+          endLabel: {
+            show: true,
+            // @ts-ignore
+            formatter: (params: any) => {
+              if (params) {
+                return `${currency.format(params.value[1])}`;
+              }
+              return "";
+            },
+            valueAnimation: true,
+            offset: [-80, 0],
+            color: "#C48125",
+          },
+          data,
+          datasetId: "trips",
+        },
+      ],
+    } as EChartsOption;
+  }, [optionWithoutSeries, dayTrips]);
 
   const onChartReady = useCallback(
     (chart: ECharts) => {
