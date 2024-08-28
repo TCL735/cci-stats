@@ -140,14 +140,6 @@ export const App = () => {
                 label={`Ten Ton is Number 1's Win/Loss`}
                 lineColor={NEGATIVE_LINE_COLOR_VALUE}
               />
-              <a
-                href="https://www.casinotears.com/"
-                target="_blank"
-                rel="noreferrer"
-                className={`ml-3 ${THEME_TEXT_COLOR} hover:text-white`}
-              >
-                <span>Casino Tears Podcast</span>
-              </a>
             </Tabs.Panel>
           )
         ) : null}

@@ -253,18 +253,28 @@ export const StatsTracker: FC<StatsTrackerProps> = ({
   );
 
   return (
-    <div className="mb-3 mx-3 bg-black">
-      <div className={`${getHeightClass(height)} mt-5`}>
-        <ReactECharts
-          onChartReady={onChartReady}
-          option={optionWithoutSeries}
-          settings={ECHARTS_SETTINGS}
-          renderer="canvas"
-        />
+    <>
+      <div className="mb-3 mx-3 bg-black">
+        <div className={`${getHeightClass(height)} mt-5`}>
+          <ReactECharts
+            onChartReady={onChartReady}
+            option={optionWithoutSeries}
+            settings={ECHARTS_SETTINGS}
+            renderer="canvas"
+          />
+        </div>
+        <TableContext.Provider value={TenTon2024}>
+          {width >= 1024 ? <StatsTableLarge /> : <StatsTableCompact />}
+        </TableContext.Provider>
       </div>
-      <TableContext.Provider value={TenTon2024}>
-        {width >= 1024 ? <StatsTableLarge /> : <StatsTableCompact />}
-      </TableContext.Provider>
-    </div>
+      <a
+        href="https://www.casinotears.com/"
+        target="_blank"
+        rel="noreferrer"
+        className={`ml-3 ${THEME_TEXT_COLOR} hover:text-white`}
+      >
+        <span>Casino Tears Podcast</span>
+      </a>
+    </>
   );
 };
