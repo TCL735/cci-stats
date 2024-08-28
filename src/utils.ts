@@ -237,21 +237,31 @@ export const getWindowDimensions = () => {
   };
 };
 
-export const useWindowDimensions = (): WindowDimensions => {
+export const useWindowDimensions = (): WindowDimensions & {
+  heightClass: string;
+} => {
   const [windowDimensions, setWindowDimensions] = useState<WindowDimensions>(
     getWindowDimensions(),
+  );
+  const [heightClass, setHeightClass] = useState<string>(
+    getHeightClass(windowDimensions.height),
   );
 
   useEffect(() => {
     function handleResize() {
       setWindowDimensions(getWindowDimensions());
+      setHeightClass(getHeightClass(getWindowDimensions().height));
     }
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return windowDimensions;
+  return {
+    height: windowDimensions.height,
+    width: windowDimensions.width,
+    heightClass,
+  };
 };
 
 export const getHeightClass = (height: number): string => {

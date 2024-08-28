@@ -38,7 +38,7 @@ export const StatsTracker: FC<StatsTrackerProps> = ({
     .toISOString()
     .slice(0, 10)}`,
 }) => {
-  const { height, width } = useWindowDimensions();
+  const { height, width, heightClass } = useWindowDimensions();
 
   const optionWithoutSeries = useMemo(
     () =>
@@ -253,9 +253,9 @@ export const StatsTracker: FC<StatsTrackerProps> = ({
   );
 
   return (
-    <>
+    <TableContext.Provider value={TenTon2024}>
       <div className="mb-3 mx-3 bg-black">
-        <div className={`${getHeightClass(height)} mt-5`}>
+        <div className={`${heightClass} mt-5`}>
           <ReactECharts
             onChartReady={onChartReady}
             option={optionWithoutSeries}
@@ -263,9 +263,7 @@ export const StatsTracker: FC<StatsTrackerProps> = ({
             renderer="canvas"
           />
         </div>
-        <TableContext.Provider value={TenTon2024}>
-          {width >= 1024 ? <StatsTableLarge /> : <StatsTableCompact />}
-        </TableContext.Provider>
+        {width >= 1024 ? <StatsTableLarge /> : <StatsTableCompact />}
       </div>
       <a
         href="https://www.casinotears.com/"
@@ -275,6 +273,6 @@ export const StatsTracker: FC<StatsTrackerProps> = ({
       >
         <span>Casino Tears Podcast</span>
       </a>
-    </>
+    </TableContext.Provider>
   );
 };
