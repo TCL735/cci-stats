@@ -192,4 +192,20 @@ export const tenTon2024: Array<DayTrip> = [
       "shot 2x / HW set / 30+ roller hit the repeater 2,5,9,10,12/ should have only bet big on self / table 401 is the shit / Kobayashi activated",
     ],
   ],
+  [
+    dayjs("2024-08-27").valueOf(),
+    [PLANET_HOLLYWOOD, PLANET_HOLLYWOOD],
+    ["$25 w/ ATS", "$25 w/ ATS"],
+    [10000, 10000],
+    [10860, 20235],
+    [1.5, 1.5],
+    [
+      "Justice Jen / Jester / Special Delivery",
+      "Special Delivery / Jester / Dean The Machine / Justice Jen",
+    ],
+    [
+      "solid crew to shoot with /shot 1x  ~ 18 / Hit tall / HW set",
+      "shot 1x  ~ teens / HW set / needed 3&10 / DTM w/41 roller Made'em All 100$HT and 250H4",
+    ],
+  ],
 ];
