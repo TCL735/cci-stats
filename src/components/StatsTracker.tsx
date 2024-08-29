@@ -154,7 +154,7 @@ export const StatsTracker: FC<StatsTrackerProps> = ({
             },
           },
         },
-        animationDuration: dayTrips.length * 1000,
+        animationDuration: dayTrips.length * 500,
         animationEasing: "cubicInOut",
         series: [],
       } as EChartsOption),
