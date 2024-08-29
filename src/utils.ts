@@ -249,8 +249,14 @@ export const useWindowDimensions = (): WindowDimensions & {
 
   useEffect(() => {
     function handleResize() {
-      setWindowDimensions(getWindowDimensions());
-      setHeightClass(getHeightClass(getWindowDimensions().height));
+      const newDimensions = getWindowDimensions();
+      if (
+        newDimensions.height !== windowDimensions.height ||
+        newDimensions.width !== windowDimensions.width
+      ) {
+        setWindowDimensions(newDimensions);
+        setHeightClass(getHeightClass(newDimensions.height));
+      }
     }
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
