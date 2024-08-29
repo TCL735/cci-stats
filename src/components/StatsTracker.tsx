@@ -15,7 +15,6 @@ import { EChartsOption, ReactECharts } from "../react-echarts";
 import { StatsTableCompact, StatsTableLarge } from "./Table";
 import {
   currency,
-  getHeightClass,
   useWindowDimensions,
   TenTon2024,
   TableContext,
@@ -38,7 +37,7 @@ export const StatsTracker: FC<StatsTrackerProps> = ({
     .toISOString()
     .slice(0, 10)}`,
 }) => {
-  const { height, width, heightClass } = useWindowDimensions();
+  const { width, heightClass } = useWindowDimensions();
 
   const optionWithoutSeries = useMemo(
     () =>
@@ -249,7 +248,7 @@ export const StatsTracker: FC<StatsTrackerProps> = ({
       setTimeout(() => chart.setOption(option), 100);
     },
     /* eslint-disable-next-line react-hooks/exhaustive-deps */
-    [width, height, option],
+    [width, option],
   );
 
   return (
