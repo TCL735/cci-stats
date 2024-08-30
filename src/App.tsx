@@ -6,25 +6,42 @@ import {
   NEGATIVE_LINE_COLOR_VALUE,
   NEUTRAL_TEXT_COLOR,
   SELECTED_BORDER_STYLE,
+  TABS,
   THEME_TEXT_COLOR,
 } from "./types";
 import { useWindowDimensions } from "./utils";
+import { AboutUs } from "./components/AboutUs";
+import { CoachingPage } from "./components/CoachingPage";
 
 export const App = () => {
+  const [activeTab, setActiveTab] = useState<string | null>(
+    TABS.COLOR_COMIN_IN,
+  );
+
   const aboutUsRef = useRef<HTMLDivElement>(null);
-  const [activeTab, setActiveTab] = useState<string | null>("Color Comin' In");
-  const [backgroundHeight, setBackgroundHeight] = useState<string>("h-screen");
+  const coachingRef = useRef<HTMLDivElement>(null);
+  const [aboutUsHeight, setAboutUsHeight] = useState<string>("h-screen");
+  const [coachingHeight, setCoachingHeight] = useState<string>("h-screen");
+
   const { height } = useWindowDimensions();
 
   useEffect(() => {
     if (aboutUsRef?.current) {
       if (aboutUsRef.current.clientHeight >= height) {
-        setBackgroundHeight("h-max");
+        setAboutUsHeight("h-max");
       } else {
-        setBackgroundHeight("h-screen");
+        setAboutUsHeight("h-screen");
       }
     }
-  }, [aboutUsRef, height]);
+
+    if (coachingRef?.current) {
+      if (coachingRef.current.clientHeight >= height) {
+        setCoachingHeight("h-max");
+      } else {
+        setCoachingHeight("h-screen");
+      }
+    }
+  }, [aboutUsRef, coachingRef, height]);
 
   return (
     <div className="bg-black">
@@ -37,112 +54,61 @@ export const App = () => {
         <Tabs.List className="flex flex-row flex-wrap justify-start border-b-0">
           <Tabs.Tab
             className={`px-4 py-3 hover:text-white ${
-              activeTab === "2024 Stats"
+              activeTab === TABS.STATS_2024
                 ? SELECTED_BORDER_STYLE
                 : "border-black/100"
             } ${THEME_TEXT_COLOR}`}
-            value="2024 Stats"
+            value={TABS.STATS_2024}
           >
-            2024 Stats
+            {TABS.STATS_2024}
           </Tabs.Tab>
           <Tabs.Tab
             className={`px-4 py-3 hover:text-white ${
-              activeTab === "Color Comin' In"
+              activeTab === TABS.COLOR_COMIN_IN
                 ? SELECTED_BORDER_STYLE
                 : "border-black/100"
             } ${THEME_TEXT_COLOR}`}
-            value="Color Comin' In"
+            value={TABS.COLOR_COMIN_IN}
           >
-            Color Comin' In
+            {TABS.COLOR_COMIN_IN}
+          </Tabs.Tab>
+          <Tabs.Tab
+            className={`px-4 py-3 hover:text-white ${
+              activeTab === TABS.COACHING
+                ? SELECTED_BORDER_STYLE
+                : "border-black/100"
+            } ${THEME_TEXT_COLOR}`}
+            value={TABS.COACHING}
+          >
+            {TABS.COACHING}
           </Tabs.Tab>
         </Tabs.List>
 
-        {activeTab ? (
-          activeTab === "Color Comin' In" ? (
-            <Tabs.Panel
-              value={activeTab}
-              className={`ml-3 pt-4 ${NEUTRAL_TEXT_COLOR} ${backgroundHeight}`}
-            >
-              <div ref={aboutUsRef}>
-                <h3 className={`font-extrabold ${THEME_TEXT_COLOR}`}>
-                  About us
-                </h3>
-                <br />
-                <p className="text-pretty">
-                  Ten Ton Is Number 1 (or Ten Ton as his friends call him) is
-                  co-host of the popular gambling podcast{" "}
-                  <a
-                    href="https://www.casinotears.com/"
-                    target="_blank"
-                    rel="noreferrer"
-                    className={`${THEME_TEXT_COLOR} hover:text-white`}
-                  >
-                    <span>Casino Tears</span>
-                  </a>{" "}
-                  which focuses primarily on craps players and serious
-                  connoisseurs of the game.
-                </p>
-                <br />
-                <p className="text-pretty">
-                  Discipline and accountability are issues that every craps
-                  player let alone every gambler struggles with. Accountability,
-                  to a much lesser extent, is often times conveniently
-                  overlooked because it can be a real tough pill to swallow. In
-                  addition, and in many cases, it might not be too convenient or
-                  fit too nicely into a player’s self described narrative as a
-                  “winner” or “the best” (read social media/content /strategy
-                  hawker).
-                </p>
-                <br />
-                <p className="text-pretty">
-                  That said, if we’re gonna live in Vegas and talk about craps
-                  and do the damn thing then we better be able to walk the walk.
-                  Thus… Color-Comin-In (or as we like to call it, CCI.Vegas) was
-                  born. CCI is a simple interactive way to track win/loss
-                  progress for the year. In a very Tron inspired way we can see
-                  our bank roll travel up into the neon green zone or down into
-                  the neon pink. The later is preferred of course 😊
-                </p>
-                <br />
-                <p className="text-pretty">
-                  CCI also tracks other interesting details of the sessions that
-                  one may find relevant. For example: if I shoot or don’t shoot,
-                  who I played with, how long I played, what prop bets were
-                  played etc etc. These are all details that I personally find
-                  value in looking back on during any post session
-                  self-evaluation. CCI is very much a work in progress. Will we
-                  be up over the course of the year? Will we be down? To be
-                  continued...
-                </p>
-                <br />
-                <p className="text-pretty">
-                  I would like to thank my friend Vegas Day Tripper for
-                  inspiring me with this idea and TCL for building and designing
-                  the page. I hope the transparency of our play will not only
-                  provide historical insight but more importantly raise topics
-                  for deeper investigation that ideally lead to valuable lessons
-                  along with a positive paydays.
-                </p>
-                <br />
-                <p className="text-pretty">
-                  If you’re interested in participating with cci.vegas email us
-                  or call our vent line @ 229-NoSeven
-                </p>
-                <br />
-                <p>Good Luck Hunting Craps!</p>
-                <p>Ten Ton</p>
-              </div>
-            </Tabs.Panel>
-          ) : (
-            <Tabs.Panel value={activeTab} className="pt-4">
-              <StatsTracker
-                dayTrips={tenTon2024}
-                label={`Ten Ton is Number 1's Win/Loss`}
-                lineColor={NEGATIVE_LINE_COLOR_VALUE}
-              />
-            </Tabs.Panel>
-          )
-        ) : null}
+        {activeTab === TABS.STATS_2024 && (
+          <Tabs.Panel value={activeTab} className="pt-4">
+            <StatsTracker
+              dayTrips={tenTon2024}
+              label={`Ten Ton is Number 1's Win/Loss`}
+              lineColor={NEGATIVE_LINE_COLOR_VALUE}
+            />
+          </Tabs.Panel>
+        )}
+        {activeTab === TABS.COLOR_COMIN_IN && (
+          <Tabs.Panel
+            value={activeTab}
+            className={`ml-3 pt-4 ${NEUTRAL_TEXT_COLOR} ${aboutUsHeight}`}
+          >
+            <AboutUs ref={aboutUsRef} />
+          </Tabs.Panel>
+        )}
+        {activeTab === TABS.COACHING && (
+          <Tabs.Panel
+            value={activeTab}
+            className={`ml-3 pt-4 ${NEUTRAL_TEXT_COLOR} ${coachingHeight}`}
+          >
+            <CoachingPage ref={coachingRef} />
+          </Tabs.Panel>
+        )}
       </Tabs>
     </div>
   );
