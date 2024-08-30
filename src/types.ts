@@ -64,3 +64,9 @@ export const SELECTED_BORDER_STYLE = "border-b-[0.2rem] border-[#C48125]/100";
 export const ECHARTS_SETTINGS = {
   replaceMerge: ["series"],
 };
+
+export const enum TABS {
+  STATS_2024 = "2024 Stats",
+  COLOR_COMIN_IN = "Color Comin' In",
+  COACHING = "Coaching",
+}
