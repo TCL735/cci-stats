@@ -52,7 +52,7 @@ export const tenTon2024: Array<DayTrip> = [
     [5000],
     [5021],
     [2.25],
-    ["Hyperman"],
+    ["Hypeman"],
     ["Put myself in postion to win / hit repeater 2x"],
   ],
   [
@@ -106,7 +106,7 @@ export const tenTon2024: Array<DayTrip> = [
     [2000, 2000, 4200],
     [100, 0, 7421],
     [1, 0.45, 2],
-    ["Hyperman", "Hyperman", "Hyperman"],
+    ["Hypeman", "Hypeman", "Hypeman"],
     [
       "3 strikes and out / horrible everything",
       "shot 1x / crowded / potential for greatness",
@@ -120,7 +120,7 @@ export const tenTon2024: Array<DayTrip> = [
     [5000, 10000, 10000],
     [3600, 9500, 9228],
     [0.45, 2, 2],
-    ["Hyperman", "Hypeman", "Hypeman"],
+    ["Hypeman", "Hypeman", "Hypeman"],
     [
       "no magic / nothing working/ should've called it",
       "set up for greatness / (5) couldnt lay for all / shot was on / shouldnt have left",
@@ -134,7 +134,7 @@ export const tenTon2024: Array<DayTrip> = [
     [10000],
     [5840],
     [1.5],
-    ["Hyperman"],
+    ["Hypeman"],
     ["shit show / 15 shooters / 3 strikes / all<10"],
   ],
   [
@@ -144,7 +144,7 @@ export const tenTon2024: Array<DayTrip> = [
     [9228, 10000],
     [9910, 10615],
     [2.5, 1],
-    ["Hyperman", "Byrdman / Hyperman"],
+    ["Hypeman", "Byrdman / Hypeman"],
     [
       "bittersweet /  shot 2x/ down big early / ~ 35+ roll 64-63 Set",
       "Byrdman hot hand ~ 20+ rolls /",
@@ -206,6 +206,19 @@ export const tenTon2024: Array<DayTrip> = [
     [
       "solid crew to shoot with /shot 1x  ~ 18 / Hit tall / HW set",
       "shot 1x  ~ teens / HW set / needed 3&10 / DTM w/41 roller Made'em All 100$HT and 250H4",
+    ],
+  ],
+  [
+    dayjs("2024-08-28").valueOf(),
+    [PLANET_HOLLYWOOD, PARIS],
+    ["$25 w/ ATS", "$50 w/ ATS"],
+    [10000, 10000],
+    [11426, 10110],
+    [2.5, 0.5],
+    ["Hypeman + big crew from the last couple days", "Geedub"],
+    [
+      "shot 1x very late / poor rol dbl pitched 6-1 HW set / Hype had roll of night made 4k on it just needed 12 for all",
+      "shot 1x  ~ teens / HW set / needed 4&12 / late freezing in there had trouble griping the dice / ",
     ],
   ],
 ];
