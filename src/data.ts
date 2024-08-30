@@ -221,4 +221,16 @@ export const tenTon2024: Array<DayTrip> = [
       "shot 1x  ~ teens / HW set / needed 4&12 / late freezing in there had trouble griping the dice / ",
     ],
   ],
+  [
+    dayjs("2024-08-29").valueOf(),
+    [PLANET_HOLLYWOOD],
+    ["$25 w/ ATS"],
+    [10000],
+    [6000],
+    [3],
+    ["Hypeman / EnerJing / Yo Chef / Jester"],
+    [
+      "shot 2x / horrible HW + 42-62 / horrorshow / tired stayed too long played hail mary at end was incomplete",
+    ],
+  ],
 ];
