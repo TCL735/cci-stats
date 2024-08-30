@@ -41,7 +41,7 @@ export const App = () => {
         setCoachingHeight("h-screen");
       }
     }
-  }, [aboutUsRef, coachingRef, height]);
+  }, [activeTab, aboutUsRef, coachingRef, height]);
 
   return (
     <div className="bg-black">
