@@ -26,16 +26,14 @@ export const App = () => {
   const { height } = useWindowDimensions();
 
   useEffect(() => {
-    if (aboutUsRef?.current) {
-      if (aboutUsRef.current.clientHeight >= height) {
+    if (activeTab === TABS.COLOR_COMIN_IN) {
+      if ((aboutUsRef?.current?.clientHeight ?? 0) >= height) {
         setAboutUsHeight("h-max");
       } else {
         setAboutUsHeight("h-screen");
       }
-    }
-
-    if (coachingRef?.current) {
-      if (coachingRef.current.clientHeight >= height) {
+    } else if (activeTab === TABS.COACHING) {
+      if ((coachingRef?.current?.clientHeight ?? 0) >= height) {
         setCoachingHeight("h-max");
       } else {
         setCoachingHeight("h-screen");
