@@ -20,10 +20,21 @@ export const CoachingPage = forwardRef<HTMLDivElement>((_, ref) => {
       </p>
       <br />
       <p className="text-pretty">
-        Below is a list of coaches & or classes/events all worth checking out.
-        We believe each coach has their particular merit and strengths. This
-        list is a work in progress and will be updated over time.
+        Below is a list (in alphabetical order) of coaches & or classes/events
+        all worth checking out (ie vetted). We believe each coach has their
+        particular merits and strengths. This list is a work in progress and
+        will be updated over time. Last updated 8/30/24.
       </p>
+      <br />
+      <a
+        href="https://www.axispowercraps.com/"
+        target="_blank"
+        rel="noreferrer"
+        className={`${THEME_TEXT_COLOR} hover:text-white`}
+      >
+        <span>Axis Power Craps (Heavy Haltom) / Texas</span>
+      </a>
+      <br />
       <br />
       <a
         href="https://www.dicecoach.com/"
@@ -42,16 +53,6 @@ export const CoachingPage = forwardRef<HTMLDivElement>((_, ref) => {
         className={`${THEME_TEXT_COLOR} hover:text-white`}
       >
         <span>WAGE (Tony Leo) / Las Vegas</span>
-      </a>
-      <br />
-      <br />
-      <a
-        href="https://www.axispowercraps.com/"
-        target="_blank"
-        rel="noreferrer"
-        className={`${THEME_TEXT_COLOR} hover:text-white`}
-      >
-        <span>Axis Power Craps (Heavy Haltom) / Texas</span>
       </a>
       <br />
       <br />
