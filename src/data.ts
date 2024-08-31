@@ -92,7 +92,7 @@ export const tenTon2024: Array<DayTrip> = [
     [3000, 5000],
     [1075, 7450],
     [2, 2],
-    ["GMan", "Solo"],
+    ["GMan", "solo"],
     ["Slow bleed / 18 Shooters at least / No bonus", "~ 30 rolls / hit small"],
   ],
   [
@@ -231,6 +231,19 @@ export const tenTon2024: Array<DayTrip> = [
     ["Hypeman / EnerJing / Yo Chef / Jester"],
     [
       "shot 2x / horrible HW + 42-62 / horrorshow / tired stayed too long played hail mary at end was incomplete",
+    ],
+  ],
+  [
+    dayjs("2024-08-30").valueOf(),
+    [CAESARS_PALACE, ARIA],
+    ["$50 w/ Repeater", "$25 w/ ATS"],
+    [10000, 10000],
+    [9500, 10500],
+    [2.5, 2],
+    ["solo", "solo"],
+    [
+      "shot 3x / horrible mutliple sets /  felt great shot just wasnt on 3 strikes and out",
+      "shot 6x / glacier cold to start / down big / 2 massive rolls with 64/32 / Hit tall twice",
     ],
   ],
 ];
