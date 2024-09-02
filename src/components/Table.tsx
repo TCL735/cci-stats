@@ -169,7 +169,7 @@ export const StatsTableLarge: FC = () => {
         handleConsecutiveRepeatValueAs="always"
         title="Buy In"
         headerRows={[totalBuyIns]}
-        headerRowColors={[THEME_TEXT_COLOR]}
+        headerRowColors={[POSITIVE_CURRENCY_TEXT_COLOR]}
         rowData={tripBuyIns}
         rowDataColors={allGreens}
       />
@@ -178,7 +178,11 @@ export const StatsTableLarge: FC = () => {
         handleConsecutiveRepeatValueAs="always"
         title="Color Up"
         headerRows={[totalColorUps]}
-        headerRowColors={[THEME_TEXT_COLOR]}
+        headerRowColors={[
+          totalWinLoss >= 0
+            ? POSITIVE_CURRENCY_TEXT_COLOR
+            : NEGATIVE_CURRENCY_TEXT_COLOR,
+        ]}
         rowData={tripColorUps}
         rowDataColors={locationColors}
       />
