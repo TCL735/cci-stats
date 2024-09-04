@@ -52,16 +52,6 @@ export const App = () => {
         <Tabs.List className="flex flex-row flex-wrap justify-start border-b-0">
           <Tabs.Tab
             className={`px-4 py-3 hover:text-white ${
-              activeTab === TABS.STATS_2024
-                ? SELECTED_BORDER_STYLE
-                : "border-black/100"
-            } ${THEME_TEXT_COLOR}`}
-            value={TABS.STATS_2024}
-          >
-            {TABS.STATS_2024}
-          </Tabs.Tab>
-          <Tabs.Tab
-            className={`px-4 py-3 hover:text-white ${
               activeTab === TABS.COLOR_COMIN_IN
                 ? SELECTED_BORDER_STYLE
                 : "border-black/100"
@@ -69,6 +59,16 @@ export const App = () => {
             value={TABS.COLOR_COMIN_IN}
           >
             {TABS.COLOR_COMIN_IN}
+          </Tabs.Tab>
+          <Tabs.Tab
+            className={`px-4 py-3 hover:text-white ${
+              activeTab === TABS.STATS_2024
+                ? SELECTED_BORDER_STYLE
+                : "border-black/100"
+            } ${THEME_TEXT_COLOR}`}
+            value={TABS.STATS_2024}
+          >
+            {TABS.STATS_2024}
           </Tabs.Tab>
           <Tabs.Tab
             className={`px-4 py-3 hover:text-white ${
