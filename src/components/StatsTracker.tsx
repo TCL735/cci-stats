@@ -153,7 +153,7 @@ export const StatsTracker: FC<StatsTrackerProps> = ({
             },
           },
         },
-        animationDuration: dayTrips.length * 500,
+        animationDuration: dayTrips.length * 300,
         animationEasing: "cubicInOut",
         series: [],
       } as EChartsOption),
@@ -233,7 +233,7 @@ export const StatsTracker: FC<StatsTrackerProps> = ({
               return "";
             },
             valueAnimation: true,
-            offset: [-50, 20],
+            offset: [-65, -15],
             color: "#C48125",
           },
           data,
