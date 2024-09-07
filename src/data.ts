@@ -246,4 +246,28 @@ export const tenTon2024: Array<DayTrip> = [
       "shot 6x / glacier cold to start / down big / 2 massive rolls with 64/32 / Hit tall twice",
     ],
   ],
+  [
+    dayjs("2024-09-02").valueOf(),
+    [PLANET_HOLLYWOOD],
+    ["$15 w/ ATS"],
+    [7950],
+    [6303],
+    [2.5],
+    ["Hypeman/EnerJing"],
+    [
+      "shot 4x / no set worked / switched tables / grindy grindy mess could never get going / weird energy",
+    ],
+  ],
+  [
+    dayjs("2024-09-06").valueOf(),
+    [ARIA],
+    ["$25 w/ ATS"],
+    [5000],
+    [13165],
+    [1],
+    ["TableMaker"],
+    [
+      "shot 2x /  fav table / starteded solid hit hop 9 with 64 32 / never down / Hit small / stayed for newbie who Hit All / Layed 9 for 24 dice hit a girl's hand and landed on 9 for the big win!",
+    ],
+  ],
 ];
