@@ -267,7 +267,30 @@ export const tenTon2024: Array<DayTrip> = [
     [1],
     ["TableMaker"],
     [
-      "shot 2x /  fav table / starteded solid hit hop 9 with 64 32 / never down / Hit small / stayed for newbie who Hit All / Layed 9 for 24 dice hit a girl's hand and landed on 9 for the big win!",
+      "shot 2x / fav table / starteded solid hit hop 9 with 64 32 / never down / Hit small / stayed for newbie who Hit All / Layed 9 for 24 dice hit a girl's hand and landed on 9 for the big win!",
     ],
+  ],
+  [
+    dayjs("2024-09-07").valueOf(),
+    [CAESARS_PALACE, BELLAGIO],
+    ["$25 w/ ATS"],
+    [9500, 5000],
+    [6585, 6670],
+    [1.5, 1.5],
+    ["The TableMaker / Pro Craps / Bougust / Alan G", "The TableMaker"],
+    [
+      "Table / shot 2x / Looked good just couldn't get over the hump / Perfect scenario 5 shooters / Table cool very nice crew",
+      "Shot twice / Second was best HW set / Hit small couldnt close it / Best roll at the table",
+    ],
+  ],
+  [
+    dayjs("2024-09-08").valueOf(),
+    [ARIA],
+    ["$25 w/ ATS"],
+    [5000],
+    [5011],
+    [1],
+    ["TableMaker"],
+    ["Shot twice 3x / favorite table / 3 diff sets couldnt get over the hump"],
   ],
 ];
