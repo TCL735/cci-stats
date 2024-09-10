@@ -108,8 +108,6 @@ export const TableColumn: FC<TableColumnProps> = ({
 export const StatsTableLarge: FC = () => {
   const {
     locationColors,
-    totalBuyIns,
-    totalColorUps,
     totalWinLoss,
     tripBuyIns,
     tripColorUps,
@@ -159,7 +157,7 @@ export const StatsTableLarge: FC = () => {
       <TableColumn
         handleConsecutiveRepeatValueAs="always"
         title="Game Type"
-        headerRows={["Total"]}
+        headerRows={[""]}
         headerRowColors={[THEME_TEXT_COLOR]}
         rowData={tripGameTypes}
         rowDataColors={locationColors}
@@ -168,8 +166,8 @@ export const StatsTableLarge: FC = () => {
         formatter={currencyFormatter}
         handleConsecutiveRepeatValueAs="always"
         title="Buy In"
-        headerRows={[totalBuyIns]}
-        headerRowColors={[POSITIVE_CURRENCY_TEXT_COLOR]}
+        headerRows={[""]}
+        headerRowColors={[""]}
         rowData={tripBuyIns}
         rowDataColors={allGreens}
       />
@@ -177,12 +175,8 @@ export const StatsTableLarge: FC = () => {
         formatter={currencyFormatter}
         handleConsecutiveRepeatValueAs="always"
         title="Color Up"
-        headerRows={[totalColorUps]}
-        headerRowColors={[
-          totalWinLoss >= 0
-            ? POSITIVE_CURRENCY_TEXT_COLOR
-            : NEGATIVE_CURRENCY_TEXT_COLOR,
-        ]}
+        headerRows={[""]}
+        headerRowColors={[""]}
         rowData={tripColorUps}
         rowDataColors={locationColors}
       />
