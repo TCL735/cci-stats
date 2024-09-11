@@ -273,7 +273,7 @@ export const tenTon2024: Array<DayTrip> = [
   [
     dayjs("2024-09-07").valueOf(),
     [CAESARS_PALACE, BELLAGIO],
-    ["$25 w/ ATS"],
+    ["$25 w/ ATS", "$25 w/ ATS"],
     [9500, 5000],
     [6635, 6670],
     [1.5, 1.5],
