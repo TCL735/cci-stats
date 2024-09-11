@@ -153,7 +153,7 @@ export const StatsTracker: FC<StatsTrackerProps> = ({
             },
           },
         },
-        animationDuration: dayTrips.length * 300,
+        animationDuration: dayTrips.length * 200,
         animationEasing: "cubicInOut",
         series: [],
       } as EChartsOption),
