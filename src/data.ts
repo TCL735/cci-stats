@@ -275,7 +275,7 @@ export const tenTon2024: Array<DayTrip> = [
     [CAESARS_PALACE, BELLAGIO],
     ["$25 w/ ATS"],
     [9500, 5000],
-    [6585, 6670],
+    [6635, 6670],
     [1.5, 1.5],
     ["The TableMaker / Pro Craps / Bougust / Alan G", "The TableMaker"],
     [
