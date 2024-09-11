@@ -237,7 +237,7 @@ const getSessionClassName = (sessions: number): string => {
 };
 export const StatsTableCompact: FC = () => {
   const state = useContext(TableContext);
-  const { totalBuyIns, totalColorUps, totalWinLoss, dayTrips } = state;
+  const { totalWinLoss, dayTrips } = state;
 
   const sessionColors = dayTrips.map((dayTrip) => {
     return dayTrip[4].map((colorUp, index) =>
@@ -424,36 +424,6 @@ export const StatsTableCompact: FC = () => {
         </div>
       ))}
       <div className={`flex flex-col border-t border-solid border-gray100`}>
-        <div className={compactTableDetailRowClassName}>
-          <span className={compactTableDetailFieldClassName}>Total Buy In</span>
-          <span className={compactTableDetailDataPointsClassName}>
-            <span
-              key={`buyIns-total`}
-              className={`${getSessionClassName(
-                1,
-              )} ${POSITIVE_CURRENCY_TEXT_COLOR}`}
-            >
-              {currencyFormatter(totalBuyIns)}
-            </span>
-          </span>
-        </div>
-        <div className={compactTableDetailRowClassName}>
-          <span className={compactTableDetailFieldClassName}>
-            Total Color Up
-          </span>
-          <span className={compactTableDetailDataPointsClassName}>
-            <span
-              key={`colorUps-total`}
-              className={`${getSessionClassName(1)} ${
-                totalWinLoss >= 0
-                  ? POSITIVE_CURRENCY_TEXT_COLOR
-                  : NEGATIVE_CURRENCY_TEXT_COLOR
-              }`}
-            >
-              {currencyFormatter(totalColorUps)}
-            </span>
-          </span>
-        </div>
         <div className={compactTableDetailRowClassName}>
           <span className={compactTableDetailFieldClassName}>
             Total Win/Loss
