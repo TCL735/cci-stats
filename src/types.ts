@@ -70,3 +70,9 @@ export const enum TABS {
   COLOR_COMIN_IN = "Color Comin' In",
   COACHING = "Coaching",
 }
+
+export const enum ROUTES {
+  ABOUT_US = "/about-us",
+  STATS_2024 = "/stats/2024",
+  COACHING = "/coaching",
+}

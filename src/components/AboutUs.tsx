@@ -1,9 +1,9 @@
-import React, { forwardRef } from "react";
-import { THEME_TEXT_COLOR } from "../types";
+import React from "react";
+import { NEUTRAL_TEXT_COLOR, THEME_TEXT_COLOR } from "../types";
 
-export const AboutUs = forwardRef<HTMLDivElement>((_, ref) => {
+export const AboutUs = () => {
   return (
-    <div ref={ref}>
+    <div className={`ml-3 pt-4 ${NEUTRAL_TEXT_COLOR}`}>
       <h3 className={`font-extrabold ${THEME_TEXT_COLOR}`}>About us</h3>
       <br />
       <p className="text-pretty">
@@ -68,4 +68,4 @@ export const AboutUs = forwardRef<HTMLDivElement>((_, ref) => {
       <br />
     </div>
   );
-});
+};
