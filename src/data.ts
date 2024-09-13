@@ -265,7 +265,7 @@ export const tenTon2024: Array<DayTrip> = [
     [5000],
     [13165],
     [1],
-    ["TableMaker"],
+    ["The TableMaker"],
     [
       "shot 2x / fav table / starteded solid hit hop 9 with 64 32 / never down / Hit small / stayed for newbie who Hit All / Layed 9 for 24 dice hit a girl's hand and landed on 9 for the big win!",
     ],
@@ -290,7 +290,7 @@ export const tenTon2024: Array<DayTrip> = [
     [5000],
     [5011],
     [1],
-    ["TableMaker"],
+    ["The TableMaker"],
     ["Shot twice 3x / favorite table / 3 diff sets couldnt get over the hump"],
   ],
 ];
