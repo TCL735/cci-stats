@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
+import { BrowserRouter, Link, Outlet, Route, Routes } from "react-router-dom";
 import { Tabs } from "@mantine/core";
 import { tenTon2024 } from "./data";
 import { StatsTracker } from "./components/StatsTracker";
 import {
   NEGATIVE_LINE_COLOR_VALUE,
-  NEUTRAL_TEXT_COLOR,
+  ROUTES,
   SELECTED_BORDER_STYLE,
   TABS,
   THEME_TEXT_COLOR,
@@ -13,33 +14,21 @@ import { useWindowDimensions } from "./utils";
 import { AboutUs } from "./components/AboutUs";
 import { CoachingPage } from "./components/CoachingPage";
 
-export const App = () => {
+export const Navigation = () => {
+  const { height } = useWindowDimensions();
+  const panelRef = useRef<HTMLDivElement>(null);
+  const [panelHeight, setPanelHeight] = useState<string>("h-screen");
   const [activeTab, setActiveTab] = useState<string | null>(
     TABS.COLOR_COMIN_IN,
   );
 
-  const aboutUsRef = useRef<HTMLDivElement>(null);
-  const coachingRef = useRef<HTMLDivElement>(null);
-  const [aboutUsHeight, setAboutUsHeight] = useState<string>("h-screen");
-  const [coachingHeight, setCoachingHeight] = useState<string>("h-screen");
-
-  const { height } = useWindowDimensions();
-
   useEffect(() => {
-    if (activeTab === TABS.COLOR_COMIN_IN) {
-      if ((aboutUsRef?.current?.clientHeight ?? 0) >= height) {
-        setAboutUsHeight("h-max");
-      } else {
-        setAboutUsHeight("h-screen");
-      }
-    } else if (activeTab === TABS.COACHING) {
-      if ((coachingRef?.current?.clientHeight ?? 0) >= height) {
-        setCoachingHeight("h-max");
-      } else {
-        setCoachingHeight("h-screen");
-      }
+    if (Number(panelRef?.current?.clientHeight) >= height) {
+      setPanelHeight("h-max");
+    } else {
+      setPanelHeight("h-screen");
     }
-  }, [activeTab, aboutUsRef, coachingRef, height]);
+  }, [activeTab, height, panelRef]);
 
   return (
     <div className="bg-black">
@@ -58,7 +47,7 @@ export const App = () => {
             } ${THEME_TEXT_COLOR}`}
             value={TABS.COLOR_COMIN_IN}
           >
-            {TABS.COLOR_COMIN_IN}
+            <Link to={ROUTES.ABOUT_US}>{TABS.COLOR_COMIN_IN}</Link>
           </Tabs.Tab>
           <Tabs.Tab
             className={`px-4 py-3 hover:text-white ${
@@ -68,7 +57,7 @@ export const App = () => {
             } ${THEME_TEXT_COLOR}`}
             value={TABS.STATS_2024}
           >
-            {TABS.STATS_2024}
+            <Link to={ROUTES.STATS_2024}>{TABS.STATS_2024}</Link>
           </Tabs.Tab>
           <Tabs.Tab
             className={`px-4 py-3 hover:text-white ${
@@ -78,36 +67,39 @@ export const App = () => {
             } ${THEME_TEXT_COLOR}`}
             value={TABS.COACHING}
           >
-            {TABS.COACHING}
+            <Link to={ROUTES.COACHING}>{TABS.COACHING}</Link>
           </Tabs.Tab>
         </Tabs.List>
-
-        {activeTab === TABS.STATS_2024 && (
-          <Tabs.Panel value={activeTab} className="pt-4">
-            <StatsTracker
-              dayTrips={tenTon2024}
-              label={`Ten Ton is Number 1's Win/Loss`}
-              lineColor={NEGATIVE_LINE_COLOR_VALUE}
-            />
-          </Tabs.Panel>
-        )}
-        {activeTab === TABS.COLOR_COMIN_IN && (
-          <Tabs.Panel
-            value={activeTab}
-            className={`ml-3 pt-4 ${NEUTRAL_TEXT_COLOR} ${aboutUsHeight}`}
-          >
-            <AboutUs ref={aboutUsRef} />
-          </Tabs.Panel>
-        )}
-        {activeTab === TABS.COACHING && (
-          <Tabs.Panel
-            value={activeTab}
-            className={`ml-3 pt-4 ${NEUTRAL_TEXT_COLOR} ${coachingHeight}`}
-          >
-            <CoachingPage ref={coachingRef} />
-          </Tabs.Panel>
-        )}
+        <Tabs.Panel value={activeTab!}>
+          <div className={`${panelHeight}`} ref={panelRef}>
+            <Outlet />
+          </div>
+        </Tabs.Panel>
       </Tabs>
     </div>
+  );
+};
+
+export const App = () => {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Navigation />}>
+          <Route path="/" index element={<AboutUs />} />
+          <Route path={ROUTES.ABOUT_US} element={<AboutUs />} />
+          <Route
+            path={ROUTES.STATS_2024}
+            element={
+              <StatsTracker
+                dayTrips={tenTon2024}
+                label={`Ten Ton is Number 1's Win/Loss`}
+                lineColor={NEGATIVE_LINE_COLOR_VALUE}
+              />
+            }
+          />
+          <Route path={ROUTES.COACHING} element={<CoachingPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 };
