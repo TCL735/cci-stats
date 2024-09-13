@@ -70,8 +70,8 @@ export const Navigation = () => {
             <Link to={ROUTES.COACHING}>{TABS.COACHING}</Link>
           </Tabs.Tab>
         </Tabs.List>
-        <Tabs.Panel value={activeTab!}>
-          <div className={`${panelHeight}`} ref={panelRef}>
+        <Tabs.Panel className={`${panelHeight}`} value={activeTab!}>
+          <div ref={panelRef}>
             <Outlet />
           </div>
         </Tabs.Panel>
