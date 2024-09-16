@@ -66,8 +66,8 @@ export const ECHARTS_SETTINGS = {
 };
 
 export const enum TABS {
-  STATS_2024 = "2024 Stats",
   COLOR_COMIN_IN = "Color Comin' In",
+  STATS_2024 = "2024 Stats",
   COACHING = "Coaching",
 }
 

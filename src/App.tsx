@@ -1,5 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
-import { HashRouter, Link, Outlet, Route, Routes } from "react-router-dom";
+import {
+  HashRouter,
+  Link,
+  Outlet,
+  Route,
+  Routes,
+  useLocation,
+} from "react-router-dom";
 import { Tabs } from "@mantine/core";
 import { tenTon2024 } from "./data";
 import { StatsTracker } from "./components/StatsTracker";
@@ -10,7 +17,7 @@ import {
   TABS,
   THEME_TEXT_COLOR,
 } from "./types";
-import { useWindowDimensions } from "./utils";
+import { getTabFromLocation, useWindowDimensions } from "./utils";
 import { AboutUs } from "./components/AboutUs";
 import { CoachingPage } from "./components/CoachingPage";
 
@@ -18,8 +25,9 @@ export const Navigation = () => {
   const { height } = useWindowDimensions();
   const panelRef = useRef<HTMLDivElement>(null);
   const [panelHeight, setPanelHeight] = useState<string>("h-screen");
+  const { pathname } = useLocation();
   const [activeTab, setActiveTab] = useState<string | null>(
-    TABS.COLOR_COMIN_IN,
+    getTabFromLocation(pathname),
   );
 
   useEffect(() => {

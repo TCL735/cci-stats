@@ -30,6 +30,8 @@ import {
   PLANET_HOLLYWOOD,
   POSITIVE_CURRENCY_TEXT_COLOR,
   RESORTS_WORLD,
+  ROUTES,
+  TABS,
   TableRowDataType,
   VENETIAN,
   VP,
@@ -227,6 +229,19 @@ export const currencyFormatter = (v: TableRowDataType): string => {
     maximumFractionDigits: 0,
   });
   return f.format(v as number);
+};
+
+export const getTabFromLocation = (pathname: string): TABS => {
+  switch (pathname) {
+    case ROUTES.STATS_2024:
+      return TABS.STATS_2024;
+
+    case ROUTES.COACHING:
+      return TABS.COACHING;
+
+    default:
+      return TABS.COLOR_COMIN_IN;
+  }
 };
 
 export const getWindowDimensions = () => {
