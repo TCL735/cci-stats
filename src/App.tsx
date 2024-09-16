@@ -31,6 +31,10 @@ export const Navigation = () => {
   );
 
   useEffect(() => {
+    setActiveTab(getTabFromLocation(pathname));
+  }, [pathname]);
+
+  useEffect(() => {
     if (Number(panelRef?.current?.clientHeight) >= height) {
       setPanelHeight("h-max");
     } else {
@@ -40,43 +44,44 @@ export const Navigation = () => {
 
   return (
     <div className="bg-black">
-      <Tabs
-        value={activeTab}
-        onChange={setActiveTab}
-        variant="default"
-        keepMounted={false}
-      >
+      <Tabs value={activeTab} variant="default" keepMounted={false}>
         <Tabs.List className="flex flex-row flex-wrap justify-start border-b-0">
-          <Tabs.Tab
-            className={`px-4 py-3 hover:text-white ${
-              activeTab === TABS.COLOR_COMIN_IN
-                ? SELECTED_BORDER_STYLE
-                : "border-black/100"
-            } ${THEME_TEXT_COLOR}`}
-            value={TABS.COLOR_COMIN_IN}
-          >
-            <Link to={ROUTES.ABOUT_US}>{TABS.COLOR_COMIN_IN}</Link>
-          </Tabs.Tab>
-          <Tabs.Tab
-            className={`px-4 py-3 hover:text-white ${
-              activeTab === TABS.STATS_2024
-                ? SELECTED_BORDER_STYLE
-                : "border-black/100"
-            } ${THEME_TEXT_COLOR}`}
-            value={TABS.STATS_2024}
-          >
-            <Link to={ROUTES.STATS_2024}>{TABS.STATS_2024}</Link>
-          </Tabs.Tab>
-          <Tabs.Tab
-            className={`px-4 py-3 hover:text-white ${
-              activeTab === TABS.COACHING
-                ? SELECTED_BORDER_STYLE
-                : "border-black/100"
-            } ${THEME_TEXT_COLOR}`}
-            value={TABS.COACHING}
-          >
-            <Link to={ROUTES.COACHING}>{TABS.COACHING}</Link>
-          </Tabs.Tab>
+          <Link to={ROUTES.ABOUT_US}>
+            <Tabs.Tab
+              className={`px-4 py-3 hover:text-white ${
+                activeTab === TABS.COLOR_COMIN_IN
+                  ? SELECTED_BORDER_STYLE
+                  : "border-black/100"
+              } ${THEME_TEXT_COLOR}`}
+              value={TABS.COLOR_COMIN_IN}
+            >
+              {TABS.COLOR_COMIN_IN}
+            </Tabs.Tab>
+          </Link>
+          <Link to={ROUTES.STATS_2024}>
+            <Tabs.Tab
+              className={`px-4 py-3 hover:text-white ${
+                activeTab === TABS.STATS_2024
+                  ? SELECTED_BORDER_STYLE
+                  : "border-black/100"
+              } ${THEME_TEXT_COLOR}`}
+              value={TABS.STATS_2024}
+            >
+              {TABS.STATS_2024}
+            </Tabs.Tab>
+          </Link>
+          <Link to={ROUTES.COACHING}>
+            <Tabs.Tab
+              className={`px-4 py-3 hover:text-white ${
+                activeTab === TABS.COACHING
+                  ? SELECTED_BORDER_STYLE
+                  : "border-black/100"
+              } ${THEME_TEXT_COLOR}`}
+              value={TABS.COACHING}
+            >
+              {TABS.COACHING}
+            </Tabs.Tab>
+          </Link>
         </Tabs.List>
         <Tabs.Panel className={`${panelHeight}`} value={activeTab!}>
           <div ref={panelRef}>
