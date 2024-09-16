@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { BrowserRouter, Link, Outlet, Route, Routes } from "react-router-dom";
+import { HashRouter, Link, Outlet, Route, Routes } from "react-router-dom";
 import { Tabs } from "@mantine/core";
 import { tenTon2024 } from "./data";
 import { StatsTracker } from "./components/StatsTracker";
@@ -82,7 +82,7 @@ export const Navigation = () => {
 
 export const App = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<Navigation />}>
           <Route path="/" index element={<AboutUs />} />
@@ -100,6 +100,6 @@ export const App = () => {
           <Route path={ROUTES.COACHING} element={<CoachingPage />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
