@@ -293,4 +293,16 @@ export const tenTon2024: Array<DayTrip> = [
     ["The TableMaker"],
     ["Shot twice 3x / favorite table / 3 diff sets couldnt get over the hump"],
   ],
+  [
+    dayjs("2024-09-16").valueOf(),
+    [ARIA],
+    ["$25 w/ ATS"],
+    [10000],
+    [10205],
+    [1],
+    ["Solo"],
+    [
+      "Shot 1x / great groupd of dealers / HW set / solid roll ~ teens / was tired and grumpy so didnt stay",
+    ],
+  ],
 ];
