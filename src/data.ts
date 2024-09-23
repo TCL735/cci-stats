@@ -312,7 +312,7 @@ export const tenTon2024: Array<DayTrip> = [
     [2500],
     [3012],
     [0.5],
-    ["Wisco330"],
+    ["Solo"],
     [
       "DNS even tho had position / 3 shooters random Hit tall / 2 reds after stick change / was tired & cold and up 20% so kobayashi",
     ],
