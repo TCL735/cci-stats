@@ -305,4 +305,16 @@ export const tenTon2024: Array<DayTrip> = [
       "Shot 1x / great groupd of dealers / HW set / solid roll ~ teens / was tired and grumpy so didnt stay",
     ],
   ],
+  [
+    dayjs("2024-09-19").valueOf(),
+    [PALMS],
+    ["$15 w/ ATS - DNS"],
+    [2500],
+    [3012],
+    [0.5],
+    ["Wisco330"],
+    [
+      "DNS even tho had position / 3 shooters random Hit tall / 2 reds after stick change / was tired & cold and up 20% so kobayashi",
+    ],
+  ],
 ];
