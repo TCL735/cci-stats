@@ -317,4 +317,28 @@ export const tenTon2024: Array<DayTrip> = [
       "DNS even tho had position / 3 shooters random Hit tall / 2 reds after stick change / was tired & cold and up 20% so kobayashi",
     ],
   ],
+  [
+    dayjs("2024-09-23").valueOf(),
+    [PLANET_HOLLYWOOD],
+    ["$15 w/ ATS"],
+    [10000],
+    [7870],
+    [1],
+    ["Hypeman"],
+    [
+      "shot 1x  PSO /  6-1 HW set / perfect small ball play early on / 4 PSO in row / betting too big too early on randoms",
+    ],
+  ],
+  [
+    dayjs("2024-09-24").valueOf(),
+    [PARIS],
+    ["$25 w/ ATS $25 Crapless"],
+    [10000],
+    [3500],
+    [1.5],
+    ["Hypeman"],
+    [
+      "shot 5x / HW + 64/32 / mechanics + betting mistakes / SR1 54/45 2x solid rolls but all wrong betting moves",
+    ],
+  ],
 ];
