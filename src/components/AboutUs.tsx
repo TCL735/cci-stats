@@ -36,8 +36,8 @@ export const AboutUs = () => {
         Color-Comin-In (or as we like to call it, CCI.Vegas) was born. CCI is a
         simple interactive way to track win/loss progress for the year. In a
         very Tron inspired way we can see our bank roll travel up into the neon
-        green zone or down into the neon pink. The later is preferred of course.
-        😊
+        green zone or down into the neon pink. The former is preferred of
+        course. 😊
       </p>
       <br />
       <p className="text-pretty">
