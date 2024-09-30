@@ -23,6 +23,7 @@ export const tenTon2024: Array<DayTrip> = [
     [2459],
     [1],
     ["Craps RN"],
+    ["Y-HS"],
     ["Afternoon / didn't lay 8 for all"],
   ],
   [
@@ -33,6 +34,7 @@ export const tenTon2024: Array<DayTrip> = [
     [4775],
     [2.5],
     ["Hypeman"],
+    ["Y-HT"],
     ["Night /  hit tall 1x / up early"],
   ],
   [
@@ -43,6 +45,7 @@ export const tenTon2024: Array<DayTrip> = [
     [5700],
     [2],
     ["Hypeman"],
+    ["Y-HT"],
     ["Night /  hit tall 1x / up early "],
   ],
   [
@@ -53,6 +56,7 @@ export const tenTon2024: Array<DayTrip> = [
     [5021],
     [2.25],
     ["Hypeman"],
+    ["Y- R2x"],
     ["Put myself in postion to win / hit repeater 2x"],
   ],
   [
@@ -63,6 +67,7 @@ export const tenTon2024: Array<DayTrip> = [
     [2301],
     [0.5],
     ["VegasDaytripper"],
+    ["N"],
     ["Played too big too fast / no bonus hits"],
   ],
   [
@@ -73,6 +78,7 @@ export const tenTon2024: Array<DayTrip> = [
     [0],
     [2],
     ["Wisco330"],
+    ["N"],
     ["Played from behind the entire night"],
   ],
   [
@@ -83,6 +89,7 @@ export const tenTon2024: Array<DayTrip> = [
     [5454],
     [2],
     ["Wisco330"],
+    ["Y-HT"],
     ["5 shooters - caught 2 good ones / Hit tall"],
   ],
   [
@@ -92,7 +99,8 @@ export const tenTon2024: Array<DayTrip> = [
     [3000, 5000],
     [1075, 7450],
     [2, 2],
-    ["GMan", "solo"],
+    ["GMan", "Solo"],
+    ["N", "Y-HS"],
     ["Slow bleed / 18 Shooters at least / No bonus", "~ 30 rolls / hit small"],
   ],
   [
@@ -107,6 +115,7 @@ export const tenTon2024: Array<DayTrip> = [
     [100, 0, 7421],
     [1, 0.45, 2],
     ["Hypeman", "Hypeman", "Hypeman"],
+    ["N", "N", "Y- R3x"],
     [
       "3 strikes and out / horrible everything",
       "shot 1x / crowded / potential for greatness",
@@ -121,6 +130,7 @@ export const tenTon2024: Array<DayTrip> = [
     [3600, 9500, 9228],
     [0.45, 2, 2],
     ["Hypeman", "Hypeman", "Hypeman"],
+    ["N", "Y-HT", "N"],
     [
       "no magic / nothing working/ should've called it",
       "set up for greatness / (5) couldnt lay for all / shot was on / shouldnt have left",
@@ -135,6 +145,7 @@ export const tenTon2024: Array<DayTrip> = [
     [5840],
     [1.5],
     ["Hypeman"],
+    ["N"],
     ["shit show / 15 shooters / 3 strikes / all<10"],
   ],
   [
@@ -145,6 +156,7 @@ export const tenTon2024: Array<DayTrip> = [
     [9910, 10615],
     [2.5, 1],
     ["Hypeman", "Byrdman / Hypeman"],
+    ["N", "Y- R1x"],
     [
       "bittersweet /  shot 2x/ down big early / ~ 35+ roll 64-63 Set",
       "Byrdman hot hand ~ 20+ rolls /",
@@ -158,6 +170,7 @@ export const tenTon2024: Array<DayTrip> = [
     [16037],
     [2.5],
     ["Byrdman / Hypeman / EnerJing"],
+    ["Y-HA"],
     ["EnerJing hit ATS from straight out / 1x shot decent ~10"],
   ],
   [
@@ -168,6 +181,7 @@ export const tenTon2024: Array<DayTrip> = [
     [9545],
     [1],
     ["Byrdman"],
+    ["Y- R3x"],
     ["shot 4x / HW set / 19 roller w/9 8's/ shouldve left up 12%"],
   ],
   [
@@ -178,6 +192,7 @@ export const tenTon2024: Array<DayTrip> = [
     [7000],
     [1.5],
     ["Byrdman / EnerJing"],
+    ["N"],
     ["shot 2x / too crowded / needed more time to dial in"],
   ],
   [
@@ -188,6 +203,7 @@ export const tenTon2024: Array<DayTrip> = [
     [11919],
     [1],
     ["G-Ray"],
+    ["Y- R5x"],
     [
       "shot 2x / HW set / 30+ roller hit the repeater 2,5,9,10,12/ should have only bet big on self / table 401 is the shit / Kobayashi activated",
     ],
@@ -203,6 +219,7 @@ export const tenTon2024: Array<DayTrip> = [
       "Justice Jen / Jester / Special Delivery",
       "Special Delivery / Jester / Dean The Machine / Justice Jen",
     ],
+    ["Y-HT", "Y-HA"],
     [
       "solid crew to shoot with /shot 1x  ~ 18 / Hit tall / HW set",
       "shot 1x  ~ teens / HW set / needed 3&10 / DTM w/41 roller Made'em All 100$HT and 250H4",
@@ -216,6 +233,7 @@ export const tenTon2024: Array<DayTrip> = [
     [11426, 10110],
     [2.5, 0.5],
     ["Hypeman + big crew from the last couple days", "Geedub"],
+    ["Y-HS", "N"],
     [
       "shot 1x very late / poor rol dbl pitched 6-1 HW set / Hype had roll of night made 4k on it just needed 12 for all",
       "shot 1x  ~ teens / HW set / needed 4&12 / late freezing in there had trouble griping the dice / ",
@@ -229,6 +247,7 @@ export const tenTon2024: Array<DayTrip> = [
     [6000],
     [3],
     ["Hypeman / EnerJing / Yo Chef / Jester"],
+    ["N"],
     [
       "shot 2x / horrible HW + 42-62 / horrorshow / tired stayed too long played hail mary at end was incomplete",
     ],
@@ -240,7 +259,8 @@ export const tenTon2024: Array<DayTrip> = [
     [10000, 10000],
     [9500, 10500],
     [2.5, 2],
-    ["solo", "solo"],
+    ["Solo", "Solo"],
+    ["N", "Y-HT2x"],
     [
       "shot 3x / horrible mutliple sets /  felt great shot just wasnt on 3 strikes and out",
       "shot 6x / glacier cold to start / down big / 2 massive rolls with 64/32 / Hit tall twice",
@@ -253,7 +273,8 @@ export const tenTon2024: Array<DayTrip> = [
     [7950],
     [6303],
     [2.5],
-    ["Hypeman/EnerJing"],
+    ["Hypeman / EnerJing"],
+    ["N"],
     [
       "shot 4x / no set worked / switched tables / grindy grindy mess could never get going / weird energy",
     ],
@@ -266,6 +287,7 @@ export const tenTon2024: Array<DayTrip> = [
     [13165],
     [1],
     ["The TableMaker"],
+    ["Y-HS+HA"],
     [
       "shot 2x / fav table / starteded solid hit hop 9 with 64 32 / never down / Hit small / stayed for newbie who Hit All / Layed 9 for 24 dice hit a girl's hand and landed on 9 for the big win!",
     ],
@@ -278,6 +300,7 @@ export const tenTon2024: Array<DayTrip> = [
     [6635, 6670],
     [1.5, 1.5],
     ["The TableMaker / Pro Craps / Bougust / Alan G", "The TableMaker"],
+    ["N", "Y-HS"],
     [
       "Table / shot 2x / Looked good just couldn't get over the hump / Perfect scenario 5 shooters / Table cool very nice crew",
       "Shot twice / Second was best HW set / Hit small couldnt close it / Best roll at the table",
@@ -291,6 +314,7 @@ export const tenTon2024: Array<DayTrip> = [
     [5011],
     [1],
     ["The TableMaker"],
+    ["N"],
     ["Shot twice 3x / favorite table / 3 diff sets couldnt get over the hump"],
   ],
   [
@@ -301,6 +325,7 @@ export const tenTon2024: Array<DayTrip> = [
     [10205],
     [1],
     ["Solo"],
+    ["Y-HT"],
     [
       "Shot 1x / great groupd of dealers / HW set / solid roll ~ teens / was tired and grumpy so didnt stay",
     ],
@@ -313,6 +338,7 @@ export const tenTon2024: Array<DayTrip> = [
     [3012],
     [0.5],
     ["Solo"],
+    ["Y-HT"],
     [
       "DNS even tho had position / 3 shooters random Hit tall / 2 reds after stick change / was tired & cold and up 20% so kobayashi",
     ],
@@ -325,6 +351,7 @@ export const tenTon2024: Array<DayTrip> = [
     [7870],
     [1],
     ["Hypeman"],
+    ["N"],
     [
       "shot 1x  PSO /  6-1 HW set / perfect small ball play early on / 4 PSO in row / betting too big too early on randoms",
     ],
@@ -337,6 +364,7 @@ export const tenTon2024: Array<DayTrip> = [
     [3500],
     [1.5],
     ["Hypeman"],
+    ["N"],
     [
       "shot 5x / HW + 64/32 / mechanics + betting mistakes / SR1 54/45 2x solid rolls but all wrong betting moves",
     ],
