@@ -109,7 +109,8 @@ export interface TableRowsData {
   tripBuyIns: number[];
   tripColorUps: number[];
   tripSessionHours: number[];
-  tripPlayedWith: string[];
+  tripCrew: string[];
+  tripBonus: string[];
   tripTakeaways: string[];
   tripResults: number[];
   totalBuyIns: number;
@@ -132,7 +133,8 @@ export const createRowData = (
   const tripBuyIns: number[] = [];
   const tripColorUps: number[] = [];
   const tripSessionHours: number[] = [];
-  const tripPlayedWith: string[] = [];
+  const tripCrew: string[] = [];
+  const tripBonus: string[] = [];
   const tripTakeaways: string[] = [];
   const tripResults: number[] = [];
 
@@ -144,7 +146,8 @@ export const createRowData = (
       buyIns,
       colorUps,
       sessionHours,
-      playedWith,
+      crew,
+      bonus,
       takeaways,
     ] = daytrip;
 
@@ -167,7 +170,8 @@ export const createRowData = (
       tripBuyIns.push(buyIns[i]);
       tripColorUps.push(colorUps[i]);
       tripSessionHours.push(sessionHours[i]);
-      tripPlayedWith.push(playedWith[i]);
+      tripCrew.push(crew[i]);
+      tripBonus.push(bonus[i]);
       tripTakeaways.push(takeaways[i]);
       tripResults.push(results[i]);
     }
@@ -200,7 +204,8 @@ export const createRowData = (
     tripBuyIns,
     tripColorUps,
     tripSessionHours,
-    tripPlayedWith,
+    tripCrew,
+    tripBonus,
     tripTakeaways,
     tripResults,
     totalBuyIns,

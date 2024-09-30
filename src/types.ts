@@ -3,10 +3,11 @@ export type DayTrip = [
   Array<string>, // Location
   Array<string>, // Game Type
   Array<number>, // Buy In
-  Array<number>, // Color Up
+  Array<number>, // Color
   Array<number>, // Session Time (Hours)
-  Array<string>, // Played With
-  Array<string>, // Key Takeaways
+  Array<string>, // Crew
+  Array<string>, // Bonus
+  Array<string>, // Takeaways
 ];
 export type HandleConsecutiveRepeatValueAs = "first" | "last" | "always";
 export type TableRowDataType = string | number;
