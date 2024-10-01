@@ -299,7 +299,7 @@ export const tenTon2024: Array<DayTrip> = [
     [9500, 5000],
     [6635, 6670],
     [1.5, 1.5],
-    ["The TableMaker / Pro Craps / Bougust / Alan G", "The TableMaker"],
+    ["The TableMaker / Pro Craps / BoGust / Alan G", "The TableMaker"],
     ["N", "Y-HS"],
     [
       "Table / shot 2x / Looked good just couldn't get over the hump / Perfect scenario 5 shooters / Table cool very nice crew",
