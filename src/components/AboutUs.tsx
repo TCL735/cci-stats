@@ -59,8 +59,16 @@ export const AboutUs = () => {
       </p>
       <br />
       <p className="text-pretty">
-        If you’re interested in participating with cci.vegas email us or call
-        our vent line @ 229-NoSeven
+        If you’re interested in participating with cci.vegas{" "}
+        <a
+          href="mailto:noseven@casinotears.com"
+          target="_blank"
+          rel="noreferrer"
+          className={`${THEME_TEXT_COLOR} hover:text-white`}
+        >
+          <span>email us</span>
+        </a>{" "}
+        or call our vent line @ 229-NoSeven
       </p>
       <br />
       <p>Good Luck Hunting Craps!</p>
