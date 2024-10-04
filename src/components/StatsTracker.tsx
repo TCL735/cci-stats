@@ -22,7 +22,6 @@ import {
 
 interface StatsTrackerProps {
   label: string;
-  lineColor: string;
   yearStart?: string;
   yearEnd?: string;
   dayTrips: Array<DayTrip>;
@@ -31,7 +30,6 @@ interface StatsTrackerProps {
 export const StatsTracker: FC<StatsTrackerProps> = ({
   dayTrips,
   label,
-  lineColor,
   yearStart = `${dayjs(dayTrips[0][0]).toISOString().slice(0, 10)}`,
   yearEnd = `${dayjs(dayTrips[dayTrips.length - 1][0])
     .toISOString()

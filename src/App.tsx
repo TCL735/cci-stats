@@ -10,13 +10,7 @@ import {
 import { Tabs } from "@mantine/core";
 import { tenTon2024 } from "./data";
 import { StatsTracker } from "./components/StatsTracker";
-import {
-  NEGATIVE_LINE_COLOR_VALUE,
-  ROUTES,
-  SELECTED_BORDER_STYLE,
-  TABS,
-  THEME_TEXT_COLOR,
-} from "./types";
+import { ROUTES, SELECTED_BORDER_STYLE, TABS, THEME_TEXT_COLOR } from "./types";
 import { getTabFromLocation, useWindowDimensions } from "./utils";
 import { AboutUs } from "./components/AboutUs";
 import { CoachingPage } from "./components/CoachingPage";
@@ -106,7 +100,6 @@ export const App = () => {
               <StatsTracker
                 dayTrips={tenTon2024}
                 label={`Ten Ton is Number 1's Win/Loss`}
-                lineColor={NEGATIVE_LINE_COLOR_VALUE}
               />
             }
           />
