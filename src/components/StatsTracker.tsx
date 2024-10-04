@@ -1,8 +1,7 @@
-import React, { FC, useCallback, useMemo } from "react";
+import React, { FC, useCallback, useContext, useMemo } from "react";
 import { ECharts } from "echarts/core";
 import dayjs from "dayjs";
 import {
-  DayTrip,
   ECHARTS_SETTINGS,
   NEGATIVE_CURRENCY_TEXT_COLOR,
   NEGATIVE_LINE_COLOR_VALUE,
@@ -13,28 +12,19 @@ import {
 } from "../types";
 import { EChartsOption, ReactECharts } from "../react-echarts";
 import { StatsTableCompact, StatsTableLarge } from "./Table";
-import {
-  currency,
-  useWindowDimensions,
-  TenTon2024,
-  TableContext,
-} from "../utils";
+import { currency, useWindowDimensions, TableContext } from "../utils";
 
 interface StatsTrackerProps {
   label: string;
-  yearStart?: string;
-  yearEnd?: string;
-  dayTrips: Array<DayTrip>;
 }
 
-export const StatsTracker: FC<StatsTrackerProps> = ({
-  dayTrips,
-  label,
-  yearStart = `${dayjs(dayTrips[0][0]).toISOString().slice(0, 10)}`,
-  yearEnd = `${dayjs(dayTrips[dayTrips.length - 1][0])
+export const StatsTracker: FC<StatsTrackerProps> = ({ label }) => {
+  const { dayTrips } = useContext(TableContext);
+  const yearStart = `${dayjs(dayTrips[0][0]).toISOString().slice(0, 10)}`;
+  const yearEnd = `${dayjs(dayTrips[dayTrips.length - 1][0])
     .toISOString()
-    .slice(0, 10)}`,
-}) => {
+    .slice(0, 10)}`;
+
   const { width, heightClass } = useWindowDimensions();
 
   const optionWithoutSeries = useMemo(
@@ -250,7 +240,7 @@ export const StatsTracker: FC<StatsTrackerProps> = ({
   );
 
   return (
-    <TableContext.Provider value={TenTon2024}>
+    <>
       <div className="mb-3 mx-3 bg-black">
         <div className={`${heightClass} mt-5`}>
           <ReactECharts
@@ -270,6 +260,6 @@ export const StatsTracker: FC<StatsTrackerProps> = ({
       >
         <span>Casino Tears Podcast</span>
       </a>
-    </TableContext.Provider>
+    </>
   );
 };

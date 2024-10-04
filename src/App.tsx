@@ -8,10 +8,14 @@ import {
   useLocation,
 } from "react-router-dom";
 import { Tabs } from "@mantine/core";
-import { tenTon2024 } from "./data";
 import { StatsTracker } from "./components/StatsTracker";
 import { ROUTES, SELECTED_BORDER_STYLE, TABS, THEME_TEXT_COLOR } from "./types";
-import { getTabFromLocation, useWindowDimensions } from "./utils";
+import {
+  getTabFromLocation,
+  TableContext,
+  TenTon2024,
+  useWindowDimensions,
+} from "./utils";
 import { AboutUs } from "./components/AboutUs";
 import { CoachingPage } from "./components/CoachingPage";
 
@@ -97,10 +101,9 @@ export const App = () => {
           <Route
             path={ROUTES.STATS_2024}
             element={
-              <StatsTracker
-                dayTrips={tenTon2024}
-                label={`Ten Ton is Number 1's Win/Loss`}
-              />
+              <TableContext.Provider value={TenTon2024}>
+                <StatsTracker label={`Ten Ton is Number 1's Win/Loss`} />
+              </TableContext.Provider>
             }
           />
           <Route path={ROUTES.COACHING} element={<CoachingPage />} />
