@@ -8,6 +8,7 @@ import {
   DURANGO,
   DayTrip,
   HORSESHOE,
+  MOHEGAN_AT_VIRGIN,
   OSHEAS,
   PALMS,
   PARIS,
@@ -367,6 +368,33 @@ export const tenTon2024: Array<DayTrip> = [
     ["N"],
     [
       "shot 5x / HW + 64/32 / mechanics + betting mistakes / SR1 54/45 2x solid rolls but all wrong betting moves",
+    ],
+  ],
+  [
+    dayjs("2024-10-04").valueOf(),
+    [MOHEGAN_AT_VIRGIN],
+    ["$15 w/ Repeater"],
+    [3000],
+    [2450],
+    [1.5],
+    ["Dice Setters"],
+    ["Y-R1x"],
+    [
+      "*.775 DICE* shot 2x / 64/32 then HW / mechanics felt great true results / SL2 &1 / soft bounce dice sat down quick / worth playing again / mellow good vibe / boths 7's comaneci's",
+    ],
+  ],
+  [
+    dayjs("2024-10-05").valueOf(),
+    [DURANGO, DURANGO],
+    ["$15 w/ ATS", "$15  Craps + Crapless both w/ ATS "],
+    [2400, 10000],
+    [0, 10103],
+    [1.5, 1],
+    ["Dr Sean / Craps RN", "Solo"],
+    ["Y-HS", "N"],
+    [
+      "shot 3x /HW 64/32 21/32 / table tad bouncy / midnight 3x + aces with 21 set / biggest leak still qualifying + betting too much on randoms + chasing a bit / patience to wait for dice not there / tired / good vibe in casino",
+      "shot 2x craps / 2x crapless64/32 workhorse w/ TT2HTD got up early / switched to crapless bet small on all shooters / decent rolls experimented with21/32 set one number away from both sides on both rolls/ biggest win was mindset patience",
     ],
   ],
 ];

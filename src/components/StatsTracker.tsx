@@ -110,6 +110,7 @@ export const StatsTracker: FC<StatsTrackerProps> = ({ label }) => {
             rotate: 45,
             formatter: (date: number) => dayjs(date).format("MMM DD"),
             color: "#C48125",
+            hideOverlap: true,
           },
           axisLine: {
             lineStyle: {
@@ -117,6 +118,8 @@ export const StatsTracker: FC<StatsTrackerProps> = ({ label }) => {
             },
           },
           axisTick: {
+            show: true,
+            length: 5,
             lineStyle: {
               color: "#C48125",
               width: 1,

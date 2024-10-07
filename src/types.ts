@@ -38,6 +38,7 @@ export const MANDALAY_BAY = "Mandalay Bay";
 export const MGM = "MGM";
 export const MGM_GRAND = "MGM Grand";
 export const MIRAGE = "Mirage";
+export const MOHEGAN_AT_VIRGIN = "Mohegan @ Virgin";
 export const OSHEAS = "O'Sheas";
 export const PALAZZO = "Palazzo";
 export const PALMS = "Palms";
