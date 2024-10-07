@@ -47,12 +47,12 @@ export const CoachingPage = () => {
       <br />
       <br />
       <a
-        href="https://wagemembers.com/tony-leo/"
+        href="https://www.thegamingpro.com/advantage-dice-control/"
         target="_blank"
         rel="noreferrer"
         className={`${THEME_TEXT_COLOR} hover:text-white`}
       >
-        <span>WAGE (Tony Leo) / Las Vegas</span>
+        <span>Advantage Dice Control (Tony Leo) / Las Vegas</span>
       </a>
       <br />
       <br />
