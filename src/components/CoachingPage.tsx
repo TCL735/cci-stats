@@ -27,6 +27,16 @@ export const CoachingPage = () => {
       </p>
       <br />
       <a
+        href="https://www.thegamingpro.com/advantage-dice-control/"
+        target="_blank"
+        rel="noreferrer"
+        className={`${THEME_TEXT_COLOR} hover:text-white`}
+      >
+        <span>Advantage Dice Control (Tony Leo) / Las Vegas</span>
+      </a>
+      <br />
+      <br />
+      <a
         href="https://www.axispowercraps.com/"
         target="_blank"
         rel="noreferrer"
@@ -43,16 +53,6 @@ export const CoachingPage = () => {
         className={`${THEME_TEXT_COLOR} hover:text-white`}
       >
         <span>Dice Coach (Beau Parker) / Las Vegas</span>
-      </a>
-      <br />
-      <br />
-      <a
-        href="https://www.thegamingpro.com/advantage-dice-control/"
-        target="_blank"
-        rel="noreferrer"
-        className={`${THEME_TEXT_COLOR} hover:text-white`}
-      >
-        <span>Advantage Dice Control (Tony Leo) / Las Vegas</span>
       </a>
       <br />
       <br />
