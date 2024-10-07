@@ -21,6 +21,7 @@ import {
   MGM,
   MGM_GRAND,
   MIRAGE,
+  MOHEGAN_AT_VIRGIN,
   NEGATIVE_CURRENCY_TEXT_COLOR,
   OSHEAS,
   PALAZZO,
@@ -87,10 +88,13 @@ export const getRewardsProgram = (location: string): string => {
       return "Fontainebleau Rewards";
 
     case DURANGO:
-      return "Stations";
+      return "my|Rewards Boarding Pass";
 
     case PALMS:
       return "Club Serrano";
+
+    case MOHEGAN_AT_VIRGIN:
+      return "Momentum";
 
     default:
       return location;
