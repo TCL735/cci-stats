@@ -1,4 +1,5 @@
 import React, { FC, useCallback, useContext, useMemo } from "react";
+import { useLocation } from "react-router-dom";
 import { ECharts } from "echarts/core";
 import dayjs from "dayjs";
 import {
@@ -224,7 +225,7 @@ export const StatsTracker: FC<StatsTrackerProps> = ({ label }) => {
               return "";
             },
             valueAnimation: true,
-            offset: [-70, 0],
+            offset: [-50, -25],
             color: "#C48125",
           },
           data,
@@ -242,6 +243,8 @@ export const StatsTracker: FC<StatsTrackerProps> = ({ label }) => {
     [width, option],
   );
 
+  const { pathname } = useLocation();
+
   return (
     <>
       <div className="mb-3 mx-3 bg-black">
@@ -249,6 +252,7 @@ export const StatsTracker: FC<StatsTrackerProps> = ({ label }) => {
           <ReactECharts
             onChartReady={onChartReady}
             option={optionWithoutSeries}
+            pathname={pathname}
             settings={ECHARTS_SETTINGS}
             renderer="canvas"
           />
