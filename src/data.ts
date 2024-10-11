@@ -397,4 +397,17 @@ export const tenTon2024: Array<DayTrip> = [
       "shot 2x craps / 2x crapless64/32 workhorse w/ TT2HTD got up early / switched to crapless bet small on all shooters / decent rolls experimented with21/32 set one number away from both sides on both rolls/ biggest win was mindset patience",
     ],
   ],
+  [
+    dayjs("2024-10-10").valueOf(),
+    [MOHEGAN_AT_VIRGIN],
+    ["$15 w/ Repeater"],
+    [5000],
+    [6710],
+    [1.5],
+    ["Dice Setters"],
+    ["Y-R1x"],
+    [
+      "shot 8x + SL2 / multiple sets 21/23 produced / unforgiving was how Jeff described it / lobs worked best / all rolls ~ < 10 except one able to get to table max (3K) on 10 and layed both 4 & 10 on repeater side",
+    ],
+  ],
 ];
