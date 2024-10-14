@@ -225,7 +225,7 @@ export const StatsTracker: FC<StatsTrackerProps> = ({ label }) => {
               return "";
             },
             valueAnimation: true,
-            offset: [-50, -25],
+            offset: [-60, -15],
             color: "#C48125",
           },
           data,

@@ -410,4 +410,30 @@ export const tenTon2024: Array<DayTrip> = [
       "shot 8x + SL2 / multiple sets 21/23 produced / unforgiving was how Jeff described it / lobs worked best / all rolls ~ < 10 except one able to get to table max (3K) on 10 and layed both 4 & 10 on repeater side",
     ],
   ],
+  [
+    dayjs("2024-10-12").valueOf(),
+    [PLANET_HOLLYWOOD],
+    ["$15 w/ ATS"],
+    [7750],
+    [7410],
+    [2],
+    ["Jester / Texarkajon"],
+    ["N"],
+    [
+      "SL2 / multiple sets 14/12, 21/32 / choppy but got expected results / 7 when dice kicking to left / total grind game / never up",
+    ],
+  ],
+  [
+    dayjs("2024-10-13").valueOf(),
+    [CAESARS_PALACE],
+    ["$50 w/ Repeater"],
+    [10000],
+    [11115],
+    [1],
+    ["Texarkajon"],
+    ["Y-R4x"],
+    [
+      "each shot 2x / 1/4/12 got exepected results / first roll in double digits / Texarkajon at least a 26 roller 4,5,9,10 repeaters which i layed due to being down at start of roll / high pt up 1.7",
+    ],
+  ],
 ];
