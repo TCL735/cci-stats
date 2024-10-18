@@ -13,6 +13,7 @@ import {
   PALMS,
   PARIS,
   PLANET_HOLLYWOOD,
+  RIO,
 } from "./types";
 
 export const tenTon2024: Array<DayTrip> = [
@@ -434,6 +435,33 @@ export const tenTon2024: Array<DayTrip> = [
     ["Y-R4x"],
     [
       "each shot 2x / 1/4/12 got exepected results / first roll in double digits / Texarkajon at least a 26 roller 4,5,9,10 repeaters which i layed due to being down at start of roll / high pt up 1.7",
+    ],
+  ],
+  [
+    dayjs("2024-10-14").valueOf(),
+    [PLANET_HOLLYWOOD, PARIS],
+    ["$15 w/ ATS", "$25 Crapless"],
+    [7400, 3500],
+    [8527, 2000],
+    [1, 0.5],
+    ["Secret Asian Man", "Secret Asian Man"],
+    ["Y-HT2x", "N"],
+    [
+      "shot 3x / 1/4/12 got desired results / experimenting with new hybrid don't system / was 12 away from making all / left when it got too crowded / easy night was never down",
+      "Absolute horrorshow + shitshow /  3 strikes and I was out / never had a roll longer than 4 / The curse at this crapless table is real / What voodoo preistess do I need to see about this",
+    ],
+  ],
+  [
+    dayjs("2024-10-16").valueOf(),
+    [RIO],
+    ["$15 w/ ATS"],
+    [2400],
+    [2400],
+    [2],
+    ["MadHatter"],
+    ["N"],
+    [
+      "18 shooters total / shot 3x / maye 2 rolls total over 10 barely / table bounce soft not great / didnt bet according to buy in / should've been < 200/shooter instead of my 600 on myself / tired frustrated waiting for this spot to open / solidified my stance on never playing a table with more than 3-4 players on it/ if stayed true to the TT2HT i would have broke even",
     ],
   ],
 ];
