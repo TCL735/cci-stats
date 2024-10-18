@@ -31,6 +31,7 @@ import {
   PLANET_HOLLYWOOD,
   POSITIVE_CURRENCY_TEXT_COLOR,
   RESORTS_WORLD,
+  RIO,
   ROUTES,
   TABS,
   TableRowDataType,
@@ -95,6 +96,9 @@ export const getRewardsProgram = (location: string): string => {
 
     case MOHEGAN_AT_VIRGIN:
       return "Momentum";
+
+    case RIO:
+      return "Rio Rewards";
 
     default:
       return location;

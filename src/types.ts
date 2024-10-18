@@ -46,6 +46,7 @@ export const PARIS = "Paris";
 export const PARK_MGM = "Park MGM";
 export const PLANET_HOLLYWOOD = "Planet Hollywood";
 export const RESORTS_WORLD = "Resorts World";
+export const RIO = "Rio";
 export const VENETIAN = "Venetian";
 export const VP = "Venetian/Palazzo";
 export const WYNN = "Wynn";
