@@ -503,4 +503,17 @@ export const tenTon2024: Array<DayTrip> = [
       "shot primarily one set 21/32 got exepected results / 3 of 3 rolls double digits one was high 20's with 4 points made / stayed true to the TT2HTD betting system w/ mulitple repeaters made but imporatntly also paid w/ lay bets / played repeaters like a beethoven / last roll was a sayanora dealor roll / also minimized random shooter betting - mostly made my own way",
     ],
   ],
+  [
+    dayjs("2024-10-29").valueOf(),
+    [HORSESHOE],
+    ["$15 Crapless w/ no & w/ ATS"],
+    [10000],
+    [12106],
+    [1.5],
+    ["Ed / Mudslide / Sweet Lou"],
+    ["Y-HS"],
+    [
+      "shot 1x at each table / 21/32 zero contril looked like shit prolly ave roll count / Ed had a great roll needed the 10 for all / lay it for 3k / continued to bet small on randoms / side note never playing a table w/ a bonus",
+    ],
+  ],
 ];
