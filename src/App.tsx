@@ -10,35 +10,45 @@ import {
 import { Tabs } from "@mantine/core";
 import { StatsTracker } from "./components/StatsTracker";
 import { ROUTES, SELECTED_BORDER_STYLE, TABS, THEME_TEXT_COLOR } from "./types";
-import {
-  getTabFromLocation,
-  TableContext,
-  TenTon2024,
-  useWindowDimensions,
-} from "./utils";
+import { getTabFromLocation, TableContext, TenTon2024 } from "./utils";
 import { AboutUs } from "./components/AboutUs";
 import { CoachingPage } from "./components/CoachingPage";
 
 export const Navigation = () => {
-  const { height } = useWindowDimensions();
   const panelRef = useRef<HTMLDivElement>(null);
-  const [panelHeight, setPanelHeight] = useState<string>("h-screen");
+  const [panelHeight, setPanelHeight] = useState<string>("");
+  const [contentHeight, setContentHeight] = useState(0);
   const { pathname } = useLocation();
   const [activeTab, setActiveTab] = useState<string | null>(
     getTabFromLocation(pathname),
   );
 
   useEffect(() => {
+    if (panelRef.current) {
+      const observer = new ResizeObserver((entries) => {
+        for (let entry of entries) {
+          setContentHeight(entry.contentRect.height);
+        }
+      });
+
+      observer.observe(panelRef.current);
+      return () => {
+        observer.disconnect();
+      };
+    }
+  }, []);
+
+  useEffect(() => {
     setActiveTab(getTabFromLocation(pathname));
   }, [pathname]);
 
   useEffect(() => {
-    if (Number(panelRef?.current?.clientHeight) >= height) {
+    if (contentHeight >= window.innerHeight) {
       setPanelHeight("h-max");
     } else {
       setPanelHeight("h-screen");
     }
-  }, [activeTab, height, panelRef]);
+  }, [contentHeight]);
 
   return (
     <div className="bg-black">
