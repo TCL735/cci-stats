@@ -280,22 +280,22 @@ export const useTrackerDimensions = (
   );
 
   useEffect(() => {
-    if (Element) {
-      const observer = new ResizeObserver((entries) => {
-        for (let entry of entries) {
-          setTrackerDimensions({
-            height: entry.contentRect.height,
-            width: entry.contentRect.width,
-          });
-        }
-      });
+    const observer = new ResizeObserver((entries) => {
+      for (let entry of entries) {
+        setTrackerDimensions({
+          height: entry.contentRect.height,
+          width: entry.contentRect.width,
+        });
+      }
+    });
 
+    if (element) {
       observer.observe(element);
-
-      return () => {
-        observer.disconnect();
-      };
     }
+
+    return () => {
+      observer.disconnect();
+    };
   }, [element]);
 
   return {
