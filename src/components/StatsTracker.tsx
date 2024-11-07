@@ -13,7 +13,7 @@ import {
 } from "../types";
 import { EChartsOption, ReactECharts } from "../react-echarts";
 import { StatsTableCompact, StatsTableLarge } from "./Table";
-import { currency, useWindowDimensions, TableContext } from "../utils";
+import { currency, useTrackerDimensions, TableContext } from "../utils";
 
 interface StatsTrackerProps {
   label: string;
@@ -26,7 +26,7 @@ export const StatsTracker: FC<StatsTrackerProps> = ({ label }) => {
     .toISOString()
     .slice(0, 10)}`;
 
-  const { width, heightClass } = useWindowDimensions();
+  const { width, heightClass } = useTrackerDimensions(window.document.body);
 
   const optionWithoutSeries = useMemo(
     () =>
@@ -239,8 +239,7 @@ export const StatsTracker: FC<StatsTrackerProps> = ({ label }) => {
     (chart: ECharts) => {
       setTimeout(() => chart.setOption(option), 100);
     },
-    /* eslint-disable-next-line react-hooks/exhaustive-deps */
-    [width, option],
+    [width, option], // eslint-disable-line react-hooks/exhaustive-deps
   );
 
   const { pathname } = useLocation();

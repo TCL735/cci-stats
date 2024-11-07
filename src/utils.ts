@@ -265,36 +265,43 @@ export const getWindowDimensions = () => {
   };
 };
 
-export const useWindowDimensions = (): WindowDimensions & {
+const INITIAL_WINDOW_DIMENSIONS = {
+  height: 0,
+  width: 0,
+};
+
+export const useTrackerDimensions = (
+  element: Element,
+): WindowDimensions & {
   heightClass: string;
 } => {
-  const [windowDimensions, setWindowDimensions] = useState<WindowDimensions>(
-    getWindowDimensions(),
-  );
-  const [heightClass, setHeightClass] = useState<string>(
-    getHeightClass(windowDimensions.height),
+  const [trackerDimensions, setTrackerDimensions] = useState<WindowDimensions>(
+    INITIAL_WINDOW_DIMENSIONS,
   );
 
   useEffect(() => {
-    function handleResize() {
-      const newDimensions = getWindowDimensions();
-      if (
-        newDimensions.height !== windowDimensions.height ||
-        newDimensions.width !== windowDimensions.width
-      ) {
-        setWindowDimensions(newDimensions);
-        setHeightClass(getHeightClass(newDimensions.height));
-      }
+    if (Element) {
+      const observer = new ResizeObserver((entries) => {
+        for (let entry of entries) {
+          setTrackerDimensions({
+            height: entry.contentRect.height,
+            width: entry.contentRect.width,
+          });
+        }
+      });
+
+      observer.observe(element);
+
+      return () => {
+        observer.disconnect();
+      };
     }
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [element]);
 
   return {
-    height: windowDimensions.height,
-    width: windowDimensions.width,
-    heightClass,
+    height: trackerDimensions.height,
+    width: trackerDimensions.width,
+    heightClass: getHeightClass(trackerDimensions.height),
   };
 };
 
