@@ -4,7 +4,7 @@ import { NEUTRAL_TEXT_COLOR, THEME_TEXT_COLOR } from "../types";
 export const AboutUs = () => {
   return (
     <div className={`ml-3 pt-4 ${NEUTRAL_TEXT_COLOR}`}>
-      <h3 className={`font-extrabold ${THEME_TEXT_COLOR}`}>About us</h3>
+      <h3 className={`font-extrabold ${THEME_TEXT_COLOR}`}>About Us</h3>
       <br />
       <p className="text-pretty">
         Ten Ton Is Number 1 (or Ten Ton as his friends call him) co-hosts the

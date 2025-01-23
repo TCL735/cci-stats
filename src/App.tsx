@@ -13,6 +13,7 @@ import { ROUTES, SELECTED_BORDER_STYLE, TABS, THEME_TEXT_COLOR } from "./types";
 import { getTabFromLocation, TableContext, TenTon2024 } from "./utils";
 import { AboutUs } from "./components/AboutUs";
 import { CoachingPage } from "./components/CoachingPage";
+import { UpdatesNews } from "./components/UpdatesNews";
 
 export const Navigation = () => {
   const panelRef = useRef<HTMLDivElement>(null);
@@ -78,6 +79,18 @@ export const Navigation = () => {
               {TABS.STATS_2024}
             </Tabs.Tab>
           </Link>
+          <Link to={ROUTES.UPDATES_NEWS}>
+            <Tabs.Tab
+              className={`px-4 py-3 hover:text-white ${
+                activeTab === TABS.UPDATES_NEWS
+                  ? SELECTED_BORDER_STYLE
+                  : "border-black/100"
+              } ${THEME_TEXT_COLOR}`}
+              value={TABS.UPDATES_NEWS}
+            >
+              {TABS.UPDATES_NEWS}
+            </Tabs.Tab>
+          </Link>
           <Link to={ROUTES.COACHING}>
             <Tabs.Tab
               className={`px-4 py-3 hover:text-white ${
@@ -108,6 +121,7 @@ export const App = () => {
         <Route path="/" element={<Navigation />}>
           <Route path="/" index element={<AboutUs />} />
           <Route path={ROUTES.ABOUT_US} element={<AboutUs />} />
+          <Route path={ROUTES.UPDATES_NEWS} element={<UpdatesNews />} />
           <Route
             path={ROUTES.STATS_2024}
             element={
