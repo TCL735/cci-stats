@@ -252,6 +252,9 @@ export const getTabFromLocation = (pathname: string): TABS => {
     case ROUTES.COACHING:
       return TABS.COACHING;
 
+    case ROUTES.UPDATES_NEWS:
+      return TABS.UPDATES_NEWS;
+
     default:
       return TABS.COLOR_COMIN_IN;
   }
