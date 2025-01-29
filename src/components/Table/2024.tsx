@@ -6,13 +6,13 @@ import {
   POSITIVE_CURRENCY_TEXT_COLOR,
   THEME_TEXT_COLOR,
   TableRowDataType,
-} from "../types";
+} from "../../types";
 import {
   TableContext,
   currencyFormatter,
   dateFormatter,
   getRewardsProgram,
-} from "../utils";
+} from "../../utils";
 
 interface TableColumnProps {
   formatter?: (v: TableRowDataType) => string;

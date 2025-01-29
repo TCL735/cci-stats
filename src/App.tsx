@@ -126,7 +126,10 @@ export const App = () => {
             path={ROUTES.STATS_2024}
             element={
               <TableContext.Provider value={TenTon2024}>
-                <StatsTracker label={`Ten Ton is Number 1's Win/Loss`} />
+                <StatsTracker
+                  label={`Ten Ton is Number 1's Win/Loss`}
+                  endLabelOffset={[-55, -15]}
+                />
               </TableContext.Provider>
             }
           />
