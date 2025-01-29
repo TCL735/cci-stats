@@ -12,14 +12,18 @@ import {
   TOOLTIP_COLOR_VALUE,
 } from "../types";
 import { EChartsOption, ReactECharts } from "../react-echarts";
-import { StatsTableCompact, StatsTableLarge } from "./Table";
+import { StatsTableCompact, StatsTableLarge } from "./Table/2024";
 import { currency, useTrackerDimensions, TableContext } from "../utils";
 
 interface StatsTrackerProps {
   label: string;
+  endLabelOffset?: [number, number];
 }
 
-export const StatsTracker: FC<StatsTrackerProps> = ({ label }) => {
+export const StatsTracker: FC<StatsTrackerProps> = ({
+  label,
+  endLabelOffset = [0, 0],
+}) => {
   const { dayTrips } = useContext(TableContext);
   const yearStart = `${dayjs(dayTrips[0][0]).toISOString().slice(0, 10)}`;
   const yearEnd = `${dayjs(dayTrips[dayTrips.length - 1][0])
@@ -225,7 +229,7 @@ export const StatsTracker: FC<StatsTrackerProps> = ({ label }) => {
               return "";
             },
             valueAnimation: true,
-            offset: [-55, -15],
+            offset: endLabelOffset,
             color: "#C48125",
           },
           data,
@@ -233,7 +237,7 @@ export const StatsTracker: FC<StatsTrackerProps> = ({ label }) => {
         },
       ],
     } as EChartsOption;
-  }, [optionWithoutSeries, dayTrips]);
+  }, [optionWithoutSeries, dayTrips, endLabelOffset]);
 
   const onChartReady = useCallback(
     (chart: ECharts) => {
