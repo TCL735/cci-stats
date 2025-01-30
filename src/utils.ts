@@ -377,14 +377,17 @@ export const getTabFromLocation = (pathname: string): TABS => {
     case ROUTES.STATS_2024:
       return TABS.STATS_2024;
 
+    case ROUTES.NEWS_NOTES:
+      return TABS.NEWS_NOTES;
+
+    case ROUTES.THE_PODCAST:
+      return TABS.THE_PODCAST;
+
+    case ROUTES.MERCH:
+      return TABS.MERCH;
+
     case ROUTES.COACHING:
       return TABS.COACHING;
-
-    case ROUTES.UPDATES_NEWS:
-      return TABS.UPDATES_NEWS;
-
-    case ROUTES.ABOUT_US:
-      return TABS.COLOR_COMIN_IN;
 
     default:
       return TABS.STATS_2025;

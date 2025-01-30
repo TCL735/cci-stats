@@ -84,17 +84,19 @@ export const ECHARTS_SETTINGS = {
 };
 
 export const enum TABS {
-  COLOR_COMIN_IN = "Color Comin' In",
-  UPDATES_NEWS = "Updates & News",
-  STATS_2024 = "2024 Stats",
   STATS_2025 = "2025 Stats",
+  STATS_2024 = "2024 Stats",
+  NEWS_NOTES = "News & Notes",
+  THE_PODCAST = "The Podcast",
+  MERCH = "Merch",
   COACHING = "Coaching",
 }
 
 export const enum ROUTES {
-  ABOUT_US = "/about-us",
-  UPDATES_NEWS = "/updates-news",
-  STATS_2024 = "/stats/2024",
   STATS_2025 = "/stats/2025",
+  STATS_2024 = "/stats/2024",
+  NEWS_NOTES = "/news-notes",
+  THE_PODCAST = "/podcast",
+  MERCH = "/merch",
   COACHING = "/coaching",
 }

@@ -11,9 +11,9 @@ import { Tabs } from "@mantine/core";
 import { StatsTracker } from "./components/StatsTracker";
 import { ROUTES, SELECTED_BORDER_STYLE, TABS, THEME_TEXT_COLOR } from "./types";
 import { getTabFromLocation, Table2025Context, TenTon2025 } from "./utils";
-import { AboutUs } from "./components/AboutUs";
-import { CoachingPage } from "./components/CoachingPage";
-import { UpdatesNews } from "./components/UpdatesNews";
+import { NewsNotes } from "./components/NewsNotes";
+import { ThePodcast } from "./components/ThePodcast";
+import { Merch } from "./components/Merch";
 
 export const Navigation = () => {
   const panelRef = useRef<HTMLDivElement>(null);
@@ -54,19 +54,7 @@ export const Navigation = () => {
   return (
     <div className="bg-black">
       <Tabs value={activeTab} variant="default" keepMounted={false}>
-        <Tabs.List className="flex flex-row flex-wrap justify-start border-b-0">
-          <Link to={ROUTES.ABOUT_US}>
-            <Tabs.Tab
-              className={`px-4 py-3 hover:text-white ${
-                activeTab === TABS.COLOR_COMIN_IN
-                  ? SELECTED_BORDER_STYLE
-                  : "border-black/100"
-              } ${THEME_TEXT_COLOR}`}
-              value={TABS.COLOR_COMIN_IN}
-            >
-              {TABS.COLOR_COMIN_IN}
-            </Tabs.Tab>
-          </Link>
+        <Tabs.List className="flex flex-nowrap flex-row justify-start border-b-0">
           <Link to={ROUTES.STATS_2025}>
             <Tabs.Tab
               className={`px-4 py-3 hover:text-white ${
@@ -79,28 +67,40 @@ export const Navigation = () => {
               {TABS.STATS_2025}
             </Tabs.Tab>
           </Link>
-          <Link to={ROUTES.UPDATES_NEWS}>
+          <Link to={ROUTES.NEWS_NOTES}>
             <Tabs.Tab
               className={`px-4 py-3 hover:text-white ${
-                activeTab === TABS.UPDATES_NEWS
+                activeTab === TABS.NEWS_NOTES
                   ? SELECTED_BORDER_STYLE
                   : "border-black/100"
               } ${THEME_TEXT_COLOR}`}
-              value={TABS.UPDATES_NEWS}
+              value={TABS.NEWS_NOTES}
             >
-              {TABS.UPDATES_NEWS}
+              {TABS.NEWS_NOTES}
             </Tabs.Tab>
           </Link>
-          <Link to={ROUTES.COACHING}>
+          <Link to={ROUTES.THE_PODCAST}>
             <Tabs.Tab
               className={`px-4 py-3 hover:text-white ${
-                activeTab === TABS.COACHING
+                activeTab === TABS.THE_PODCAST
                   ? SELECTED_BORDER_STYLE
                   : "border-black/100"
               } ${THEME_TEXT_COLOR}`}
-              value={TABS.COACHING}
+              value={TABS.THE_PODCAST}
             >
-              {TABS.COACHING}
+              {TABS.THE_PODCAST}
+            </Tabs.Tab>
+          </Link>
+          <Link to={ROUTES.MERCH}>
+            <Tabs.Tab
+              className={`px-4 py-3 hover:text-white ${
+                activeTab === TABS.MERCH
+                  ? SELECTED_BORDER_STYLE
+                  : "border-black/100"
+              } ${THEME_TEXT_COLOR}`}
+              value={TABS.MERCH}
+            >
+              {TABS.MERCH}
             </Tabs.Tab>
           </Link>
         </Tabs.List>
@@ -114,37 +114,25 @@ export const Navigation = () => {
   );
 };
 
+const Stats2025 = () => (
+  <Table2025Context.Provider value={TenTon2025}>
+    <StatsTracker
+      label={`Ten Ton is Number 1's Win/Loss`}
+      endLabelOffset={[-55, -15]}
+    />
+  </Table2025Context.Provider>
+);
+
 export const App = () => {
   return (
     <HashRouter>
       <Routes>
         <Route path="/" element={<Navigation />}>
-          <Route
-            path="/"
-            index
-            element={
-              <Table2025Context.Provider value={TenTon2025}>
-                <StatsTracker
-                  label={`Ten Ton is Number 1's Win/Loss`}
-                  endLabelOffset={[-55, -15]}
-                />
-              </Table2025Context.Provider>
-            }
-          />
-          <Route path={ROUTES.ABOUT_US} element={<AboutUs />} />
-          <Route path={ROUTES.UPDATES_NEWS} element={<UpdatesNews />} />
-          <Route
-            path={ROUTES.STATS_2025}
-            element={
-              <Table2025Context.Provider value={TenTon2025}>
-                <StatsTracker
-                  label={`Ten Ton is Number 1's Win/Loss`}
-                  endLabelOffset={[-55, -15]}
-                />
-              </Table2025Context.Provider>
-            }
-          />
-          <Route path={ROUTES.COACHING} element={<CoachingPage />} />
+          <Route path="/" index element={<Stats2025 />} />
+          <Route path={ROUTES.STATS_2025} element={<Stats2025 />} />
+          <Route path={ROUTES.NEWS_NOTES} element={<NewsNotes />} />
+          <Route path={ROUTES.THE_PODCAST} element={<ThePodcast />} />
+          <Route path={ROUTES.MERCH} element={<Merch />} />
         </Route>
       </Routes>
     </HashRouter>

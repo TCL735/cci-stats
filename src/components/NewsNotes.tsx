@@ -1,6 +1,13 @@
 import React from "react";
 import { NEUTRAL_TEXT_COLOR, THEME_TEXT_COLOR } from "../types";
 
+export const NewsNotes = () => (
+  <>
+    <AboutUs />
+    <UpdatesNews />
+  </>
+);
+
 export const AboutUs = () => {
   return (
     <div className={`ml-3 pt-4 ${NEUTRAL_TEXT_COLOR}`}>
@@ -73,6 +80,56 @@ export const AboutUs = () => {
       <br />
       <p>Good Luck Hunting Craps!</p>
       <p>Ten Ton</p>
+      <br />
+    </div>
+  );
+};
+
+export const UpdatesNews = () => {
+  return (
+    <div className={`ml-3 pt-4 ${NEUTRAL_TEXT_COLOR}`}>
+      <h3 className={`font-extrabold ${THEME_TEXT_COLOR}`}>Updates & News</h3>
+      <br />
+      <p className="text-pretty">
+        1.21.25 - Version 2.0 of CCI.Vegas goes live/active on Feb 1 just in
+        time for the start of the 2025 Craps Hunting Season. The major update to
+        this will be incorporating either an image or image link providing the
+        classic end of session rack picture proof. The site will work in tandem
+        with our{" "}
+        <a
+          href="https://www.instagram.com/casinotearspodcast/"
+          target="_blank"
+          rel="noreferrer"
+          className={`${THEME_TEXT_COLOR} hover:text-white`}
+        >
+          <span>Instagram</span>
+        </a>{" "}
+        which provides "real time” tracking of my casino sessions along with IG
+        stories spotlighting the events of the evening with pre and post session
+        pics.{" "}
+      </p>
+      <br />
+      <p className="text-pretty">
+        Re 2024 - it was a good test run and I learned a lot - most importantly
+        tracking is very difficult especially when you’re playing multiple
+        sessions while doing a ton of other things like having a full time job,
+        a weekly podcast, a life ….etc etc etc. Right before our 3 day class
+        experience in Nov was when I fell off with the tracking. Horrible timing
+        as I went on to have one helluva end to the 2024 craps hunting season.{" "}
+      </p>
+      <br />
+      <p className="text-pretty">
+        Lots and lots of helpful insights were gleaned from the 2024 data
+        analysis though. This tracking helped me take an objective look at a few
+        factors of my play which ultimately led to some major improvements. I’m
+        hoping to be one of the only social media gambling influencers to
+        provide this kind of honest/real data because if you’re out there
+        believing all these slots, sports betting, black jack etc etc
+        influencers are winning players…..well….I have a bridge to sell you and
+        my contact info is listed above 😊
+      </p>
+      <br />
+      <p>Ten Ton is Number 1</p>
       <br />
     </div>
   );
