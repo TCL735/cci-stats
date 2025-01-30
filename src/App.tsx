@@ -10,7 +10,7 @@ import {
 import { Tabs } from "@mantine/core";
 import { StatsTracker } from "./components/StatsTracker";
 import { ROUTES, SELECTED_BORDER_STYLE, TABS, THEME_TEXT_COLOR } from "./types";
-import { getTabFromLocation, TableContext, TenTon2024 } from "./utils";
+import { getTabFromLocation, Table2025Context, TenTon2025 } from "./utils";
 import { AboutUs } from "./components/AboutUs";
 import { CoachingPage } from "./components/CoachingPage";
 import { UpdatesNews } from "./components/UpdatesNews";
@@ -67,16 +67,16 @@ export const Navigation = () => {
               {TABS.COLOR_COMIN_IN}
             </Tabs.Tab>
           </Link>
-          <Link to={ROUTES.STATS_2024}>
+          <Link to={ROUTES.STATS_2025}>
             <Tabs.Tab
               className={`px-4 py-3 hover:text-white ${
-                activeTab === TABS.STATS_2024
+                activeTab === TABS.STATS_2025
                   ? SELECTED_BORDER_STYLE
                   : "border-black/100"
               } ${THEME_TEXT_COLOR}`}
-              value={TABS.STATS_2024}
+              value={TABS.STATS_2025}
             >
-              {TABS.STATS_2024}
+              {TABS.STATS_2025}
             </Tabs.Tab>
           </Link>
           <Link to={ROUTES.UPDATES_NEWS}>
@@ -119,18 +119,29 @@ export const App = () => {
     <HashRouter>
       <Routes>
         <Route path="/" element={<Navigation />}>
-          <Route path="/" index element={<AboutUs />} />
-          <Route path={ROUTES.ABOUT_US} element={<AboutUs />} />
-          <Route path={ROUTES.UPDATES_NEWS} element={<UpdatesNews />} />
           <Route
-            path={ROUTES.STATS_2024}
+            path="/"
+            index
             element={
-              <TableContext.Provider value={TenTon2024}>
+              <Table2025Context.Provider value={TenTon2025}>
                 <StatsTracker
                   label={`Ten Ton is Number 1's Win/Loss`}
                   endLabelOffset={[-55, -15]}
                 />
-              </TableContext.Provider>
+              </Table2025Context.Provider>
+            }
+          />
+          <Route path={ROUTES.ABOUT_US} element={<AboutUs />} />
+          <Route path={ROUTES.UPDATES_NEWS} element={<UpdatesNews />} />
+          <Route
+            path={ROUTES.STATS_2025}
+            element={
+              <Table2025Context.Provider value={TenTon2025}>
+                <StatsTracker
+                  label={`Ten Ton is Number 1's Win/Loss`}
+                  endLabelOffset={[-55, -15]}
+                />
+              </Table2025Context.Provider>
             }
           />
           <Route path={ROUTES.COACHING} element={<CoachingPage />} />
