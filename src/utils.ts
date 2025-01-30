@@ -1,16 +1,17 @@
 import { createContext, useEffect, useState } from "react";
 import dayjs from "dayjs";
 import {
-  ARIA,
   ARIA_AND_BELLAGIO,
+  ARIA,
   BELLAGIO,
   CAESARS_PALACE,
   CET,
   CIRCA_AND_D,
   COSMO,
   CROMWELL,
-  DURANGO,
   DayTrip,
+  DayTrip2024,
+  DURANGO,
   ENCORE,
   EXCALIBUR,
   FLAMINGO,
@@ -18,8 +19,8 @@ import {
   HORSESHOE,
   LUXOR,
   MANDALAY_BAY,
-  MGM,
   MGM_GRAND,
+  MGM,
   MIRAGE,
   MOHEGAN_AT_VIRGIN,
   NEGATIVE_CURRENCY_TEXT_COLOR,
@@ -33,14 +34,15 @@ import {
   RESORTS_WORLD,
   RIO,
   ROUTES,
-  TABS,
   TableRowDataType,
+  TABS,
   VENETIAN,
   VP,
-  WYNN,
   WindowDimensions,
+  WYNN,
+  HARRAHS,
 } from "./types";
-import { tenTon2024 } from "./data";
+import { tenTon2024, tenTon2025 } from "./data";
 
 export const getRewardsProgram = (location: string): string => {
   switch (location) {
@@ -79,6 +81,7 @@ export const getRewardsProgram = (location: string): string => {
     case CAESARS_PALACE:
     case CROMWELL:
     case FLAMINGO:
+    case HARRAHS:
     case HORSESHOE:
     case OSHEAS:
     case PARIS:
@@ -105,8 +108,8 @@ export const getRewardsProgram = (location: string): string => {
   }
 };
 
-export interface TableRowsData {
-  dayTrips: DayTrip[];
+export interface TableRowsData2024 {
+  dayTrips: DayTrip2024[];
   wholeTripColors: string[];
   locationColors: string[];
   tripNumbers: number[];
@@ -126,11 +129,11 @@ export interface TableRowsData {
   totalWinLoss: number;
 }
 
-export const createRowData = (
-  dayTrips: DayTrip[],
+export const create2024RowData = (
+  dayTrips: DayTrip2024[],
   positiveColor = "black",
   negativeColor = "red",
-): TableRowsData => {
+): TableRowsData2024 => {
   const wholeTripColors: string[] = [];
   const locationColors: string[] = [];
   const tripNumbers: number[] = [];
@@ -222,6 +225,128 @@ export const createRowData = (
   };
 };
 
+export interface TableRowsData {
+  dayTrips: DayTrip[];
+  wholeTripColors: string[];
+  locationColors: string[];
+  tripNumbers: number[];
+  tripDates: number[];
+  tripPrograms: string[];
+  tripLocations: string[];
+  tripGameTypes: string[];
+  tripFeatureBets: string[];
+  tripBuyIns: number[];
+  tripColorUps: number[];
+  tripCrew: string[];
+  tripDealers: string[];
+  tripFloorBoxes: string[];
+  tripNotes: string[];
+  tripResults: number[];
+  totalBuyIns: number;
+  totalColorUps: number;
+  totalWinLoss: number;
+}
+
+export const createRowData = (
+  dayTrips: DayTrip[],
+  positiveColor = "black",
+  negativeColor = "red",
+): TableRowsData => {
+  const wholeTripColors: string[] = [];
+  const locationColors: string[] = [];
+  const tripNumbers: number[] = [];
+  const tripDates: number[] = [];
+  const tripPrograms: string[] = [];
+  const tripLocations: string[] = [];
+  const tripGameTypes: string[] = [];
+  const tripFeatureBets: string[] = [];
+  const tripBuyIns: number[] = [];
+  const tripColorUps: number[] = [];
+  const tripCrew: string[] = [];
+  const tripDealers: string[] = [];
+  const tripFloorBoxes: string[] = [];
+  const tripNotes: string[] = [];
+  const tripResults: number[] = [];
+
+  dayTrips.forEach((daytrip, index) => {
+    const {
+      date: dateValue,
+      location,
+      gameType,
+      featureBet,
+      buyIn,
+      colorUp,
+      crew,
+      dealers,
+      floorBox,
+      notes,
+    } = daytrip;
+
+    const results = colorUp.map(
+      (result: number, index: number) => result - buyIn[index],
+    );
+
+    const resultsTotal = results.reduce((total: number, result: number) => {
+      return (total += result);
+    }, 0);
+
+    for (let i = location.length - 1; i >= 0; i -= 1) {
+      wholeTripColors.push(resultsTotal >= 0 ? positiveColor : negativeColor);
+      locationColors.push(results[i] >= 0 ? positiveColor : negativeColor);
+      tripNumbers.push(index + 1);
+      tripDates.push(dateValue);
+      tripPrograms.push(getRewardsProgram(location[i]));
+      tripLocations.push(location[i]);
+      tripGameTypes.push(gameType[i]);
+      tripFeatureBets.push(featureBet[i]);
+      tripBuyIns.push(buyIn[i]);
+      tripColorUps.push(colorUp[i]);
+      tripCrew.push(crew[i]);
+      tripDealers.push(dealers[i]);
+      tripFloorBoxes.push(floorBox[i]);
+      tripNotes.push(notes[i]);
+      tripResults.push(results[i]);
+    }
+  });
+
+  const totalBuyIns = tripBuyIns.reduce(
+    (total, amount) => (total += amount),
+    0,
+  );
+
+  const totalColorUps = tripColorUps.reduce(
+    (total, amount) => (total += amount),
+    0,
+  );
+
+  const totalWinLoss = tripResults.reduce(
+    (total, amount) => (total += amount),
+    0,
+  );
+
+  return {
+    dayTrips,
+    wholeTripColors,
+    locationColors,
+    tripNumbers,
+    tripDates,
+    tripPrograms,
+    tripLocations,
+    tripGameTypes,
+    tripFeatureBets,
+    tripBuyIns,
+    tripColorUps,
+    tripCrew,
+    tripDealers,
+    tripFloorBoxes,
+    tripNotes,
+    tripResults,
+    totalBuyIns,
+    totalColorUps,
+    totalWinLoss,
+  };
+};
+
 export const dateFormatter = (d: TableRowDataType) => {
   const result = dayjs(d).format("M/DD/YYYY");
   if (result === "Invalid Date") {
@@ -246,17 +371,26 @@ export const currencyFormatter = (v: TableRowDataType): string => {
 
 export const getTabFromLocation = (pathname: string): TABS => {
   switch (pathname) {
+    case ROUTES.STATS_2025:
+      return TABS.STATS_2025;
+
     case ROUTES.STATS_2024:
       return TABS.STATS_2024;
+
+    case ROUTES.NEWS_NOTES:
+      return TABS.NEWS_NOTES;
+
+    case ROUTES.THE_PODCAST:
+      return TABS.THE_PODCAST;
+
+    case ROUTES.MERCH:
+      return TABS.MERCH;
 
     case ROUTES.COACHING:
       return TABS.COACHING;
 
-    case ROUTES.UPDATES_NEWS:
-      return TABS.UPDATES_NEWS;
-
     default:
-      return TABS.COLOR_COMIN_IN;
+      return TABS.STATS_2025;
   }
 };
 
@@ -330,10 +464,17 @@ export const getHeightClass = (height: number): string => {
   return "h-[470px]";
 };
 
-export const TenTon2024 = createRowData(
+export const TenTon2024 = create2024RowData(
   tenTon2024,
   POSITIVE_CURRENCY_TEXT_COLOR,
   NEGATIVE_CURRENCY_TEXT_COLOR,
 );
 
-export const TableContext = createContext(TenTon2024);
+export const TenTon2025 = createRowData(
+  tenTon2025,
+  POSITIVE_CURRENCY_TEXT_COLOR,
+  NEGATIVE_CURRENCY_TEXT_COLOR,
+);
+
+export const Table2024Context = createContext(TenTon2024);
+export const Table2025Context = createContext(TenTon2025);

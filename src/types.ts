@@ -1,14 +1,28 @@
-export type DayTrip = [
-  number, // Date
-  Array<string>, // Location
-  Array<string>, // Game Type
-  Array<number>, // Buy In
-  Array<number>, // Color
-  Array<number>, // Session Time (Hours)
-  Array<string>, // Crew
-  Array<string>, // Bonus
-  Array<string>, // Takeaways
+export type DayTrip2024 = [
+  number, // Date - 0
+  Array<string>, // Location - 1
+  Array<string>, // Game Type - 2
+  Array<number>, // Buy In - 3
+  Array<number>, // Color - 4
+  Array<number>, // Session Time (Hours) - 5
+  Array<string>, // Crew - 6
+  Array<string>, // Bonus - 7
+  Array<string>, // Takeaways - 8
 ];
+
+export type DayTrip = {
+  date: number;
+  location: string[];
+  gameType: string[];
+  featureBet: string[];
+  buyIn: number[];
+  colorUp: number[];
+  crew: string[];
+  dealers: string[];
+  floorBox: string[];
+  notes: string[];
+};
+
 export type HandleConsecutiveRepeatValueAs = "first" | "last" | "always";
 export type TableRowDataType = string | number;
 export type WindowDimensions = {
@@ -32,6 +46,7 @@ export const ENCORE = "Encore";
 export const EXCALIBUR = "Excalibur";
 export const FLAMINGO = "Flamingo";
 export const FONTAINEBLEAU = "Fontainebleau";
+export const HARRAHS = "Harrah's";
 export const HORSESHOE = "Horseshoe";
 export const LUXOR = "Luxor";
 export const MANDALAY_BAY = "Mandalay Bay";
@@ -69,17 +84,19 @@ export const ECHARTS_SETTINGS = {
 };
 
 export const enum TABS {
-  COLOR_COMIN_IN = "Color Comin' In",
-  UPDATES_NEWS = "Updates & News",
-  STATS_2024 = "2024 Stats",
   STATS_2025 = "2025 Stats",
+  STATS_2024 = "2024 Stats",
+  NEWS_NOTES = "News & Notes",
+  THE_PODCAST = "The Podcast",
+  MERCH = "Merch",
   COACHING = "Coaching",
 }
 
 export const enum ROUTES {
-  ABOUT_US = "/about-us",
-  UPDATES_NEWS = "/updates-news",
-  STATS_2024 = "/stats/2024",
   STATS_2025 = "/stats/2025",
+  STATS_2024 = "/stats/2024",
+  NEWS_NOTES = "/news-notes",
+  THE_PODCAST = "/podcast",
+  MERCH = "/merch",
   COACHING = "/coaching",
 }

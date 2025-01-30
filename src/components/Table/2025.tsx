@@ -1,5 +1,6 @@
 import React, { FC, useContext } from "react";
 import {
+  DayTrip,
   HandleConsecutiveRepeatValueAs,
   NEGATIVE_CURRENCY_TEXT_COLOR,
   NEUTRAL_TEXT_COLOR,
@@ -8,7 +9,7 @@ import {
   TableRowDataType,
 } from "../../types";
 import {
-  Table2024Context,
+  Table2025Context,
   currencyFormatter,
   dateFormatter,
   getRewardsProgram,
@@ -113,15 +114,16 @@ export const StatsTableLarge: FC = () => {
     tripColorUps,
     tripDates,
     tripGameTypes,
+    tripFeatureBets,
     tripLocations,
     tripCrew,
+    tripDealers,
+    tripFloorBoxes,
     tripPrograms,
     tripResults,
-    tripSessionHours,
-    tripBonus,
-    tripTakeaways,
+    tripNotes,
     wholeTripColors,
-  } = useContext(Table2024Context);
+  } = useContext(Table2025Context);
 
   const allGreens = Array.from(
     locationColors,
@@ -129,7 +131,8 @@ export const StatsTableLarge: FC = () => {
   );
 
   return (
-    <div className="grid grid-cols-[minmax(0,_2fr)_minmax(0,_1fr)_minmax(0,_2fr)_minmax(0,_2fr)_minmax(0,_1fr)_minmax(0,_1fr)_minmax(0,_1fr)_minmax(0,_1fr)_minmax(0,_2fr)_minmax(0,_1fr)_minmax(0,_4fr)]">
+    //                             Date            Program        Location       Game Type      Feature Bet    Buy In         Color          W/L            Crew           Dealers        Floor/Box      Notes
+    <div className="grid grid-cols-[minmax(0,_2fr)_minmax(0,_1fr)_minmax(0,_2fr)_minmax(0,_1fr)_minmax(0,_1fr)_minmax(0,_1fr)_minmax(0,_1fr)_minmax(0,_1fr)_minmax(0,_1fr)_minmax(0,_1fr)_minmax(0,_1fr)_minmax(0,_4fr)]">
       <TableColumn
         formatter={dateFormatter}
         handleConsecutiveRepeatValueAs="last"
@@ -161,6 +164,14 @@ export const StatsTableLarge: FC = () => {
         headerRows={[""]}
         headerRowColors={[THEME_TEXT_COLOR]}
         rowData={tripGameTypes}
+        rowDataColors={locationColors}
+      />
+      <TableColumn
+        handleConsecutiveRepeatValueAs="always"
+        title="Feature Bet"
+        headerRows={[""]}
+        headerRowColors={[THEME_TEXT_COLOR]}
+        rowData={tripFeatureBets}
         rowDataColors={locationColors}
       />
       <TableColumn
@@ -196,14 +207,6 @@ export const StatsTableLarge: FC = () => {
       />
       <TableColumn
         handleConsecutiveRepeatValueAs="always"
-        title="Hours"
-        headerRows={[""]}
-        headerRowColors={[""]}
-        rowData={tripSessionHours}
-        rowDataColors={locationColors}
-      />
-      <TableColumn
-        handleConsecutiveRepeatValueAs="always"
         title="Crew"
         headerRows={[""]}
         headerRowColors={[""]}
@@ -212,18 +215,26 @@ export const StatsTableLarge: FC = () => {
       />
       <TableColumn
         handleConsecutiveRepeatValueAs="always"
-        title="Bonus"
+        title="Dealers"
         headerRows={[""]}
         headerRowColors={[""]}
-        rowData={tripBonus}
+        rowData={tripDealers}
         rowDataColors={locationColors}
       />
       <TableColumn
         handleConsecutiveRepeatValueAs="always"
-        title="Takeaways"
+        title="Floor/Box"
         headerRows={[""]}
         headerRowColors={[""]}
-        rowData={tripTakeaways}
+        rowData={tripFloorBoxes}
+        rowDataColors={locationColors}
+      />
+      <TableColumn
+        handleConsecutiveRepeatValueAs="always"
+        title="Notes"
+        headerRows={[""]}
+        headerRowColors={[""]}
+        rowData={tripNotes}
         rowDataColors={locationColors}
       />
     </div>
@@ -245,20 +256,20 @@ const getSessionClassName = (sessions: number): string => {
   }
 };
 export const StatsTableCompact: FC = () => {
-  const state = useContext(Table2024Context);
+  const state = useContext(Table2025Context);
   const { totalWinLoss, dayTrips } = state;
 
-  const sessionColors = dayTrips.map((dayTrip) => {
-    return dayTrip[4].map((colorUp, index) =>
-      colorUp >= dayTrip[3][index]
+  const sessionColors = dayTrips.map((dayTrip: DayTrip) => {
+    return dayTrip.colorUp.map((colorUp: number, index: number) =>
+      colorUp >= dayTrip.buyIn[index]
         ? POSITIVE_CURRENCY_TEXT_COLOR
         : NEGATIVE_CURRENCY_TEXT_COLOR,
     );
   });
 
-  const tripColors = dayTrips.map((dayTrip) => {
-    const total = dayTrip[4].reduce(
-      (total, colorUp, index) => (total += colorUp - dayTrip[3][index]),
+  const tripColors = dayTrips.map((dayTrip: DayTrip) => {
+    const total = dayTrip.colorUp.reduce(
+      (total, colorUp, index) => (total += colorUp - dayTrip.buyIn[index]),
       0,
     );
 
@@ -279,7 +290,7 @@ export const StatsTableCompact: FC = () => {
     >
       {dayTrips.map((dayTrip, tripNumber) => (
         <div
-          key={dayTrip[0]}
+          key={dayTrip.date}
           className={`flex flex-col border-t border-solid border-gray100`}
         >
           <div className={compactTableDetailRowClassName}>
@@ -287,17 +298,17 @@ export const StatsTableCompact: FC = () => {
             <span
               className={`${compactTableDetailDataPointsClassName} ${tripColors[tripNumber]}`}
             >
-              {dateFormatter(dayTrip[0])}
+              {dateFormatter(dayTrip.date)}
             </span>
           </div>
           <div className={compactTableDetailRowClassName}>
             <span className={compactTableDetailFieldClassName}>Program</span>
             <span className={compactTableDetailDataPointsClassName}>
-              {dayTrip[1].map((location, index) => (
+              {dayTrip.location.map((location, index) => (
                 <span
                   key={`program-${index}`}
                   className={`${getSessionClassName(
-                    dayTrip[1].length,
+                    dayTrip.location.length,
                   )} ${NEUTRAL_TEXT_COLOR}`}
                 >
                   {getRewardsProgram(location)}
@@ -308,10 +319,10 @@ export const StatsTableCompact: FC = () => {
           <div className={compactTableDetailRowClassName}>
             <span className={compactTableDetailFieldClassName}>Location</span>
             <span className={compactTableDetailDataPointsClassName}>
-              {dayTrip[1].map((location, index) => (
+              {dayTrip.location.map((location, index) => (
                 <span
                   key={`location-${index}`}
-                  className={`${getSessionClassName(dayTrip[1].length)} ${
+                  className={`${getSessionClassName(dayTrip.location.length)} ${
                     sessionColors[tripNumber][index]
                   }`}
                 >
@@ -323,11 +334,11 @@ export const StatsTableCompact: FC = () => {
           <div className={compactTableDetailRowClassName}>
             <span className={compactTableDetailFieldClassName}>Game Type</span>
             <span className={compactTableDetailDataPointsClassName}>
-              {dayTrip[2].map((gameType, index) => (
+              {dayTrip.gameType.map((gameType, index) => (
                 <span
                   key={`gameType-${index}`}
                   className={`${getSessionClassName(
-                    dayTrip[1].length,
+                    dayTrip.gameType.length,
                   )} ${NEUTRAL_TEXT_COLOR}`}
                 >
                   {gameType}
@@ -336,13 +347,30 @@ export const StatsTableCompact: FC = () => {
             </span>
           </div>
           <div className={compactTableDetailRowClassName}>
+            <span className={compactTableDetailFieldClassName}>
+              Feature Type
+            </span>
+            <span className={compactTableDetailDataPointsClassName}>
+              {dayTrip.featureBet.map((featureBet, index) => (
+                <span
+                  key={`featureBet-${index}`}
+                  className={`${getSessionClassName(
+                    dayTrip.featureBet.length,
+                  )} ${NEUTRAL_TEXT_COLOR}`}
+                >
+                  {featureBet}
+                </span>
+              ))}
+            </span>
+          </div>
+          <div className={compactTableDetailRowClassName}>
             <span className={compactTableDetailFieldClassName}>Buy In</span>
             <span className={compactTableDetailDataPointsClassName}>
-              {dayTrip[3].map((buyIn, index) => (
+              {dayTrip.buyIn.map((buyIn, index) => (
                 <span
                   key={`buyIn-${index}`}
                   className={`${getSessionClassName(
-                    dayTrip[1].length,
+                    dayTrip.buyIn.length,
                   )} ${POSITIVE_CURRENCY_TEXT_COLOR}`}
                 >
                   {currencyFormatter(buyIn)}
@@ -353,10 +381,10 @@ export const StatsTableCompact: FC = () => {
           <div className={compactTableDetailRowClassName}>
             <span className={compactTableDetailFieldClassName}>Color</span>
             <span className={compactTableDetailDataPointsClassName}>
-              {dayTrip[4].map((colorUp, index) => (
+              {dayTrip.colorUp.map((colorUp, index) => (
                 <span
                   key={`color-${index}`}
-                  className={`${getSessionClassName(dayTrip[1].length)} ${
+                  className={`${getSessionClassName(dayTrip.location.length)} ${
                     sessionColors[tripNumber][index]
                   }`}
                 >
@@ -368,42 +396,26 @@ export const StatsTableCompact: FC = () => {
           <div className={compactTableDetailRowClassName}>
             <span className={compactTableDetailFieldClassName}>Win/Loss</span>
             <span className={compactTableDetailDataPointsClassName}>
-              {dayTrip[4].map((colorUp, index) => (
+              {dayTrip.colorUp.map((colorUp, index) => (
                 <span
                   key={`winLoss-${index}`}
-                  className={`${getSessionClassName(dayTrip[1].length)} ${
+                  className={`${getSessionClassName(dayTrip.location.length)} ${
                     sessionColors[tripNumber][index]
                   }`}
                 >
-                  {currencyFormatter(colorUp - dayTrip[3][index])}
+                  {currencyFormatter(colorUp - dayTrip.buyIn[index])}
                 </span>
               ))}
             </span>
           </div>
-          <div className={compactTableDetailRowClassName}>
-            <span className={compactTableDetailFieldClassName}>Hours</span>
-            <span className={compactTableDetailDataPointsClassName}>
-              {dayTrip[5].map((hours, index) => (
-                <span
-                  key={`hours-${index}`}
-                  className={`${getSessionClassName(
-                    dayTrip[1].length,
-                  )} ${NEUTRAL_TEXT_COLOR}`}
-                >
-                  {hours}
-                </span>
-              ))}
-            </span>
-          </div>
-
           <div className={compactTableDetailRowClassName}>
             <span className={compactTableDetailFieldClassName}>Crew</span>
             <span className={compactTableDetailDataPointsClassName}>
-              {dayTrip[6].map((playedWith, index) => (
+              {dayTrip.crew.map((playedWith, index) => (
                 <span
                   key={`crew-${index}`}
                   className={`${getSessionClassName(
-                    dayTrip[1].length,
+                    dayTrip.location.length,
                   )} ${NEUTRAL_TEXT_COLOR}`}
                 >
                   {playedWith}
@@ -412,31 +424,46 @@ export const StatsTableCompact: FC = () => {
             </span>
           </div>
           <div className={compactTableDetailRowClassName}>
-            <span className={compactTableDetailFieldClassName}>Bonus</span>
+            <span className={compactTableDetailFieldClassName}>Dealers</span>
             <span className={compactTableDetailDataPointsClassName}>
-              {dayTrip[7].map((bonus, index) => (
+              {dayTrip.dealers.map((dealers, index) => (
                 <span
-                  key={`bonus-${index}`}
+                  key={`dealers-${index}`}
                   className={`${getSessionClassName(
-                    dayTrip[1].length,
+                    dayTrip.location.length,
                   )} ${NEUTRAL_TEXT_COLOR}`}
                 >
-                  {bonus}
+                  {dealers}
                 </span>
               ))}
             </span>
           </div>
           <div className={compactTableDetailRowClassName}>
-            <span className={compactTableDetailFieldClassName}>Takeaways</span>
+            <span className={compactTableDetailFieldClassName}>Floor/Box</span>
             <span className={compactTableDetailDataPointsClassName}>
-              {dayTrip[8].map((takeaways, index) => (
+              {dayTrip.floorBox.map((floorBox, index) => (
                 <span
-                  key={`takeaways-${index}`}
+                  key={`floorBox-${index}`}
                   className={`${getSessionClassName(
-                    dayTrip[1].length,
+                    dayTrip.location.length,
                   )} ${NEUTRAL_TEXT_COLOR}`}
                 >
-                  {takeaways}
+                  {floorBox}
+                </span>
+              ))}
+            </span>
+          </div>
+          <div className={compactTableDetailRowClassName}>
+            <span className={compactTableDetailFieldClassName}>Notes</span>
+            <span className={compactTableDetailDataPointsClassName}>
+              {dayTrip.notes.map((notes, index) => (
+                <span
+                  key={`notes-${index}`}
+                  className={`${getSessionClassName(
+                    dayTrip.location.length,
+                  )} ${NEUTRAL_TEXT_COLOR}`}
+                >
+                  {notes}
                 </span>
               ))}
             </span>
