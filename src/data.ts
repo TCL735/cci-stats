@@ -605,4 +605,18 @@ export const tenTon2025: Array<DayTrip> = [
     floorBox: ["A+"],
     notes: ["5/6 6/5 set / big roll / needed 3 for all / "],
   },
+  {
+    date: dayjs("2025-01-31").valueOf(),
+    location: [ARIA],
+    gameType: ["$25 Crapless"],
+    featureBet: ["ATS"],
+    buyIn: [15000],
+    colorUp: [78],
+    crew: ["Solo"],
+    dealers: ["A"],
+    floorBox: ["A"],
+    notes: [
+      "overall cold table / overextended presses with very few double digit rolls / called for a very conservative grindy game / shot was not on",
+    ],
+  },
 ];

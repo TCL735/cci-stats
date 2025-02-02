@@ -5,7 +5,7 @@ export const ThePodcast = () => {
   return (
     <div className={`ml-3 pt-4 ${NEUTRAL_TEXT_COLOR}`}>
       <a
-        href="https://www.casinotears.com/"
+        href="https://www.casinotears.com/subscribe/"
         target="_blank"
         rel="noreferrer"
         className={`${THEME_TEXT_COLOR} hover:text-white`}
