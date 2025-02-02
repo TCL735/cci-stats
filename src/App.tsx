@@ -13,7 +13,6 @@ import { ROUTES, SELECTED_BORDER_STYLE, TABS, THEME_TEXT_COLOR } from "./types";
 import { getTabFromLocation, Table2025Context, TenTon2025 } from "./utils";
 import { NewsNotes } from "./components/NewsNotes";
 import { ThePodcast } from "./components/ThePodcast";
-import { Merch } from "./components/Merch";
 
 export const Navigation = () => {
   const panelRef = useRef<HTMLDivElement>(null);
@@ -39,6 +38,15 @@ export const Navigation = () => {
     }
   }, []);
 
+  const handleTabChange = (tab: string | null) => {
+    if (tab === TABS.THE_PODCAST) {
+      window.open(
+        "https://www.casinotears.com/subscribe/",
+        "_blank",
+        "noreferrer",
+      );
+    }
+  };
   useEffect(() => {
     setActiveTab(getTabFromLocation(pathname));
   }, [pathname]);
@@ -53,7 +61,12 @@ export const Navigation = () => {
 
   return (
     <div className="bg-black">
-      <Tabs value={activeTab} variant="default" keepMounted={false}>
+      <Tabs
+        value={activeTab}
+        variant="default"
+        keepMounted={false}
+        onChange={handleTabChange}
+      >
         <Tabs.List className="flex flex-nowrap flex-row justify-start border-b-0">
           <Link to={ROUTES.STATS_2025}>
             <Tabs.Tab
@@ -91,18 +104,6 @@ export const Navigation = () => {
               {TABS.THE_PODCAST}
             </Tabs.Tab>
           </Link>
-          <Link to={ROUTES.MERCH}>
-            <Tabs.Tab
-              className={`px-4 py-3 hover:text-white ${
-                activeTab === TABS.MERCH
-                  ? SELECTED_BORDER_STYLE
-                  : "border-black/100"
-              } ${THEME_TEXT_COLOR}`}
-              value={TABS.MERCH}
-            >
-              {TABS.MERCH}
-            </Tabs.Tab>
-          </Link>
         </Tabs.List>
         <Tabs.Panel className={`${panelHeight}`} value={activeTab!}>
           <div ref={panelRef}>
@@ -118,7 +119,7 @@ const Stats2025 = () => (
   <Table2025Context.Provider value={TenTon2025}>
     <StatsTracker
       label={`Ten Ton is Number 1's Win/Loss`}
-      endLabelOffset={[-55, -15]}
+      endLabelOffset={[-70, -5]}
     />
   </Table2025Context.Provider>
 );
@@ -132,7 +133,6 @@ export const App = () => {
           <Route path={ROUTES.STATS_2025} element={<Stats2025 />} />
           <Route path={ROUTES.NEWS_NOTES} element={<NewsNotes />} />
           <Route path={ROUTES.THE_PODCAST} element={<ThePodcast />} />
-          <Route path={ROUTES.MERCH} element={<Merch />} />
         </Route>
       </Routes>
     </HashRouter>
