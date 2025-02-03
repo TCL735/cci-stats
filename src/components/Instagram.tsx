@@ -10,7 +10,16 @@ export const Instagram = () => {
         rel="noreferrer"
         className={`${THEME_TEXT_COLOR} hover:text-white`}
       >
-        <span>FOLLOW ON INSTAGRAM FOR LIVE UPDATES</span>
+        <span>
+          FOLLOW ON{" "}
+          <img
+            height={100}
+            width={100}
+            alt="instagram logo"
+            src="/instagram-logo-name-scaled.jpg"
+          />
+          FOR LIVE UPDATES
+        </span>
       </a>
     </div>
   );
