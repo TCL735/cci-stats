@@ -9,10 +9,19 @@ import {
 } from "react-router-dom";
 import { Tabs } from "@mantine/core";
 import { StatsTracker } from "./components/StatsTracker";
-import { ROUTES, SELECTED_BORDER_STYLE, TABS, THEME_TEXT_COLOR } from "./types";
+import {
+  INSTAGRAM_LINK,
+  POSITIVE_CURRENCY_TEXT_COLOR,
+  ROUTES,
+  SELECTED_BORDER_STYLE,
+  TABS,
+  THEME_TEXT_COLOR,
+  THE_PODCAST_LINK,
+} from "./types";
 import { getTabFromLocation, Table2025Context, TenTon2025 } from "./utils";
 import { NewsNotes } from "./components/NewsNotes";
 import { ThePodcast } from "./components/ThePodcast";
+import { Instagram } from "./components/Instagram";
 
 export const Navigation = () => {
   const panelRef = useRef<HTMLDivElement>(null);
@@ -39,12 +48,10 @@ export const Navigation = () => {
   }, []);
 
   const handleTabChange = (tab: string | null) => {
-    if (tab === TABS.THE_PODCAST) {
-      window.open(
-        "https://www.casinotears.com/subscribe/",
-        "_blank",
-        "noreferrer",
-      );
+    if (tab === TABS.INSTAGRAM) {
+      window.open(INSTAGRAM_LINK, "_blank", "noreferrer");
+    } else if (tab === TABS.THE_PODCAST) {
+      window.open(THE_PODCAST_LINK, "_blank", "noreferrer");
     }
   };
   useEffect(() => {
@@ -78,6 +85,18 @@ export const Navigation = () => {
               value={TABS.STATS_2025}
             >
               {TABS.STATS_2025}
+            </Tabs.Tab>
+          </Link>
+          <Link to={ROUTES.INSTAGRAM}>
+            <Tabs.Tab
+              className={`px-4 py-3 hover:text-white ${
+                activeTab === TABS.INSTAGRAM
+                  ? SELECTED_BORDER_STYLE
+                  : "border-black/100"
+              } ${POSITIVE_CURRENCY_TEXT_COLOR}`}
+              value={TABS.INSTAGRAM}
+            >
+              {TABS.INSTAGRAM}
             </Tabs.Tab>
           </Link>
           <Link to={ROUTES.NEWS_NOTES}>
@@ -119,7 +138,7 @@ const Stats2025 = () => (
   <Table2025Context.Provider value={TenTon2025}>
     <StatsTracker
       label={`Ten Ton is Number 1's Win/Loss`}
-      endLabelOffset={[-70, -5]}
+      endLabelOffset={[-70, -10]}
     />
   </Table2025Context.Provider>
 );
@@ -131,6 +150,7 @@ export const App = () => {
         <Route path="/" element={<Navigation />}>
           <Route path="/" index element={<Stats2025 />} />
           <Route path={ROUTES.STATS_2025} element={<Stats2025 />} />
+          <Route path={ROUTES.INSTAGRAM} element={<Instagram />} />
           <Route path={ROUTES.NEWS_NOTES} element={<NewsNotes />} />
           <Route path={ROUTES.THE_PODCAST} element={<ThePodcast />} />
         </Route>

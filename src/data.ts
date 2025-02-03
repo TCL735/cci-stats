@@ -619,4 +619,20 @@ export const tenTon2025: Array<DayTrip> = [
       "overall cold table / overextended presses with very few double digit rolls / called for a very conservative grindy game / shot was not on",
     ],
   },
+  {
+    date: dayjs("2025-02-01").valueOf(),
+    location: [CAESARS_PALACE, BELLAGIO, ARIA],
+    gameType: ["$25 Craps", "$50 Crapless", "$25 Crapless"],
+    featureBet: ["Repeater", "ATS", "ATS"],
+    buyIn: [10000, 5000, 10000],
+    colorUp: [55, 23, 42660],
+    crew: ["Won Ton", "Won Ton", "Won Ton"],
+    dealers: ["B", "A+", "A+"],
+    floorBox: ["B", "A", "A+"],
+    notes: [
+      "played big / forcing game / not at fav table",
+      "played big / tight landing zone",
+      "5/6 6/5 set w/flip / 4 rolls / hit all then small 2x",
+    ],
+  },
 ];

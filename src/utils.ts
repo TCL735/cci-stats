@@ -377,6 +377,9 @@ export const getTabFromLocation = (pathname: string): TABS => {
     case ROUTES.STATS_2024:
       return TABS.STATS_2024;
 
+    case ROUTES.INSTAGRAM:
+      return TABS.INSTAGRAM;
+
     case ROUTES.NEWS_NOTES:
       return TABS.NEWS_NOTES;
 
