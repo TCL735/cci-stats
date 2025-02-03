@@ -83,9 +83,13 @@ export const ECHARTS_SETTINGS = {
   replaceMerge: ["series"],
 };
 
+export const INSTAGRAM_LINK = "https://www.instagram.com/casinotearspodcast/";
+export const THE_PODCAST_LINK = "https://www.casinotears.com/subscribe/";
+
 export const enum TABS {
   STATS_2025 = "2025 Stats",
   STATS_2024 = "2024 Stats",
+  INSTAGRAM = "Instagram",
   NEWS_NOTES = "News & Notes",
   THE_PODCAST = "The Podcast",
   MERCH = "Merch",
@@ -95,6 +99,7 @@ export const enum TABS {
 export const enum ROUTES {
   STATS_2025 = "/stats/2025",
   STATS_2024 = "/stats/2024",
+  INSTAGRAM = "/instagram",
   NEWS_NOTES = "/news-notes",
   THE_PODCAST = "/podcast",
   MERCH = "/merch",
