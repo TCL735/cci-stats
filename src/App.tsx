@@ -138,7 +138,7 @@ const Stats2025 = () => (
   <Table2025Context.Provider value={TenTon2025}>
     <StatsTracker
       label={`Ten Ton is Number 1's Win/Loss`}
-      endLabelOffset={[-85, 0]}
+      endLabelOffset={[-50, -15]}
     />
   </Table2025Context.Provider>
 );
