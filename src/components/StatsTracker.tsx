@@ -72,14 +72,15 @@ export const StatsTracker: FC<StatsTrackerProps> = ({
                   ? NEGATIVE_CURRENCY_TEXT_COLOR
                   : POSITIVE_CURRENCY_TEXT_COLOR
               }">Win/Loss: ${dayTrips[dataIndex].colorUp
-                .map(
-                  (amount, index) =>
-                    `<span class="${
-                      amount - dayTrips[dataIndex].buyIn[index] < 0
-                        ? NEGATIVE_CURRENCY_TEXT_COLOR
-                        : POSITIVE_CURRENCY_TEXT_COLOR
-                    }">${currency.format(amount)}  </span>`,
-                )
+                .map((amount, index) => {
+                  const winLossAmount =
+                    amount - dayTrips[dataIndex].buyIn[index];
+                  return `<span class="${
+                    winLossAmount < 0
+                      ? NEGATIVE_CURRENCY_TEXT_COLOR
+                      : POSITIVE_CURRENCY_TEXT_COLOR
+                  }">${currency.format(winLossAmount)}  </span>`;
+                })
                 .join("")}</span><br/><b class="${
                 params[0].data[1] < 0
                   ? NEGATIVE_CURRENCY_TEXT_COLOR
