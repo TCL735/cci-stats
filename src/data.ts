@@ -743,4 +743,18 @@ export const tenTon2025: Array<DayTrip> = [
     floorBox: ["B"],
     notes: ["grindy / exact opposite results for set using / bj hit small"],
   },
+  {
+    date: dayjs("2025-02-26").valueOf(),
+    location: [PALMS],
+    gameType: ["$15 Craps"],
+    featureBet: ["ATS"],
+    buyIn: [14900],
+    colorUp: [17450],
+    crew: ["Bump Jon"],
+    dealers: ["B+"],
+    floorBox: ["A"],
+    notes: [
+      "back table / must shoot into hook / bj hit small / floors Giang + Chris great",
+    ],
+  },
 ];
