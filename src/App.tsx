@@ -22,6 +22,7 @@ import { getTabFromLocation, Table2025Context, TenTon2025 } from "./utils";
 import { NewsNotes } from "./components/NewsNotes";
 import { ThePodcast } from "./components/ThePodcast";
 import { Instagram } from "./components/Instagram";
+import { Merch } from "./components/Merch";
 
 export const Navigation = () => {
   const panelRef = useRef<HTMLDivElement>(null);
@@ -123,6 +124,18 @@ export const Navigation = () => {
               {TABS.THE_PODCAST}
             </Tabs.Tab>
           </Link>
+          <Link to={ROUTES.MERCH}>
+            <Tabs.Tab
+              className={`px-4 py-3 hover:text-white ${
+                activeTab === TABS.MERCH
+                  ? SELECTED_BORDER_STYLE
+                  : "border-black/100"
+              } ${THEME_TEXT_COLOR}`}
+              value={TABS.MERCH}
+            >
+              Monthly Merch Giveaway
+            </Tabs.Tab>
+          </Link>
         </Tabs.List>
         <Tabs.Panel className={`${panelHeight}`} value={activeTab!}>
           <div ref={panelRef}>
@@ -153,6 +166,7 @@ export const App = () => {
           <Route path={ROUTES.INSTAGRAM} element={<Instagram />} />
           <Route path={ROUTES.NEWS_NOTES} element={<NewsNotes />} />
           <Route path={ROUTES.THE_PODCAST} element={<ThePodcast />} />
+          <Route path={ROUTES.MERCH} element={<Merch />} />
         </Route>
       </Routes>
     </HashRouter>
