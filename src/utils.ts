@@ -41,6 +41,7 @@ import {
   WindowDimensions,
   WYNN,
   HARRAHS,
+  FREMONT,
 } from "./types";
 import { tenTon2024, tenTon2025 } from "./data";
 
@@ -102,6 +103,9 @@ export const getRewardsProgram = (location: string): string => {
 
     case RIO:
       return "Rio Rewards";
+
+    case FREMONT:
+      return "Boyd Rewards";
 
     default:
       return location;

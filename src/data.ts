@@ -10,6 +10,7 @@ import {
   DayTrip2024,
   FLAMINGO,
   FONTAINEBLEAU,
+  FREMONT,
   HARRAHS,
   HORSESHOE,
   MOHEGAN_AT_VIRGIN,
@@ -890,5 +891,19 @@ export const tenTon2025: Array<DayTrip> = [
     dealers: ["A"],
     floorBox: ["A"],
     notes: ["shot 5x 56/65 / detailed on podcast / farve"],
+  },
+  {
+    date: dayjs("2025-03-13").valueOf(),
+    location: [FREMONT],
+    gameType: ["$15 Craps"],
+    featureBet: ["ATS"],
+    buyIn: [2500],
+    colorUp: [0],
+    crew: ["Bump Jon"],
+    dealers: ["B"],
+    floorBox: ["B"],
+    notes: [
+      "hardest table ever played / hit small / need to adjust shot little lower / max ats 25-1-25",
+    ],
   },
 ];

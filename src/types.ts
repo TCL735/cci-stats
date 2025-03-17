@@ -46,6 +46,7 @@ export const ENCORE = "Encore";
 export const EXCALIBUR = "Excalibur";
 export const FLAMINGO = "Flamingo";
 export const FONTAINEBLEAU = "Fontainebleau";
+export const FREMONT = "Fremont";
 export const HARRAHS = "Harrah's";
 export const HORSESHOE = "Horseshoe";
 export const LUXOR = "Luxor";
